@@ -1,0 +1,253 @@
+<div>
+  <div style="background-color: white; padding: 2%;">
+    <h3 class="title"><b><fa-icon class="bi bi-search"></fa-icon>Điều kiện tìm kiếm</b></h3>
+    <hr>
+    <div>
+      <form action="">
+        <table style="height: 145px;">
+          <tr>
+            <td style="width: 9%;" class="text-nowrap">
+              <h6>STT trong đoàn</h6>
+            </td>
+            <td><input class="form-control inputBorder" type="text" [(ngModel)]="fields.soTT" name="soTT"></td>
+            <td style="padding-left: 4%;" class="text-nowrap">
+              <h6>Quốc gia đến</h6>
+            </td>
+            <td><select class="form-select inputBorder" style="background-color: #fff" name="quocGia"
+                [(ngModel)]="fields.maQG">
+                <option [value]="null" selected>------- Tất cả --------</option>
+                <option *ngFor="let item of citems" [value]="item.maQG">{{ item.ten }}</option>
+              </select>
+            </td>
+            <td style="padding-left: 3%;" class="text-nowrap">
+              <h6>Chức vụ</h6>
+            </td>
+            <td><input class="form-control inputBorder" type="text" [(ngModel)]="fields.chucVu" name="chucVu"></td>
+          </tr>
+          <tr>
+            <td class="text-nowrap">
+              <h6>Họ và tên</h6>
+            </td>
+            <td><input class="form-control inputBorder" type="text" [(ngModel)]="fields.hoTen" name="hoTen"></td>
+            <td style="padding-left: 4%;" class="text-nowrap">
+              <h6>Tên đoàn</h6>
+            </td>
+            <td><input class="form-control inputBorder" type="text" [(ngModel)]="fields.tenHSDoan" name="tenHSDoan">
+            </td>
+            <td style="padding-left: 3%;" class="text-nowrap">
+              <h6>Ngày xuất cảnh</h6>
+            </td>
+            <td><input class="form-control inputBorder" type="text" placeholder="dd/mm/yyyy" id="ngayXC" bsDatepicker
+                [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',showWeekNumbers: false }" [(ngModel)]="fields.ngayXC"
+                [ngModelOptions]="{standalone: true}" name="ngayXC" (change)="isInvalidDateNgayXC($event)"
+                (keypress)=" numberOnlywithForwardSlash($event)" maxlength="10" /></td>
+          </tr>
+          <tr>
+            <td class="text-nowrap">
+              <h6>Số hộ chiếu</h6>
+            </td>
+            <td><input class="form-control inputBorder" type="text" [(ngModel)]="fields.soHoChieu" name="maDoan">
+            </td>
+            <td style="padding-left: 4%;" class="text-nowrap">
+              <h6 class="col-4 pt-2">Cơ quan làm việc</h6>
+            </td>
+            <td><input class="form-control inputBorder" type="text" [(ngModel)]="fields.coQuan" name="coQuan"></td>
+            <td style="padding-left: 3%;" class="text-nowrap">
+              <h6>Ngày nhập cảnh</h6>
+            </td>
+            <td><input class="form-control inputBorder" type="text" id="ngayNC" placeholder="dd/mm/yyyy" bsDatepicker
+                [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',showWeekNumbers: false }" [(ngModel)]="fields.ngayNC"
+                [ngModelOptions]="{standalone: true}" name="ngayNC" (change)="isInvalidDateNgayNC($event)"
+                (keypress)=" numberOnlywithForwardSlash($event)" maxlength="10" /></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    <br>
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-primary jh-create-entity me-3 iconBG buttonborder" (click)="search()">
+        <fa-icon class="iconColor" icon="search"></fa-icon>
+        <span class="iconColor">Tìm kiếm</span>
+      </button>
+      <button *ngIf="checkAuth" class="btn btn-primary jh-create-entity me-3 iconBG buttonborder" (click)="PopUp($event, popupDiv)">
+        <fa-icon class="iconColor" icon="plus"></fa-icon> <span class="iconColor">Thêm mới</span>
+      </button>
+      <button type="botton" class="btn btn-primary jh-create-entity me-3 iconBG buttonborder" (click)="loadDataPrint()">
+        <fa-icon class="bi-printer iconColor"></fa-icon> <span class="iconColor">In báo cáo</span>
+      </button>
+      <button class="btn btn-primary jh-create-entity me-3 iconBG buttonborder" (click)="loadDataExport()">
+        <fa-icon class="bi-file-earmark-arrow-down iconColor"></fa-icon> <span class="iconColor">Kết xuất</span>
+      </button>
+      <button class="btn btn-primary jh-create-entity me-3 iconBG buttonborder" (click)="resetFields()">
+        <fa-icon class="bi-trash iconColor"></fa-icon>
+        <span class="iconColor">Xóa tìm kiếm</span>
+      </button>
+      <button class="btn btn-primary jh-create-entity me-3 iconBG buttonborder" routerLink="">
+        <fa-icon class="bi-box-arrow-left iconColor"></fa-icon>
+        <span class="iconColor">Thoát</span>
+      </button>
+    </div>
+  </div>
+  <div style="background-color: white; padding: 2%; margin-top: 1%;">
+    <h3 class="title"><b><fa-icon class="bi bi-folder2"></fa-icon>Kết quả tìm kiếm</b></h3>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="table-responsive content-wrapper" *ngIf="users">
+      <table class="table table-bordered table-striped" style="border: rgb(199, 199, 199) 1px; width: 150%;" id="table-data">
+        <thead class="text-nowrap">
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="transition()">
+            <th scope="col" jhiSortBy="id" class="text-center"><span>STT</span> </th>
+            <th scope="col" jhiSortBy="login" class="text-center"><span>STT trong đoàn</span></th>
+            <th scope="col" jhiSortBy="email" class="text-center"><span>Họ và tên</span>
+            </th>
+            <th scope="col" class="text-center"><span>Chức vụ</span></th>
+            <th scope="col" class="text-center">
+              <span>Cơ quan làm việc</span>
+            </th>
+            <th scope="col" class="text-center">
+              <span>Ngày sinh</span>
+            </th>
+            <th scope="col" class="text-center">
+              <span>Giới tính</span>
+            </th>
+            <th scope="col" class="text-center">
+              <span>Số hộ chiếu</span>
+            </th>
+            <th scope="col" class="text-center">
+              <span>Ngày cấp</span>
+            </th>
+            <th scope="col" class="text-center">
+              <span>Quốc gia đến</span>
+            </th>
+            <th scope="col" class="text-center">
+              <span>Là thành viên của đoàn</span>
+            </th>
+            <th scope="col" class="text-center">
+              <span>Ngày xuất cảnh</span>
+            </th>
+            <th scope="col" class="text-center">
+              <span>Ngày nhập cảnh</span>
+            </th>
+            <th scope="col" class="text-center">
+              <span>Nơi lưu trú</span>
+            </th>
+            <th scope="col" class="text-center">
+              <span>Người tạo</span>
+            </th>
+            <th scope="col" class="text-center"><span>Thao tác</span></th>
+          </tr>
+        </thead>
+        <tbody *ngIf="ExPrItem">
+          <tr
+            *ngFor="let user of ExPrItem; let i = index">
+            <td class="text-center">{{ExPrItem.indexOf(user)+1}}</td>
+            <td class="text-center">{{ user.soTT }}</td>
+            <td>{{ user.hoTen }}</td>
+            <td>{{ user.chucVu }}</td>
+            <td>{{ user.coQuan }}</td>
+            <td class="text-center">{{ user.hcNgoaiGiaoVM.ngaySinh }}</td>
+            <td class="text-center">
+              <div *ngIf="user.gioiTinh === true">Nam</div>
+              <div *ngIf="user.gioiTinh === false">Nữ</div>
+            </td>
+            <td class="text-center">{{ user.soHoChieu }}</td>
+            <td class="text-center">{{ user.hcNgoaiGiaoVM.cmndNgayCap }}</td>
+            <td>{{ user.quocGia }}</td>
+            <td style="width: 20%;">{{ user.tenHSDoan }}</td>
+            <td class="text-center">{{ user.ngayXC }}</td>
+            <td class="text-center">{{ user.ngayNC }}</td>
+            <td>{{ user.noiLuuTru }}</td>
+            <td class="text-center">{{ user.createdBy }}</td>
+            <td class="colButton">
+              <div class="btn-group">
+                <button type="button" class="download" (click)="downloadFileAll(user.maTV, user.hoTen)">
+                  <i class="material-icons download">file_download</i>
+                </button>
+                &nbsp;
+                <button type="submit" class="view" [routerLink]="['./viewTV', user.maTV]">
+                  <i class="material-icons view">visibility</i>
+                </button>
+                &nbsp;
+                <button *ngIf="checkAuth" type="submit" class="edit" (click)="editUser(user)" queryParamsHandling="merge">
+                  <i class="material-icons edit">edit</i>
+                </button>
+                &nbsp;
+                <button *ngIf="checkAuth" type="button" class="delete" (click)="deleteUser(user)">
+                  <i class="material-icons delete">delete</i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-2 divBGColor" *ngIf="ExPrItem?.length <= 0">
+      <br><br><br>
+      <div class="text-center">
+        <h5 style="font-weight: bold;">Không tìm thấy bản ghi thỏa mãn điều kiện!</h5>
+      </div>
+      <br><br><br>
+    </div>
+    <div *ngIf="ExPrItem">
+      <div class="row me-2 pt-1">
+        <div class="col-4 pt-2">
+          <h6><i><jhi-item-count [params]="{ nameModule: 'thành viên', totalItems: totalItems }"></jhi-item-count></i>
+          </h6>
+        </div>
+        <div class="col-4 d-flex justify-content-center">
+          <ngb-pagination 
+            [collectionSize]="totalItems" 
+            [(page)]="page" 
+            [pageSize]="itemsPerPage" 
+            [maxSize]="5"
+            [rotate]="true" 
+            [boundaryLinks]="true" 
+            (pageChange)="transition()">
+          </ngb-pagination>
+        </div>
+        <div class="col-4 d-flex justify-content-end pt-2">
+          <h6><i>Trang {{page}} / {{totalPage}}</i></h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="popup" role="alert" #popupDiv>
+  <div class="popup-container">
+    <div style="padding: 1%; color: white; background-color: #1a4792;">
+      <a class="popup-close img-replace" (click)="PopUpClose($event, popupDiv)">Close</a>
+      <h4><b>Chọn đoàn</b></h4>
+    </div>
+    <div style="padding: 2%;">
+      <div class="row">
+        <div class="col-sm-3">
+          <h5>Năm</h5>
+        </div>
+        <div class="col-sm-9"><input class="form-control inputBorder" type="text" [(ngModel)]="fieldsDoan.nam"
+            (change)="filterNam()"></div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm-3">
+          <h5>Tên đoàn&nbsp;<span style="color: red;" class="pt-2">*</span></h5>
+        </div>
+        <div class="col-sm-9"><select class="form-select inputBorder" style="background-color: #fff"
+            (change)="handleChange($event)">
+            <option value="" selected>Tên đoàn - mã đoàn</option>
+            <option *ngFor="let item of doanAll" [value]="item.maDoan">{{ item.tenDoan }} - {{ item.maDoan }}</option>
+          </select></div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end" style="padding-bottom: 2%;">
+      <button class="btn btn-primary jh-create-entity me-3 iconBG buttonborder" (click)="onSelectDoan()">
+        <fa-icon class="iconColor" icon="plus"></fa-icon> <span class="iconColor">Chọn</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<app-alert></app-alert>

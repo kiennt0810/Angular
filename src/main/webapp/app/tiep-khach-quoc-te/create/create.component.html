@@ -1,0 +1,419 @@
+<div>
+
+  <div>
+    <form name="createForm" (ngSubmit)="createDV()" action="" style="background-color: white;" [formGroup]="createForm">
+      <div>
+        <br>
+        <table class="table-space" border="0">
+
+          <tr>
+            <td [style.width.%]="2">
+            </td>
+            <td [style.width.%]="20">
+              <h6>Lãnh đạo tiếp khách <span class="title3">*</span></h6>
+            </td>
+            <td colspan="4">
+              <div class="col d-flex justify-content-start">
+                <input class="form-control disableDiv" type="text" name="lanhDao" id="lanhDao"
+                  formControlName="lanhDao" />
+              </div>
+              <div
+                *ngIf="createForm.get('lanhDao')!.invalid && (createForm.get('lanhDao')!.dirty || createForm.get('lanhDao')!.touched)">
+
+                <small class="form-text text-danger" *ngIf="createForm.get('lanhDao')?.errors?.required">
+                  Trường này không được để trống.
+                </small>
+              </div>
+            </td>
+            <td [style.width.%]="2">
+            </td>
+          </tr>
+          <tr>
+            <td [style.width.%]="2">
+            </td>
+            <td [style.width.%]="20">
+              <h6>Chức vụ</h6>
+            </td>
+            <td colspan="4">
+              <div class="input-group">
+                <select class="form-select disableDiv" style="background-color: #fff" name="chucVu"
+                  formControlName="chucVu" id="chucVu">
+                  <option value=null selected>Chọn</option>
+                  <option *ngFor="let item of chucVus" [value]="item.chucVu">{{ item.chucVu }}</option>
+                </select>
+              </div>
+            </td>
+            <td [style.width.%]="2">
+            </td>
+          </tr>
+          <tr>
+            <td [style.width.%]="2">
+            </td>
+            <td [style.width.%]="20">
+              <h6>Cơ quan </h6>
+            </td>
+            <td colspan="4">
+              <div class="col d-flex justify-content-start"><input class="form-control disableDiv" type="text"
+                  name="coQuan" id="coQuan" formControlName="coQuan" /></div>
+            </td>
+            <td [style.width.%]="2">
+            </td>
+          </tr>
+          <tr>
+            <td [style.width.%]="2">
+            </td>
+            <td [style.width.%]="20">
+              <h6>Tên đoàn khách</h6>
+            </td>
+            <td colspan="4">
+              <div class="col d-flex justify-content-start">
+                <input class="form-control disableDiv" type="text" name="doanKhach" id="doanKhach"
+                  formControlName="doanKhach" />
+              </div>
+              <!-- <div *ngIf="createForm.get('doanKhach')!.invalid && (createForm.get('doanKhach')!.dirty || createForm.get('doanKhach')!.touched)">
+                  
+                    <small class="form-text text-danger" *ngIf="createForm.get('doanKhach')?.errors?.required" >
+                      Trường này không được để trống.
+                    </small>
+                  </div> -->
+            </td>
+            <td [style.width.%]="2">
+            </td>
+          </tr>
+          <tr>
+            <td [style.width.%]="2">
+            </td>
+            <td [style.width.%]="20">
+              <h6>Quốc gia</h6>
+            </td>
+            <td colspan="4">
+              <div class="input-group">
+                <select class="form-select disableDiv" style="background-color: #fff" name="quocGia"
+                  formControlName="quocGia" id="quocGia">
+                  <option value=null selected>Chọn</option>
+                  <option *ngFor="let item of quocGia" [value]="item.ten">{{ item.ten }}</option>
+                </select>
+              </div>
+              <!-- <div *ngIf="createForm.get('quocGia')!.invalid && (createForm.get('quocGia')!.dirty || createForm.get('quocGia')!.touched)">
+                  
+                <small class="form-text text-danger" *ngIf="createForm.get('quocGia')?.errors?.required" >
+                  Trường này không được để trống.
+                </small>
+              </div> -->
+            </td>
+            <td [style.width.%]="2">
+            </td>
+          </tr>
+          <tr>
+            <td [style.width.%]="2">
+            </td>
+            <td [style.width.%]="20">
+              <h6>Thời gian tiếp khách</h6>
+            </td>
+            <td [style.width.%]="14">
+              <h6>Từ ngày</h6>
+            </td>
+            <td [style.width.%]="24">
+              <div class="input-group">
+                <input class="form-control disableDiv" type="text" placeholder="dd/mm/yyyy" bsDatepicker
+                  [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',showWeekNumbers: false }" name="thoiGianTu"
+                  formControlName="thoiGianTu" id="thoiGianTu" (bsValueChange)="changeTGT()"
+                  (change)="isInvalidDate1($event)" maxlength="10" />
+              </div>
+
+            </td>
+            <td [style.width.%]="14">
+              <h6 class="text-center">Đến ngày</h6>
+            </td>
+            <td [style.width.%]="24">
+              <div class="input-group">
+                <input autocomplete="off" class="form-control disableDiv" type="text" placeholder="dd/mm/yyyy"
+                  id="thoiGianDen" bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',showWeekNumbers: false }"
+                  name="thoiGianDen" formControlName="thoiGianDen" (bsValueChange)="changeTGD()"
+                  (change)="isInvalidDate2($event)" maxlength="10" />
+              </div>
+
+            </td>
+            <td [style.width.%]="2">
+            </td>
+          </tr>
+          <tr>
+            <td [style.width.%]="2">
+            </td>
+            <td [style.width.%]="20">
+              <h6>Địa điểm</h6>
+            </td>
+            <td colspan="4">
+              <div class="col d-flex justify-content-start"><input class="form-control disableDiv" type="text"
+                  name="diaDiem" formControlName="diaDiem" /></div>
+            </td>
+            <td [style.width.%]="2">
+            </td>
+          </tr>
+          <tr>
+            <td [style.width.%]="2">
+            </td>
+            <td [style.width.%]="20">
+              <h6>Hình thức tiếp khách</h6>
+            </td>
+            <td colspan="4">
+              <div class="col d-flex justify-content-start"><input class="form-control disableDiv" type="text"
+                  name="hinhThuc" formControlName="hinhThuc" /></div>
+            </td>
+            <td [style.width.%]="2">
+            </td>
+          </tr>
+
+        </table>
+      </div>
+      <br />
+      <div>
+        <table border="0">
+          <tr>
+            <td [style.width.%]="2">
+
+            </td>
+            <td [style.width.%]="96">
+              <div>
+                <h6 style="font-weight: bold;">Danh sách thành viên của đoàn khách </h6>
+              </div>
+            </td>
+            <td [style.width.%]="2">
+
+            </td>
+          </tr>
+          <tr>
+            <td [style.width.%]="2">
+
+            </td>
+            <td>
+              <div class="table-responsive">
+                <table class="table table-bordered table-striped"
+                  style="border: rgb(199, 199, 199) 1px; box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25)"
+                  id="table-data">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="text-center" [style.width.%]="5"><span>STT</span> </th>
+                      <th scope="col" class="text-center" [style.width.%]="15"><span>Họ và tên</span> </th>
+                      <th scope="col" class="text-center" [style.width.%]="8"><span>Giới tính</span></th>
+                      <th scope="col" class="text-center" [style.width.%]="12">
+                        <span>Ngày sinh</span>
+                      </th>
+                      <th scope="col" class="text-center" [style.width.%]="20">
+                        <span>Chức vụ</span>
+                      </th>
+                      <th scope="col" class="text-center" [style.width.%]="30">
+                        <span>Cơ quan</span>
+                      </th>
+                      <th scope="col" class="text-center" [style.width.%]="10">
+                        <span>Thao tác</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody formArrayName="tkqtThanhVienKhach">
+                    <tr *ngFor="let item of controls_Khach; let i = index" [formGroupName]="i">
+                      <td class="text-center">{{i+1}}</td>
+                      <td><input type="text" formControlName="hoTen" name="hoTen" class="form-control"
+                          style="padding: 0% !important;"></td>
+                      <td><select class="form-select disableDiv" style="padding: 0% !important;background-color: #fff"
+                          formControlName="gioiTinh" #gioiTinh>
+                          <option value=null selected>Chọn</option>
+                          <option value="true">Nam</option>
+                          <option value="false">Nữ</option>
+                        </select></td>
+                      <td>
+                        <input autocomplete="off" type="text" formControlName="ngaySinh" name="ngaySinh"
+                          class="form-control" style="padding: 0% !important;" placeholder="dd/mm/yyyy" bsDatepicker
+                          (change)="isInvalidDate3($event)" id="ngaySinhTVKhach{{i}}" maxlength="10"
+                          [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false }">
+
+                      </td>
+                      <td>
+                        <input type="text" formControlName="chucVu" name="chucVu" class="form-control"
+                          style="padding: 0% !important;">
+                      </td>
+                      <td><input type="text" formControlName="coQuan" name="coQuan" class="form-control"
+                          style="padding: 0% !important;"></td>
+                      <td class="text-center">
+                        <a class="add" title="Thêm mới" data-toggle="tooltip" (click)="addTableKhach()"><i
+                            class="material-icons">&#xE03B;</i></a>&nbsp;
+                        <a class="delete" title="Xóa" data-toggle="tooltip" (click)="deleteRowKhach(i)"><i
+                            class="material-icons">&#xE872;</i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </td>
+            <td [style.width.%]="2">
+
+            </td>
+          </tr>
+          <tr>
+            <td><br></td>
+          </tr>
+          <tr>
+            <td [style.width.%]="2">
+
+            </td>
+            <td [style.width.%]="96">
+              <div>
+                <h6 style="font-weight: bold;">Danh sách thành viên phía Việt Nam </h6>
+              </div>
+            </td>
+            <td [style.width.%]="2">
+
+            </td>
+          </tr>
+          <tr>
+            <td [style.width.%]="2">
+
+            </td>
+            <td>
+              <div class="table-responsive">
+                <table class="table table-bordered table-striped"
+                  style="border: rgb(199, 199, 199) 1px; box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25)"
+                  id="table-data">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="text-center" [style.width.%]="5"><span>STT</span> </th>
+                      <th scope="col" class="text-center" [style.width.%]="15"><span>Họ và tên</span> </th>
+                      <th scope="col" class="text-center" [style.width.%]="8"><span>Giới tính</span></th>
+                      <th scope="col" class="text-center" [style.width.%]="12">
+                        <span>Ngày sinh</span>
+                      </th>
+                      <th scope="col" class="text-center" [style.width.%]="20">
+                        <span>Chức vụ</span>
+                      </th>
+                      <th scope="col" class="text-center" [style.width.%]="30">
+                        <span>Cơ quan</span>
+                      </th>
+                      <th scope="col" class="text-center" [style.width.%]="10">
+                        <span>Thao tác</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody formArrayName="tkqtThanhVienCN">
+                    <tr *ngFor="let item of controls_CN; let i = index" [formGroupName]="i">
+                      <td class="text-center">{{i+1}}</td>
+                      <td><input type="text" formControlName="hoTen" name="hoTen" class="form-control"
+                          style="padding: 0% !important;"></td>
+                      <td><select class="form-select" style="padding: 0% !important;background-color: #fff"
+                          name="gioiTinh" formControlName="gioiTinh">
+                          <option value=null selected>Chọn</option>
+                          <option value="true">Nam</option>
+                          <option value="false">Nữ</option>
+                        </select></td>
+                      <td><input autocomplete="off" type="text" formControlName="ngaySinh" name="ngaySinh"
+                          class="form-control" style="padding: 0% !important;" bsDatepicker id="ngaySinhTVCN{{i}}"
+                          (change)="isInvalidDate3($event)" placeholder="dd/mm/yyyy" maxlength="10"
+                          [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false }"></td>
+                      <td><input type="text" formControlName="chucVu" name="chucVu" class="form-control"
+                          style="padding: 0% !important;"></td>
+                      <td><input type="text" formControlName="coQuan" name="coQuan" class="form-control"
+                          style="padding: 0% !important;"></td>
+                      <td class="text-center">
+                        <a class="add" title="Thêm mới" data-toggle="tooltip" (click)="addTableCN()"><i
+                            class="material-icons">&#xE03B;</i></a>&nbsp;
+                        <a class="delete" title="Xóa" data-toggle="tooltip" (click)="deleteRowCN(i)"><i
+                            class="material-icons">&#xE872;</i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </td>
+            <td [style.width.%]="2">
+
+            </td>
+          </tr>
+          <tr>
+            <td><br></td>
+          </tr>
+          <tr>
+            <td [style.width.%]="2">
+
+            </td>
+            <td [style.width.%]="96">
+              <div>
+                <table class="table-space" border="0">
+                  <tr>
+                    <td [style.width.px]="15" style="vertical-align: unset;">
+                      <div>
+                        <h6>Hồ sơ đính kèm</h6>
+                      </div>
+                    </td>
+                    <td scope="col" class="text-center" [style.width.%]="85">
+                      <div class="col-sm-9 custom-file-button">
+                        <div for="uploadDocument" style="text-align: left;">Tải tệp file không lớn hơn
+                          <strong>100 MB</strong>
+                        </div>
+                        <mat-chip-list #chipList>
+                          <input type="file" id="inputGroupFile" multiple #uploadFile (change)="handleFileInput($event)"
+                            [matChipInputFor]="chipList" name="listFile" formControlName="listFile">
+                          <label class="input-group-text label-cus mt-1" for="inputGroupFile">Tải tập tin</label>
+                          <mat-chip style="background-color: #e3e5e6;"
+                            *ngFor="let file of lstUploadedFiles; let index = index" [removable]="true"
+                            (removed)="remove(file.AttachmentName, index)">
+                            {{file.AttachmentName}}
+                            <mat-icon matChipRemove>cancel</mat-icon>
+                          </mat-chip>
+                        </mat-chip-list>
+                      </div>
+                    </td>
+
+                  </tr>
+                </table>
+              </div>
+
+
+            </td>
+            <td [style.width.%]="2">
+
+            </td>
+          </tr>
+          <tr>
+            <td [style.width.%]="2">
+
+            </td>
+
+            <td [style.width.%]="2">
+
+            </td>
+          </tr>
+        </table>
+      </div>
+      <br>
+      <div class="d-flex justify-content-end">
+        <table border="0">
+          <tr>
+            <td [style.width.%]="2">
+            </td>
+            <td [style.width.%]="96" style="text-align: right;">
+              <button type="submit" class="btn btn-primary jh-create-entity me-3 iconBG buttonborder"
+                style="background-color: #1A4792; width: 100px;">
+                <fa-icon class="iconColor" icon="save"></fa-icon>
+                <span class="iconColor">Lưu</span>
+              </button>
+
+              <button type="button" class="btn btn-primary jh-create-entity iconBG buttonborder"
+                style="background-color: #1A4792;" [routerLink]="['/tiep-khach-quoc-te']">
+                <fa-icon class="iconColor" icon="arrow-left"></fa-icon>
+                <span class="iconColor">Quay lại</span>
+              </button>
+            <td [style.width.%]="2">
+            </td>
+          </tr>
+        </table>
+      </div>
+      <br>
+    </form>
+  </div>
+  <br>
+
+
+</div>
+
+<app-alert></app-alert>

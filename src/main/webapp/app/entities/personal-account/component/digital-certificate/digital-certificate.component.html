@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-between">
+  <div>
+    <h4 class="fw-bold">Danh sách chứng thư</h4>
+    <p>{{ rows.length }} chứng thư</p>
+  </div>
+  <button type="button" class="btn btn-0000A6 h-75" (click)="opentModalCeaterDigitalCertificate()">Thêm mới</button>
+</div>
+<ngx-datatable
+  class="bootstrap"
+  [rows]="rows"
+  [columnMode]="ColumnMode.force"
+  [headerHeight]="50"
+  [footerHeight]="50"
+  rowHeight="auto"
+  [externalSorting]="false"
+  [sorts]="[{ prop: 'name', dir: 'asc' }]"
+>
+  <ngx-datatable-column name="STT" [resizeable]="false" [sortable]="false" [canAutoResize]="false" [draggable]="false">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{ row.stt }}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Tên đăng nhập" prop="name" [resizeable]="false" [draggable]="false">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{ row.name }}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Ghi chú" prop="note" [sortable]="false" [resizeable]="false" [draggable]="false">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{ row.note }}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Thao tác" prop="firstName" [sortable]="false" [resizeable]="false" [draggable]="false">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <img
+        src="../../../../../content/images/icon/configuration.svg"
+        alt="configuration"
+        class="mr-5"
+        (click)="opentModalConfiguration()"
+      />
+      <img src="../../../../../content/images/icon/trash.svg" alt="trash" (click)="opentModalConfirmDeleteDigitalCertificate()" />
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>

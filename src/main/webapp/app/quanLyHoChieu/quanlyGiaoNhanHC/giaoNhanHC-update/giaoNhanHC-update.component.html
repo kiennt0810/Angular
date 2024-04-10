@@ -1,0 +1,165 @@
+<div>
+    <div style="background-color: white;">
+        <div class="container pt-4 pb-3">
+        </div>
+    </div>
+    <div style="background-color: white;">
+        <div class="me-3 ms-3">
+            <form name="form" role="form" (ngSubmit)="update()" [formGroup]="GNHCUpdateForm" *ngIf="!success">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-md-2 pt-2">
+                                <h6 class="form-label">Số hộ chiếu&nbsp;<span style="color: red;" class="pt-2">*</span></h6>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <input class="form-control input-border" required type="text" (blur)="checkSoHc($event)"
+                                    [(ngModel)]="soHCPopup" formControlName="soHoChieu" id="soHoChieu" style="border-right: none;">
+                                    <span class="input-group-text input-border" (click)="popupSoHC()"
+                                        style="background-color: white; border-left: none; cursor: pointer;">
+                                        <fa-icon class="bi bi-search"></fa-icon>
+                                    </span>
+                                </div>
+                                <div>
+                                    <small class="form-text text-danger" *ngIf="checkKyTu">
+                                        Số hộ chiếu không được chứa ký tự đặc biệt!
+                                    </small>
+                                    <small class="form-text text-danger" *ngIf="checkNullSoHC">
+                                        Số hộ chiếu không được để trống!
+                                    </small>
+                                    <small class="form-text text-danger" *ngIf="checkDouble">
+                                        Số hộ chiếu không tồn tại!
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-md-2 pt-2">
+                                <h6 class="form-label" style="padding-left: 40px;">Loại hộ chiếu</h6>
+                            </div>
+                            <div class="col-md-4">
+                                <input style="background-color: rgb(243, 243, 243);" class="form-control input-border" 
+                                 [(ngModel)]="loaiHCPopup" formControlName="loaiHC" type="text" readonly>
+                            </div>                         
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-2 pt-2">
+                                <h6 class="form-label">Họ và tên</h6>
+                            </div>
+                            <div class="col-10">
+                                <input style="background-color: rgb(243, 243, 243);" class="form-control input-border" 
+                                 [(ngModel)]="hoTenPopup" formControlName="hoTen" type="text" readonly>
+                            </div>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-md-2 pt-2">
+                                <h6 class="form-label">Chức vụ</h6>
+                            </div>
+                            <div class="col-md-10">
+                                <input style="background-color: rgb(243, 243, 243);" class="form-control input-border"
+                                 [(ngModel)]="chucVuPopup" formControlName="chucVu" type="text" readonly>
+                            </div>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-md-2 pt-2">
+                                <h6 class="form-label">Tên cơ quan</h6>
+                            </div>
+                            <div class="col-md-10">
+                                <input style="background-color: rgb(243, 243, 243);" class="form-control input-border" 
+                                 [(ngModel)]="coQuanPopup" formControlName="coQuan" type="text" readonly>
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="mt-4" style="width:100%; border:1px solid black; padding-bottom: 14px; height: 200px;">
+                            <h6 style="width:110px; margin-top:-13px; margin-left:7px; background:white; font-weight: 900;">Giao hộ chiếu</h6>
+                            <div class="me-3 ms-3" style="padding-top: 30px;">
+                                <div class="row">
+                                    <div class="col-md-2 pt-2">
+                                        <h6 class="form-label">Thời gian giao</h6>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group" style="cursor: pointer;">
+                                            <input class="form-control input-border" type="text" placeholder="dd/mm/yyyy" id="dateGiaoHc" 
+                                            bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false }"
+                                            name="ghcThoiGian" formControlName="ghcThoiGian" (change)="isInvalidDate1($event)"/>
+                                          </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                    </div>
+                                    <div class="col-md-3">
+                                    </div>
+                                </div>
+                                <div class="row pt-4">
+                                    <div class="col-md-2 pt-2">
+                                        <h6 class="form-label">Người giao</h6>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input class="form-control input-border" type="text" name="ghcNguoiGiao" formControlName="ghcNguoiGiao" id="ghcNguoiGiao">
+                                    </div>
+                                    <div class="col-md-2 pt-2">
+                                        <h6 class="form-label" style="padding-left: 40px;">Người nhận</h6>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input class="form-control input-border" type="text" name="ghcNguoiNhan" formControlName="ghcNguoiNhan" id="ghcNguoiNhan">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4" style="width:100%; border:1px solid black; padding-bottom: 14px; height: 200px;">
+                            <h6 style="width:110px; margin-top:-13px; margin-left:7px; background:white; font-weight: 900;">Nhận hộ chiếu</h6>
+                            <div class="me-3 ms-3" style="padding-top: 30px;">
+                                <div class="row">
+                                    <div class="col-md-2 pt-2">
+                                        <h6 class="form-label">Thời gian giao</h6>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group" style="cursor: pointer;">
+                                            <input class="form-control input-border" type="text" placeholder="dd/mm/yyyy" id="dateNhanHc" 
+                                            bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false }"
+                                            name="nhcThoiGian" formControlName="nhcThoiGian" (change)="isInvalidDate2($event)"/>
+                                          </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                    </div>
+                                    <div class="col-md-3">
+                                    </div>
+                                </div>
+                                <div class="row pt-4">
+                                    <div class="col-md-2 pt-2">
+                                        <h6 class="form-label">Người giao</h6>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input class="form-control input-border" type="text" name="nhcNguoiGiao" formControlName="nhcNguoiGiao" id="nhcNguoiGiao">
+                                    </div>  
+                                    <div class="col-md-2 pt-2">
+                                        <h6 class="form-label" style="padding-left: 40px;">Người nhận</h6>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input class="form-control input-border" type="text" name="nhcNguoiNhan" formControlName="nhcNguoiNhan" id="nhcNguoiNhan">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" [disabled]="GNHCUpdateForm.invalid" class="btn btn-primary" data-cy="submit"
+                                style="color: aliceblue; background-color: #1A4792; width: 100px; border-radius: 7px;">
+                                <fa-icon class="iconColor" icon="save"></fa-icon>
+                                <span>Lưu</span>
+                            </button>
+                            &nbsp;
+                            <!-- [routerLink]="['/category/passport-category']" -->
+                            <button type="button" class="btn btn-primary"
+                                style="color: aliceblue; background-color: #1A4792;  border-radius: 7px;"
+                                [routerLink]="['/HoChieu/GiaoNhanHC']">
+                                <fa-icon class="iconColor" icon="arrow-left"></fa-icon>
+                                <span>Quay lại</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <br>
+        </div>
+    </div>
+</div>
+<app-alert></app-alert>

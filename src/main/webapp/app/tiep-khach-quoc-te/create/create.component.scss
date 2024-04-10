@@ -1,0 +1,147 @@
+
+  .table-space tr{
+    height: 50px;
+    align-items : text-center;
+  }
+  .title3 {
+	font-family: Verdana;
+	font-size: 11px;
+	color: #ff3300;
+	font-weight: none
+}
+.disableDiv {
+  border-radius: 7px;
+}
+.table-striped{
+  max-height: 2000px;
+  table-layout:fixed;
+}
+
+.title{
+  color: #1A4792;
+  font-size: 22px;
+  font-weight: 400;
+
+  .bi-search {
+    font-weight: bold;
+  }
+}
+
+.form-input {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 0 20px;
+  font-size: 16px;
+  font-weight: 500;  
+}
+
+.input-wrapper {
+    height: 50px;
+    margin: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .c2 {
+    display: flex;
+    width: 170px;
+    font-size: 20px;
+  }
+  
+  .input-container {
+    height: 35px;
+    border-radius: 4px;
+  }
+  
+  .content-wrapper {
+      max-width: 100%;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;  
+    }
+
+  table {
+    width: 100%;
+  }
+
+  .table-responsive{
+    background-color: #fff;
+    overflow: visible !important;
+  }
+
+  .data-table {
+    text-align: center;
+  }
+
+  .col-2i {
+    height: 35px;
+    width: 600px;
+    position: relative;
+  }
+
+  .iconColor{
+    color:white
+  }
+
+  .buttonborder {
+    border-radius: 7px;
+    }
+
+  .bi {
+    margin: 0 0px !important;
+  }
+
+  .bi-folder {
+    font-size: 30px;
+  }
+
+  .my-custom-scrollbar {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }
+
+    input.mat-chip-input {
+      width: 110px;
+      margin: 4px;
+      flex: 0 0 auto;
+      color:white;
+  }
+
+  .custom-file-button {
+    input[type="file"] {
+      display: none;
+      &::-webkit-file-upload-button {
+        display: none;
+      }
+      &::file-selector-button {
+        display: none;
+      }
+    }
+  
+    &:hover {
+      .label-cus {
+        background-color: #70B603;
+        cursor: pointer;
+        color: white;
+      }
+    }
+  }
+
+  table.table td a.add {
+    color: #27C46B;
+}
+table.table td a.edit {
+    color: #FFC107;
+}
+table.table td a.delete {
+    color: #E34724;
+}
+
+  

@@ -1,0 +1,39 @@
+<div
+  (mousedown)="fieldMouseDown($event)"
+  [cdkDragDisabled]="!editField || isPreview"
+  [id]="id"
+  cdkDrag
+  #container="cdkDrag"
+  [class.active]="actived"
+  [class.inactive]="!actived"
+  class="fe-base"
+  [ngStyle]="{ 'top.px': dy(), 'left.px': dx(), 'width.px': dw(), 'height.px': dh() }"
+>
+  <div class="_fe-base">
+    <div class="resize-div" [class.show]="resizing" [class.hide]="!resizing" #resizeDiv></div>
+    <ng-container *ngIf="!isPreview">
+      <svg class="close-button" height="16" width="16" (click)="removeClick($event)" *ngIf="actived && editField"></svg>
+    </ng-container>
+    <div #content class="fe-base-content justify-content-center align-items-center">
+      <img src="/content/images/digital-signing/fb/field/digitalsign.svg" alt="digital-sign" />
+    </div>
+    <ng-container *ngIf="!isPreview">
+      <svg
+        *ngIf="editField"
+        class="resize-button"
+        height="10"
+        width="10"
+        cdkDrag
+        #resizeBtn="cdkDrag"
+        (mousedown)="resizeDown($event)"
+        (mouseup)="resizeUp($event)"
+      >
+        <path d="M10 0 L10 10 L0 10 Z" />
+      </svg>
+      <svg *ngIf="!editField" class="resize-button" height="10" width="10" cdkDrag [cdkDragDisabled]="true" #resizeBtn="cdkDrag">
+        <path d="M10 0 L10 10 L0 10 Z" />
+      </svg>
+    </ng-container>
+    <div class="fe-base-name" *ngIf="recipient">{{ recipient.contact.name }}</div>
+  </div>
+</div>

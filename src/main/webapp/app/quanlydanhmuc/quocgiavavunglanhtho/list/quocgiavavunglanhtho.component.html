@@ -1,0 +1,101 @@
+<div class="page">
+
+    <div class="title"><i class="bi bi-search"></i>Điều kiện tìm kiếm</div>
+    <hr>
+
+    <div class="row mb-4 mt-5">
+        <div class="col  d-flex justify-content-center">
+          <span class="label">Mã quốc gia</span>
+          <input class="input" placeholder="" [(ngModel)]="fields.maQG" name="maQG">
+        </div>
+        <div class="col  d-flex justify-content-center" >
+          <span class="label">Tên quốc gia</span>
+          <input class="input" placeholder="" [(ngModel)]="fields.ten" name="ten">
+        </div>
+    </div>
+    
+    <div class="d-flex justify-content-end mb-3" >
+      <button class="btn btn-primary jh-create-entity me-3 iconBG buttonborder"  (click)="search()">
+        <fa-icon class="bi iconColor" icon="search"></fa-icon>
+        <span class="iconColor">Tìm kiếm</span>
+      </button>
+      <button *ngIf="checkAuth" class="btn btn-primary jh-create-entity me-3 iconBG buttonborder" [routerLink]="['./', 'create']">
+        <fa-icon class="iconColor bi" icon="plus"></fa-icon><span class="iconColor">Thêm mới</span>
+      </button>
+      <button class="btn btn-primary jh-create-entity iconBG buttonborder" routerLink="" >
+        <fa-icon class="bi bi-box-arrow-left iconColor"></fa-icon> <span class="iconColor">Thoát</span>
+      </button>
+  </div>
+</div>
+
+<jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+<div class="table-responsive content-wrapper" *ngIf="resultSearch">
+  <div class="title" style="margin-bottom: 10px;"><fa-icon class="bi bi-folder2"></fa-icon>Kết quả tìm kiếm</div>
+    <table class="table table-striped table-bordered" aria-describedby="user-management-page-heading" *ngIf="resultSearch?.length > 0">
+      <thead class="data-table">
+        <tr >
+          <th *ngFor="let column of headers" scope="col"><span>{{column}}</span></th>
+        </tr>
+      </thead>
+      <tbody *ngIf="resultSearch">
+        <tr *ngFor="let user of resultSearch | slice: (page-1) * itemsPerPage : (page-1) * itemsPerPage + itemsPerPage | myFilter :filter;">
+          <td class="data-table">{{resultSearch.indexOf(user)+1}}</td>
+          <td class="data-table" style="width: 25%;" >{{ user.maQG }}</td>
+          <td class="">{{ user.ten }}</td>
+          <td class="data-table" *ngIf="user.tinhTrang" style="color: green;">Hiệu lực</td>
+          <td class="data-table" *ngIf="!user.tinhTrang" style="color: red;">Hết hiệu lực</td>
+          <td class="colButton" style="width: 10%;">
+            <div>
+              <button *ngIf="checkAuth" type="submit" [routerLink]="['./edit', user.maQG]" class="edit" style="margin-right: 10%;">
+                <i class="material-icons edit">edit</i>
+              </button>
+
+              <button *ngIf="checkAuth"
+                type="button" 
+                (click)="deleteUser(user)"  
+                class="delete" 
+                >
+                <i class="material-icons delete">delete</i>
+              </button>
+
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="row" *ngIf="resultSearch?.length > 0">
+        <div class="col-sm" >
+            Tổng số quốc gia: {{totalItems}}
+        </div>
+      
+          <div class="col-sm d-flex justify-content-center" >
+            <ngb-pagination
+              [collectionSize]="totalItems"
+              [(page)]="page"
+              [pageSize]="itemsPerPage"
+              [maxSize]="5"
+              [rotate]="true"
+              [boundaryLinks]="true"
+              (pageChange)="transition()"
+            ></ngb-pagination>
+      </div>
+    
+      <div class="col-sm d-flex justify-content-end">
+        Trang {{page}} / {{totalPages}}
+      </div>
+      
+    </div>
+
+    <div class="table-responsive content-wrapper mt-2 divBGColor" *ngIf="resultSearch?.length <= 0">
+      <br><br><br>
+      <div class="text-center">
+          <h5 style="font-weight: bold;">Không tìm thấy bản ghi thỏa mãn điều kiện!</h5>
+      </div>
+      <br><br><br>
+  </div>
+
+  <app-alert></app-alert>

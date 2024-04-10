@@ -1,0 +1,243 @@
+{
+  "trusted-org": {
+    "manage": {
+      "title": "Trusted organization",
+      "cdc-history": "Information changed history",
+      "title-1": "Organization management",
+      "title-org": "Trusted partner (Organization)",
+      "left-bar": "Partner management",
+      "org": "Organization",
+      "org-1": "Organization: ",
+      "individual": "Individual",
+      "title-position": "Title management",
+      "empty-list": "There's no organization",
+      "staff-empty": "There's no staff",
+      "org-name": "Organization name",
+      "org-type": "Type",
+      "org-type-1": "Type:",
+      "org-created-date": "Created date",
+      "org-created-by": "Created by",
+      "org-code": "Organization code",
+      "org-code-1": "Organization code:",
+      "org-legal": "Subsidiary",
+      "org-unlegal": "Department",
+      "search-placeholder": "Enter organization information",
+      "individual-name": "Name",
+      "individual-email": "Email",
+      "individual-phone": "Phone number",
+      "individual-createdDate": "Created date",
+      "individual-createdBy": "Created by",
+      "setting-btn": "Configuration",
+      "search-by": "Search by: ",
+      "search-by-org": "Inside organization",
+      "search-by-all": "All",
+      "select-org-save": "Select organization to save",
+      "select-staff-save": "Select staff to save",
+      "new-&-update": {
+        "org": {
+          "title-new": "Create trusted organization",
+          "title-update": "Update trusted organization",
+          "add-success": "Created trusted organization successfully",
+          "update-success": "Edited trusted organization successfully",
+          "enter-hashtag-content": "Enter content to create tag",
+          "lock-success": "Locked trusted organization successfully",
+          "unlock-success": "Unlocked trusted organization successfully",
+          "tag-empty": "There's no tag",
+          "upload-logo-error": "Error occurred while uploading logo",
+          "name": "Organization name",
+          "type": "Organization type",
+          "cer-code": "Mã định danh chứng thư số",
+          "logo": "Profile picture"
+        },
+        "staff": {
+          "title-new": "Create trusted organization staff",
+          "title-update": "Update trusted organization staff",
+          "add-success": "Edited staff successfully",
+          "delete-success": "Deleted staff successfully",
+          "no-role": "Staff must have at least 1 title",
+          "role-disabled": "The staff being assigned the title has been locked",
+          "role-amount-invalid": "Existing titles exceed the amount of people",
+          "config-role": "Create at least 1 title to create staff",
+          "enter-hashtag-content": "Enter content to create tag"
+        }
+      },
+      "placeholder": {
+        "staff-search": "Enter staff information",
+        "org-name": "Enter organization name",
+        "org-abb-name": "Enter abbreviation name",
+        "org-tax-code": "Enter tax code",
+        "org-code": "Enter organization code",
+        "org-cer-code": "Nhập mã định danh chứng thư số"
+      },
+      "btn": {
+        "add-new-org": "Create organization",
+        "add-new-staff": "Create staff",
+        "add-new-staff-title": "Create staff",
+        "edit-org": "Edit organization",
+        "delete-org": "Delete organization",
+        "edit-staff": "Edit staff",
+        "delete-staff": "Delete staff",
+        "line-cross": "Đường vuông góc",
+        "line-line": "Đường thẳng",
+        "line-blaizer": "Đường cong",
+        "position-top": "Trên",
+        "position-bottom": "Dưới",
+        "position-left": "Trái",
+        "position-right": "Phải",
+        "save": "Save"
+      },
+      "delete": {
+        "buttonCancel": "Cancel",
+        "buttonOk": "Delete",
+        "org": {
+          "title": "Delete organization",
+          "question": "Deleted organization cannot be recovered, are you sure you want to delete this organization?",
+          "success": "Deleted trusted organization successfully"
+        },
+        "staff": {
+          "title": "Delete staff",
+          "question": "Deleted staff cannot be recovered, are you sure you want to delete this staff"
+        }
+      },
+      "search": {
+        "select-staff-to-save": "Select staff to save"
+      }
+    },
+    "staff-title": {
+      "title": "Title management",
+      "empty-list": "There's no title",
+      "label": "Title",
+      "btn": {
+        "manage-title": "Title",
+        "add-new-title": "Create title"
+      },
+      "new-&-update": {
+        "title-new": "Create staff title",
+        "title-update": "Edit staff title",
+        "add-success": "Created title successfully",
+        "update-success": "Edited title successfully",
+        "enter-hashtag-content": "Enter content to create tag"
+      },
+      "delete": {
+        "buttonCancel": "Cancel",
+        "buttonOk": "Delete",
+        "title": "Delete title",
+        "question": "Deleted title cannot be recovered, are you sure you want to delete this title",
+        "delete-success": "Deleted title successfully"
+      }
+    },
+    "doc-type": {
+      "title": "Partner signing flow template",
+      "alert": {
+        "create-template-flow-hdr-success": "Created partner signing flow template successfully",
+        "create-template-flow-success": "Created signing flow template successfully",
+        "update-template-flow-success": "Updated signing flow template successfully"
+      },
+      "partner": {
+        "title": "Partner signing flow template list",
+        "empty-list": "There's no signing flow template",
+        "partner-name-placeholder": "Select partner",
+        "select-partner-warning": "Select partner to save",
+        "partner-list-empty-warning": "There's no partner to select"
+      },
+      "btn": {
+        "back": "Back",
+        "create-new-partner": "Create partner",
+        "cancel": "Cancel",
+        "save": "Save",
+        "history": "History",
+        "create-new-sign-flow-temp": "Create signing flow template",
+        "add": "Create"
+      },
+      "sign-flow-temp": {
+        "title": "Signing flow template",
+        "title-name": "Signing flow template ({{partnerName}})",
+        "empty-list": "There's no signing flow template",
+        "new-n-update": {
+          "title-new": "Create signing flow template",
+          "title-update": "Edit signing flow template",
+          "history": "History",
+          "name": "Template name",
+          "name-placeholder": "Enter template name",
+          "tag": "Tag",
+          "tag-empty": "There's no tag",
+          "select-doctype": "Select document type",
+          "select-doctype-placeholder": "Select document type",
+          "inherit-doctype": "Inherit document type"
+        },
+        "delete": {
+          "delete-success": "Deleted signing flow template successfully",
+          "title": "Delete signing flow template",
+          "question": "Deleted template cannot be restored, are you sure to delete this template?",
+          "btn-cancel": "Cancel",
+          "btn-delete": "Delete"
+        },
+        "config": {
+          "doc-type": "Document type",
+          "field-config": "Field information configuration (Optional)",
+          "sign-flow": "Signing flow",
+          "config-sign-flow": "Field information configuration"
+        }
+      }
+    },
+    "individual-manage": {
+      "title": "Trusted partner (Individual)",
+      "empty-list": "There's no trusted partner",
+      "search-placeholder": "Enter partner information",
+      "name": "Name: ",
+      "email": "Email: ",
+      "phone": "Phone number: ",
+      "btn": {
+        "edit": "Edi",
+        "delete": "Delete",
+        "lock": "Lock",
+        "unlock": "Unlock",
+        "create-individual": "Create partner"
+      },
+      "new-&-update": {
+        "title-new": "Create trusted partner",
+        "title-update": "Update trusted partner",
+        "avatar": "Profile picture",
+        "add-success": "Created trusted partner successfully",
+        "update-success": "Edited trusted partner successfully",
+        "enter-hashtag-content": "Enter content to create tag",
+        "lock-success": "Locked trusted partner successfully",
+        "unlock-success": "Unlocked trusted partner successfully",
+        "check-idcard-infor": "Verify ID card/citizen identification card information",
+        "trusted-partner-info": "Trusted partner information",
+        "partner-type": "Trusted partner type",
+        "internal-partner": "Internal partner",
+        "external-partner": "External partner",
+        "warning": {
+          "enter-cardId-backside": "Upload new back of the ID card to check information",
+          "enter-cardId-frontside": "Upload new front of ID card to check information",
+          "enter-cardId-backside-export": "Upload new back of the ID card to export information",
+          "enter-cardId-frontside-export": "Upload new front of ID card to export information",
+          "enter-cardId-to-save": "Upload new front and back of the ID card and check information before saving",
+          "individual-existed": "Trusted partner with this ID card/citizen identification card information is existed"
+        }
+      },
+      "delete": {
+        "buttonCancel": "Cancel",
+        "buttonOk": "Delete",
+        "title": "Delete trusted partner (individual)",
+        "question": "Deleted partner cannot be recovered, are you sure you want to delete this partner",
+        "success": "Deleted partner successfully"
+      },
+      "search": {
+        "title": "Search trusted partner(individual)",
+        "name": "Name: ",
+        "email": "Email: ",
+        "phone": "Phone number: ",
+        "select-warning": "Select trusted partner to save",
+        "empty-list": "There's no trusted partner"
+      }
+    },
+    "party": {
+      "warning": {
+        "fill-form-to-preview": "Điền đẩy đủ các trường thông tin bắt buộc để xem luồng ký",
+        "fill-form-to-save": "Điền đẩy đủ các trường thông tin bắt buộc để lưu"
+      }
+    }
+  }
+}

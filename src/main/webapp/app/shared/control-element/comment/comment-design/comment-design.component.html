@@ -1,0 +1,18 @@
+<div
+  (mousedown)="fieldMouseDown($event)"
+  [cdkDragDisabled]="!editField || isPreview"
+  cdkDrag
+  #container="cdkDrag"
+  [class.active]="actived"
+  [class.inactive]="!actived"
+  class="fe-base comment-info"
+  [ngStyle]="{ 'top.px': dy(), 'left.px': dx(), 'width.px': dw(), 'height.px': dh() }"
+  [id]="id"
+  (click)="showCommentContent()"
+  (cdkDragMoved)="setToCanClick(false)"
+  (cdkDragEnded)="setToCanClick(true)"
+>
+  <div class="_fe-base comment-info">
+    <img src="/content/images/digital-signing/fb/comment.svg" class="comment-info" style="width: 50px; height: 50px; cursor: pointer" />
+  </div>
+</div>

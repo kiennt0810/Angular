@@ -1,0 +1,26 @@
+<form *ngIf="hoChieu" name="deleteForm" (ngSubmit)="confirmDelete()">
+    <div class="modal-header">
+      <h4 class="modal-title">Xác nhận xóa</h4>
+  
+      <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()"></button>
+    </div>
+  
+    <div class="modal-body">
+      <jhi-alert-error></jhi-alert-error>
+  
+      <p>
+        Bạn có muốn xóa thông tin giao nhận hộ chiếu này không?
+      </p>
+    </div>
+  
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+        <fa-icon icon="ban"></fa-icon>&nbsp;Quay lại
+      </button>
+  
+      <button type="submit" class="btn btn-danger">
+        <fa-icon icon="times"></fa-icon>&nbsp;Xóa
+      </button>
+    </div>
+  </form>
+  

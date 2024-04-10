@@ -1,0 +1,53 @@
+
+.example-container {
+  height: 600px;
+  width: 36vw;
+  max-width: 100%;
+  overflow: auto;
+  border: 1px solid #ced4da;
+}
+
+table {
+  width: 36vw;
+  // border: 1px solid black;
+}
+
+.table-name {
+  background-color: #1A4792;
+  color: #fff;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  padding-left: 20px;
+}
+
+tr.mat-header-row {
+  height: 30px;
+}
+
+tr.mat-row, tr.mat-footer-row {
+  height: 40px;
+}
+
+.totalItem {
+  position: absolute;
+  right: 0;
+  margin-top: 6px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.button {
+  background-color: #1A4792;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 40px;
+  height: 44px;
+  width: 60%;
+  border-radius: 7px;
+}

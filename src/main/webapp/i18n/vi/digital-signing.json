@@ -1,0 +1,111 @@
+{
+  "digital-signing": {
+    "left-bar": {
+      "signature-info": "Thông tin chữ ký",
+      "digital-signature": "Ký số",
+      "field": {
+        "digital": "Chữ ký số",
+        "image-digital": "Ký ảnh số"
+      },
+      "comment": {
+        "title": "Bình luận",
+        "drag-create-comment": "Kéo thả icon vào văn bản để tạo bình luận",
+        "created-by": "Người tạo: ",
+        "send-to": "Gửi tới: ",
+        "select-send-to": "Chọn người nhận",
+        "content": "Nội dung: ",
+        "content-placeholder": "Nhập nội dung",
+        "comment": "Bình luận",
+        "created-date": "Ngày tạo: ",
+        "page": "Trang: ",
+        "enter-comment": "Nhập lời nhắn...",
+        "confirm": "Xác nhận",
+        "save": "Lưu",
+        "edit": "Chỉnh sửa",
+        "delete": "Xóa",
+        "cancel": "Hủy",
+        "reply": "Phản hồi",
+        "edited": "Đã chỉnh sửa",
+        "history": {
+          "title": "Lịch sử chỉnh luận bình luận",
+          "date": "Thời gian: "
+        },
+        "comment-reply-amount": "Có {{amount}} phản hồi"
+      },
+      "highlight-comment": {
+        "title": "Chú thích văn bản",
+        "highlight-comment-create": "Chọn màu rồi bấm và chọn vùng tài liệu cần chú thích"
+      }
+    },
+    "right-bar": {
+      "props": {
+        "general-info": "Thông tin chung",
+        "create-temp-btn": "Tạo mẫu ô ký",
+        "position-info": "Vị trí - kích thước",
+        "id": "Mã",
+        "name": "Tên",
+        "validator": "Ràng buộc",
+        "validators": "Các ràng buộc",
+        "length": "Độ dài",
+        "value": "Giá trị",
+        "required": "Bắt buộc",
+        "email": "Email",
+        "min": "Nhỏ nhất",
+        "max": "Lớn nhất",
+        "width": "Chiều rộng",
+        "height": "Chiều cao",
+        "image-signature": "Ký ảnh",
+        "digital-signature": "Ký số",
+        "size": "Kích thước",
+        "size-default": "Mặc định",
+        "size-large": "Lớn",
+        "multi-line": "Nhiều dòng",
+        "fixed": "Cố định"
+      },
+      "control-template-config": {
+        "image-signature": "Ký ảnh",
+        "digital-signature": "Ký số",
+        "image-digital-signature": "Ký ảnh số",
+        "btn": {
+          "close": "Đóng",
+          "save": "Lưu"
+        },
+        "detail": {
+          "title": "Cấu hình mẫu ô ký",
+          "sign-type": "Loại ô ký",
+          "empty": "Không có mẫu nào"
+        },
+        "new": {
+          "title": "Thêm mới mẫu ô ký",
+          "sign-type": "Loại ô ký",
+          "template-name": "Tên mẫu",
+          "width": "Chiều rộng",
+          "height": "Chiều cao",
+          "new-btn": "Thêm mới mẫu ô ký",
+          "placeholder": {
+            "name": "Nhập tên mẫu"
+          }
+        },
+        "delete": {
+          "confirm": {
+            "title": "Xóa mẫu trường dữ liệu",
+            "question": "Mẫu bị xóa không thể khôi phục, bạn có chắc chắn xóa mẫu này?",
+            "btn-ok": "Xóa",
+            "btn-cancel": "Hủy"
+          },
+          "delete-success": "Xoá mẫu trường dữ liệu thành công"
+        },
+        "title": {
+          "delete-btn": "Xóa mẫu"
+        },
+        "alert": {
+          "success-create-new": "Tạo mới mẫu thành công",
+          "success-delete": "Xóa mẫu thành công",
+          "error-create-new": "Có lỗi khi tạo mới mẫu",
+          "error-delete": "Có lỗi khi xóa mẫu",
+          "error-get-all": "Cố lỗi khi tải danh sách mẫu"
+        }
+      }
+    }
+  }
+}

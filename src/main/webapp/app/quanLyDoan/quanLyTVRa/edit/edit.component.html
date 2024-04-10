@@ -1,0 +1,346 @@
+<div style="margin-bottom: 1%;">
+    <form name="editForm" action="" style="background-color: white;" [formGroup]="editForm">
+        <div class="row me-3 ms-3" role="form">
+            <div class="col-sm-2 align-self-center">
+                <h6 class="m-2">Số hộ chiếu <span class="text-danger">*</span></h6>
+            </div>
+            <div class="col-sm-8" style="padding-left: 2%;">
+                <input class="form-control m-2" type="text" [attr.disabled]="true">
+            </div>
+            <div class="col-sm-2 align-self-center" style="text-align: center;">
+                <button class="btn btn-primary jh-create-entity"
+                    style="width: 70%; color: white; background-color: #1A4792;" [attr.disabled]="true">
+                    <span>Kiểm tra</span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<form name="editForm" (ngSubmit)="updateTV()" action="" style="background-color: white;" [formGroup]="editForm">
+    <!-- <h4 style="background-color: #1A4792; color: white;"><b>Thêm mới hồ sơ đoàn vào</b></h4> -->
+    <div class="row me-3 ms-3">
+        <div class="col-sm-9 custom-wrapper">
+            <div class="row" role="form">
+                <div class="col-sm-3">
+                    <h6 class="m-2">STT trong đoàn</h6>
+                </div>
+                <div class="col-sm-9">
+                    <input class="form-control" type="text" name="soTT" formControlName="soTT">
+                </div>
+            </div>
+            <br>
+            <div class="row" role="form">
+                <div class="col-sm-3">
+                    <h6 class="m-2">Họ tên</h6>
+                </div>
+                <div class="col-sm-9">
+                    <input class="form-control" type="text" name="hoTen" formControlName="hoTen" [attr.disabled]="true">
+                </div>
+            </div>
+            <br>
+            <div class="row" role="form">
+                <div class="col-sm-3">
+                    <h6 class="m-2">Giới tính</h6>
+                </div>
+                <div class="col-sm-3">
+                    <select class="form-control" formControlName="gioiTinh" name="gioiTinh" #gioiTinh
+                        (change)="onSelected()" [attr.disabled]="true">
+                        <option value=null default>-------Chọn giới tính-------</option>
+                        <option value="1">Nam</option>
+                        <option value="0">Nữ</option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <h6 class="m-2">Ngày sinh</h6>
+                </div>
+                <div class="col-sm-4">
+                    <div class="w-30 input-group">
+                        <input class="form-control" id="ngaySinh" type="text" placeholder="dd/mm/yyyy" bsDatepicker
+                            [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',showWeekNumbers: false }" name="ngaySinh"
+                            formControlName="ngaySinh" [attr.disabled]="true" />
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row" role="form">
+                <div class="col-sm-3">
+                    <h6 class="m-2">Chức vụ</h6>
+                </div>
+                <div class="col-sm-9">
+                    <input class="form-control" type="text" name="chucVu" formControlName="chucVu"
+                        [attr.disabled]="true">
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="col-2" style="margin-top: 1%; margin-left: 2%;">
+            <div class="d-flex justify-content-center"
+                style="background-color: white; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                <img *ngIf="imageEditUrl != null" [src]=imageEditUrl style="max-width: 100%; height: 223px;">
+                <img *ngIf="imageEditUrl == null" style="max-width: 100%; height: 223px;">
+            </div>
+            <div *ngIf="imageEditUrl != null" class="d-flex justify-content-center">
+                <button type="button" class="btn w-100" style="background-color: #70B603; color: white;"
+                    (click)="downloadFileIMGHC(idAnh, 'AnhHC.jpg')">
+                    Tải tệp tin
+                </button>
+            </div>
+        </div>
+        <br>
+    </div>
+    <br>
+    <div class="row me-3 ms-3">
+        <div class="col-sm-2 pl-2">
+            <h6 class="m-2">Cơ quan làm việc</h6>
+        </div>
+        <div class="col-sm-10">
+            <input class="form-control" type="text" name="coQuan" formControlName="coQuan" [attr.disabled]="true">
+        </div>
+    </div>
+    <br>
+    <div class="row me-3 ms-3">
+        <div class="col-sm-2 pl-2">
+            <h6 class="m-2">Số hộ chiếu</h6>
+        </div>
+        <div class="col-sm-2" style="padding-left: 3%;">
+            <input class="form-control" type="text" name="soHoChieu" formControlName="soHoChieu" [attr.disabled]="true">
+        </div>
+        <div class="col-sm-2" style="padding-left: 5%;">
+            <h6 class="m-2">Ngày cấp <span class="text-danger">*</span></h6>
+        </div>
+        <div class="col-sm-2">
+            <div class=" input-group">
+                <input class="form-control" type="text" placeholder="dd/mm/yyyy" bsDatepicker
+                    [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',showWeekNumbers: false }" placeholder="dd/mm/yyyy"
+                    name="hC_NgayCap" formControlName="hC_NgayCap" id="hC_NgayCap" [attr.disabled]="true" />
+            </div>
+        </div>
+        <div class="col-sm-2" style="padding-left: 5%;">
+            <h6 class="m-2">Ngày hết hạn</h6>
+        </div>
+        <div class="col-sm-2" style="padding-right: 3%;">
+            <div class="w-30 input-group">
+                <input class="form-control" type="text" placeholder="dd/mm/yyyy" bsDatepicker
+                    [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',showWeekNumbers: false }" name="hC_NgayHL"
+                    formControlName="hC_NgayHL" id="hC_NgayHL" [attr.disabled]="true" />
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row me-3 ms-3">
+        <div class="col-sm-2 pl-2">
+            <h6 class="m-2">Loại hộ chiếu</h6>
+        </div>
+        <div class="col-sm-10">
+            <input class="form-control" style="width: 16%;" name="hC_Loai" formControlName="hC_Loai"
+                [attr.disabled]="true">
+        </div>
+    </div>
+    <br>
+    <div class="row me-3 ms-3">
+        <div class="col-sm-2 pl-2">
+            <h6 class="m-2">Số thị thực <span class="text-danger">*</span></h6>
+        </div>
+        <div class="col-sm-2" style="padding-left: 3%;">
+            <input class="form-control" type="text" name="hC_SoThiThuc" formControlName="hC_SoThiThuc">
+            <div *ngIf="editForm.get('hC_SoThiThuc')!.invalid && editForm.get('hC_SoThiThuc')!.touched">
+                <small class="form-text text-danger" *ngIf="editForm.get('hC_SoThiThuc')?.errors?.required">
+                    Trường này không được để trống.
+                </small>
+            </div>
+        </div>
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-2">
+            <h6 class="m-2" style="padding-left: 16%;">Ngày cấp thị thực <span class="text-danger">*</span></h6>
+        </div>
+        <div class="col-sm-2" style="padding-right: 3%;">
+            <div class="w-30 input-group">
+                <input class="form-control" type="text" placeholder="dd/mm/yyyy" bsDatepicker
+                    [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',showWeekNumbers: false }" name="hC_NgayCapTT"
+                    formControlName="hC_NgayCapTT" id="hC_NgayCapTT" (keypress)=" numberOnlywithForwardSlash($event)"
+                    maxlength="10" />
+                <div *ngIf="editForm.get('hC_NgayCapTT')!.invalid && editForm.get('hC_NgayCapTT')!.touched">
+                    <small class="form-text text-danger" *ngIf="editForm.get('hC_NgayCapTT')?.errors?.required">
+                        Trường này không được để trống.
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row me-3 ms-3">
+        <div class="col-sm-2 pl-2">
+            <h6 class="m-2">Quốc gia đến</h6>
+        </div>
+        <div class="col-sm-10">
+            <select class="form-select" (change)="handleChange($event)" style="background-color: #fff;" name="quocGia"
+                formControlName="quocGia" id="quocGia">
+                <option value=null default>-------Chọn quốc gia đến-------</option>
+                <option *ngFor="let item of qGiaDoan" [value]="item.maQG">{{ item.quocGia }}</option>
+            </select>
+        </div>
+    </div>
+    <br>
+    <div class="row me-3 ms-3">
+        <div class="col-sm-2 pl-2">
+            <h6 class="m-2">Nơi lưu trú</h6>
+        </div>
+        <div class="col-sm-10">
+            <input class="form-control" type="text" name="noiLuuTru" formControlName="noiLuuTru">
+        </div>
+    </div>
+    <br>
+    <div class="row me-3 ms-3">
+        <div class="col-sm-2">
+            <h6 class="m-2">Ngày xuất cảnh</h6>
+        </div>
+        <div class="col-sm-2" style="padding-left: 3%;">
+            <div class="w-30 input-group">
+                <input class="form-control" type="text" placeholder="dd/mm/yyyy" bsDatepicker
+                    [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',showWeekNumbers: false }" name="ngayXC"
+                    formControlName="ngayXC" id="ngayXC" (bsValueChange)="isInvalidDateNgayXC($event)"
+                    (change)="checkDateNgayXC($event)" (keypress)=" numberOnlywithForwardSlash($event)"
+                    maxlength="10" />
+            </div>
+        </div>
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-2 pl-2">
+            <h6 class="m-2" style="padding-left: 16%;">Ngày nhập cảnh</h6>
+        </div>
+        <div class="col-sm-2" style="padding-right: 3%;">
+            <div class="w-30 input-group">
+                <input class="form-control" type="text" placeholder="dd/mm/yyyy" bsDatepicker
+                    [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',showWeekNumbers: false }" name="ngayNC"
+                    formControlName="ngayNC" id="ngayNC" (bsValueChange)="isInvalidDateNgayNC($event)"
+                    (change)="checkDateNgayNC($event)" (keypress)=" numberOnlywithForwardSlash($event)"
+                    maxlength="10" />
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row me-3 ms-3">
+        <div class="col-sm-2 pl-2">
+            <h6 class="m-2">Tặng phẩm</h6>
+        </div>
+        <div class="col-sm-10">
+            <input class="form-control" type="text" name="tangPham" formControlName="tangPham">
+        </div>
+    </div>
+    <br>
+    <div class="row me-3 ms-3">
+        <div class="col-sm-2 pl-2">
+            <h6 class="m-2">Hồ sơ đính kèm</h6>
+        </div>
+        <div class="col-sm-10 custom-file-button">
+            <label for="uploadDocument">Tải tệp file không lớn hơn
+                <strong>100 MB</strong></label>
+            <mat-chip-list #chipList>
+                <input type="file" multiple #uploadFile (change)="handleFileInput($event)" [matChipInputFor]="chipList"
+                    name="listFile" formControlName="listFile" id="inputGroupFile">
+                <label class="input-group-text label-cus mt-1" for="inputGroupFile">Tải tập tin</label>
+                <mat-chip style="background-color: #e3e5e6;" *ngFor="let file of lstUploadedFiles; let index = index"
+                    [removable]="true" (removed)="remove(file.AttachmentName, index)">
+                    {{file.AttachmentName}}
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+            </mat-chip-list>
+        </div>
+    </div>
+    <br>
+    <div class="form-group row me-3 ms-3">
+        <div class="col-sm-12" style="padding: 0% 3% 0% 2%;">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center">STT</th>
+                        <th class="text-center col-10">Tên file</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody formArrayName="listTVFileVM">
+                    <tr *ngFor="let itemLD of listFileControls; let i = index" [formGroupName]="i">
+                        <td class="text-center" style="font-weight: bold;" *ngIf="thanhVien.listTVFileVM[i].type == 1">
+                        </td>
+                        <td *ngIf="thanhVien.listTVFileVM[i].type == 1"><input type="text" class="form-control"
+                                style="width: 100%;" name="fileName" formControlName="fileName" [attr.disabled]="true">
+                        </td>
+                        <td class="text-center" *ngIf="thanhVien.listTVFileVM[i].type == 1">
+                            <a class="add" title="Tải tệp tin" data-toggle="tooltip"
+                                (click)="downloadFile(thanhVien.listTVFileVM[i].id, thanhVien.listTVFileVM[i].fileName)"><i
+                                    class="material-icons">file_download</i></a>
+                            <a style="color: red" title="Xóa" data-toggle="tooltip"
+                                (click)="deleteRowFile(i,thanhVien.listTVFileVM[i].id)"><i
+                                    class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <br>
+    <div class="row me-3 ms-3">
+        <div class="col-sm-2 pl-2">
+            <h6 class="m-2">Là thành viên của đoàn</h6>
+        </div>
+    </div>
+    <div class="form-group row me-3 ms-3">
+        <div class="col-sm-12" style="padding: 0% 2% 0% 2%;">
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="align-middle">
+                        <th class="text-center" style="width: 4%;">STT</th>
+                        <th class="text-center">STT đoàn</th>
+                        <th class="text-center">Tên đoàn</th>
+                        <th class="text-center">Ngày xuất cảnh</th>
+                        <th class="text-center">Ngày nhập cảnh</th>
+                        <th class="text-center">Số lượng thành viên</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td><input type="text" class="form-control" name="maHSDoan" formControlName="maHSDoan"
+                                [attr.disabled]="true"></td>
+                        <td><input type="text" class="form-control" name="tenHSDoan" formControlName="tenHSDoan"
+                                [attr.disabled]="true"></td>
+                        <td><input type="text" class="form-control" [(ngModel)]="ngayXC"
+                                [ngModelOptions]="{standalone: true}" bsDatepicker
+                                [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',showWeekNumbers: false }"
+                                [attr.disabled]="true"></td>
+                        <td><input type="text" class="form-control" [(ngModel)]="ngayNC"
+                                [ngModelOptions]="{standalone: true}" bsDatepicker
+                                [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',showWeekNumbers: false }"
+                                [attr.disabled]="true"></td>
+
+                        <td><input type="text" class="form-control" [(ngModel)]="soLuongTV"
+                                [ngModelOptions]="{standalone: true}" [attr.disabled]="true"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end me-3 ms-3">
+        <button class="btn btn-primary jh-create-entity " data-cy="submit"
+            style="margin-right: 1%; background-color: #1A4792; color:white; border-radius: 7px;"
+            [disabled]="editForm.invalid">
+            <fa-icon class="bi bi-floppy-fill"></fa-icon>
+            <span>Cập nhật</span>
+        </button>
+
+        <button class="btn btn-primary jh-create-entity" routerLink="/doanRa/quanLyTVRa"
+            style="margin-right: 2%; background-color: #1A4792; color:white; border-radius: 7px;">
+            <fa-icon class="bi bi-box-arrow-left"></fa-icon>
+            <span>Quay lại</span>
+        </button>
+    </div>
+</form>
+
+<app-alert></app-alert>

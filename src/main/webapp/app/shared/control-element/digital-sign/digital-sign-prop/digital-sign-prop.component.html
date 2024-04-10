@@ -1,0 +1,67 @@
+<form [formGroup]="f">
+  <div class="header-title" jhiTranslate="digital-signing.right-bar.props.general-info">General info</div>
+
+  <div class="d-flex justify-content-center mt-10px">
+    <button class="create-signature-template" (click)="openAddNewControlTemplateDialog()">
+      <span jhiTranslate="digital-signing.right-bar.props.create-temp-btn">Tạo mẫu ô ký</span>
+    </button>
+  </div>
+
+  <!--  <div class="form-group card-body" style="overflow: unset">-->
+  <!--    <label for="recipient" jhiTranslate="form-builder.recipient">Recipient</label>-->
+  <!--    <ng-select-->
+  <!--      class="custom"-->
+  <!--      [items]="getRecipients()"-->
+  <!--      [clearable]="false"-->
+  <!--      [clearOnBackspace]="false"-->
+  <!--      bindLabel="value"-->
+  <!--      bindValue="id"-->
+  <!--      formControlName="rp">-->
+  <!--      <ng-template ng-label-tmp let-item="item">-->
+  <!--        <span class="ml-1 font-13" [title]="item.value">{{ item.value }}</span>-->
+  <!--      </ng-template>-->
+  <!--      <ng-template ng-option-tmp let-item="item">-->
+  <!--        <span class="ml-1 font-13" [ngStyle]="selectedRecipientStyle(item.id)" [title]="item.value">{{ item.value }}</span>-->
+  <!--      </ng-template>-->
+  <!--    </ng-select>-->
+  <!--    <div *ngIf="f.get('rp').invalid && (f.get('rp').dirty || f.get('rp').touched)">-->
+  <!--      <small class="form-text text-danger" *ngIf="f.get('rp').errors.required" jhiTranslate="form-builder.validation.required">-->
+  <!--        This field is required.-->
+  <!--      </small>-->
+  <!--    </div>-->
+  <!--  </div>-->
+
+  <div class="position-label" jhiTranslate="digital-signing.right-bar.props.position-info">Position</div>
+  <div class="card-body position-content">
+    <div class="d-flex flex-row">
+      <div class="form-group mr-1 pt-1 pb-1 mb-1 mr-15px">
+        <input type="radio" value="default" formControlName="sizeBox" />
+        <label class="mb-1 ml-1" jhiTranslate="digital-signing.right-bar.props.size-default">size-default</label>
+      </div>
+      <div class="form-group mr-1 pt-1 pb-1 mb-1">
+        <input type="radio" value="large" formControlName="sizeBox" />
+        <label class="mb-1 ml-1" jhiTranslate="digital-signing.right-bar.props.size-large">size-large</label>
+      </div>
+    </div>
+    <div class="d-flex flex-row">
+      <div class="form-group mr-1 pt-1 pb-1 mb-1 mr-5px">
+        <label for="x" class="mb-1 ml-1">X</label>
+        <input type="text" class="form-control form-control-sm small-input" id="x" formControlName="x" />
+      </div>
+      <div class="form-group ml-1 pt-1 pb-1 mb-1">
+        <label for="y" class="mb-1 ml-1">Y</label>
+        <input type="text" class="form-control form-control-sm small-input" id="y" formControlName="y" />
+      </div>
+    </div>
+    <div class="d-flex flex-row">
+      <div class="form-group mr-1 pt-1 pb-1 mb-1 mr-5px">
+        <label for="w" jhiTranslate="digital-signing.right-bar.props.width" class="mb-1 ml-1"></label>
+        <input type="text" class="form-control form-control-sm small-input" id="w" formControlName="w" />
+      </div>
+      <div class="form-group ml-1 pt-1 pb-1 mb-1">
+        <label for="h" jhiTranslate="digital-signing.right-bar.props.height" class="mb-1 ml-1"></label>
+        <input type="text" class="form-control form-control-sm small-input" id="h" formControlName="h" />
+      </div>
+    </div>
+  </div>
+</form>

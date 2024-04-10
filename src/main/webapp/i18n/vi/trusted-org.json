@@ -1,0 +1,247 @@
+{
+  "trusted-org": {
+    "manage": {
+      "title": "Tổ chức",
+      "cdc-history": "Lịch sử chỉnh sửa",
+      "title-1": "Quản lý tổ chức",
+      "title-org": "Đối tác tin cậy (Tổ chức)",
+      "left-bar": "Quản lý đối tác",
+      "org": "Tổ chức",
+      "org-1": "Tổ chức: ",
+      "individual": "Cá nhân",
+      "title-position": "Quản lý chức danh",
+      "empty-list": "Chưa có tổ chức nào",
+      "staff-empty": "Chưa có nhân viên nào",
+      "org-name": "Tên tổ chức",
+      "org-type": "Phân loại",
+      "org-type-1": "Phân loại:",
+      "org-created-date": "Ngày tạo",
+      "org-created-by": "Người tạo",
+      "org-code": "Mã tổ chức",
+      "org-code-1": "Mã tổ chức:",
+      "org-legal": "Công ty con",
+      "org-unlegal": "Phòng ban",
+      "search-placeholder": "Nhập thông tin tổ chức",
+      "individual-name": "Tên đối tác",
+      "individual-email": "Email",
+      "individual-phone": "SĐT",
+      "individual-createdDate": "Ngày tạo",
+      "individual-createdBy": "Người tạo",
+      "setting-btn": "Cấu hình",
+      "search-by": "Tìm kiếm: ",
+      "search-by-org": "Trong tổ chức",
+      "search-by-all": "Tất cả",
+      "select-org-save": "Chọn tổ chức để lưu thông tin",
+      "select-staff-save": "Chọn nhân viên để lưu thông tin",
+      "new-&-update": {
+        "org": {
+          "title-new": "Tạo tổ chức",
+          "title-update": "Cập nhật tổ chức",
+          "add-success": "Tạo tổ chức thành công",
+          "update-success": "Cập nhật tổ chức thành công",
+          "enter-hashtag-content": "Nhập nội dung để tạo tag",
+          "lock-success": "Khóa tổ chức tin cậy thành công",
+          "unlock-success": "Mở khóa tổ chức tin cậy thành công",
+          "tag-empty": "Chưa có tag nào",
+          "upload-logo-error": "Có lỗi khi tải ảnh lên",
+          "name": "Tên tổ chức",
+          "type": "Loại tổ chức",
+          "cer-code": "Mã định danh chứng thư số",
+          "logo": "Ảnh đại diện",
+          "shortname": "Tên viết tắt",
+          "tax-code": "Mã số thuế",
+          "org-code": "Mã doanh nghiệp"
+        },
+        "staff": {
+          "title-new": "Tạo nhân viên tổ chức",
+          "title-update": "Cập nhật nhân viên tổ chức",
+          "add-success": "Tạo nhân viên thành công",
+          "update-success": "Cập nhật nhân viên thành công",
+          "delete-success": "Xóa nhân viên thành công",
+          "no-role": "Nhân viên phải có ít nhất 1 chức danh",
+          "role-disabled": "Nhân viên đang được gán chức danh đã bị khóa",
+          "role-amount-invalid": "Tồn tại chức danh vượt quá số người quy định",
+          "config-role": "Tạo ít nhất 1 loại chức danh để tạo nhân viên",
+          "enter-hashtag-content": "Nhập nội dung để tạo tag"
+        }
+      },
+      "placeholder": {
+        "staff-search": "Nhập thông tin nhân viên",
+        "org-name": "Nhập tên tổ chức",
+        "org-abb-name": "Nhập tên viết tắt tổ chức",
+        "org-tax-code": "Nhập mã số thuế",
+        "org-code": "Nhập mã tổ chức",
+        "org-cer-code": "Nhập mã định danh chứng thư số"
+      },
+      "btn": {
+        "add-new-org": "Tạo tổ chức",
+        "add-new-staff": "Tạo nhân viên",
+        "add-new-staff-title": "Tạo chức danh",
+        "edit-org": "Sửa tổ chức",
+        "delete-org": "Xóa tổ chức",
+        "edit-staff": "Sửa nhân viên",
+        "delete-staff": "Xóa nhân viên",
+        "line-cross": "Đường vuông góc",
+        "line-line": "Đường thẳng",
+        "line-blaizer": "Đường cong",
+        "position-top": "Trên",
+        "position-bottom": "Dưới",
+        "position-left": "Trái",
+        "position-right": "Phải",
+        "save": "Lưu"
+      },
+      "delete": {
+        "buttonCancel": "Hủy",
+        "buttonOk": "Xóa",
+        "org": {
+          "title": "Xóa tổ chức",
+          "question": "Tổ chức bị xóa không thể khôi phục, bạn có chắc chắn muốn xóa tổ chức này",
+          "success": "Xóa tổ chức tin cậy thành công"
+        },
+        "staff": {
+          "title": "Xóa nhân viên",
+          "question": "Nhân viên bị xóa không thể khôi phục, bạn có chắc chắn muốn xóa nhân viên này"
+        }
+      },
+      "search": {
+        "select-staff-to-save": "Chọn nhân viên để lưu"
+      }
+    },
+    "staff-title": {
+      "title": "Quản lý chức danh",
+      "empty-list": "Chưa có chức danh nào",
+      "label": "Chức danh",
+      "btn": {
+        "manage-title": "Chức danh",
+        "add-new-title": "Tạo chức danh"
+      },
+      "new-&-update": {
+        "title-new": "Thêm chức danh nhân viên",
+        "title-update": "Cập nhật chức danh nhân viên",
+        "add-success": "Thêm chức danh thành công",
+        "update-success": "Cập nhật chức danh thành công",
+        "enter-hashtag-content": "Nhập nội dung để tạo tag"
+      },
+      "delete": {
+        "buttonCancel": "Hủy",
+        "buttonOk": "Xóa",
+        "title": "Xóa chức danh",
+        "question": "Chức danh bị xóa không thể khôi phục, bạn có chắc chắn muốn xóa chức danh này",
+        "delete-success": "Xóa chức danh thành công"
+      }
+    },
+    "doc-type": {
+      "title": "Mẫu luồng ký đối tác",
+      "alert": {
+        "create-template-flow-hdr-success": "Tạo mẫu luồng ký đối tác thành công",
+        "create-template-flow-success": "Tạo mẫu luồng ký thành công",
+        "update-template-flow-success": "Cập nhật mẫu luồng ký thành công"
+      },
+      "partner": {
+        "title": "Danh sách mẫu luồng ký đối tác",
+        "empty-list": "Không có mẫu luồng ký đối tác nào",
+        "partner-name-placeholder": "Chọn đối tác",
+        "select-partner-warning": "Chọn đối tác để lưu",
+        "partner-list-empty-warning": "Không có đối tác để lựa chọn"
+      },
+      "btn": {
+        "back": "Quay lại",
+        "create-new-partner": "Thêm đối tác",
+        "cancel": "Hủy",
+        "save": "Lưu",
+        "history": "Lịch sử",
+        "create-new-sign-flow-temp": "Thêm mẫu luồng ký",
+        "add": "Thêm"
+      },
+      "sign-flow-temp": {
+        "title": "Mẫu luồng ký",
+        "title-name": "Mẫu luồng ký ({{partnerName}})",
+        "empty-list": "Không có mẫu luồng ký nào",
+        "new-n-update": {
+          "title-new": "Thêm mẫu luồng ký",
+          "title-update": "Cập nhật mẫu luồng ký",
+          "history": "Lịch sử",
+          "name": "Tên mẫu luồng ký",
+          "name-placeholder": "Nhập tên mẫu luồng ký",
+          "tag": "Tag",
+          "tag-empty": "Chưa có tag nào",
+          "select-doctype": "Chọn loại tài liệu",
+          "select-doctype-placeholder": "Chọn loại tài liệu",
+          "inherit-doctype": "Thừa kế loại tài liệu"
+        },
+        "delete": {
+          "delete-success": "Xóa mẫu luồng ký thành công",
+          "title": "Xóa mẫu luồng ký",
+          "question": "Mẫu luồng ký đã bị xóa không thể khổi phục. Bạn có chắc chắn muốn xóa mẫu này?",
+          "btn-cancel": "Hủy",
+          "btn-delete": "Xóa"
+        },
+        "config": {
+          "doc-type": "Loại tài liệu",
+          "field-config": "Cấu hình trường thông tin (Bước tùy chọn)",
+          "sign-flow": "Luồng ký",
+          "config-sign-flow": "Cấu hình trường thông tin"
+        }
+      }
+    },
+    "individual-manage": {
+      "title": "Đối tác tin cậy (Cá nhân)",
+      "empty-list": "Chưa có cá nhân nào",
+      "search-placeholder": "Nhập thông tin đối tác",
+      "name": "Tên: ",
+      "email": "Email: ",
+      "phone": "SĐT: ",
+      "btn": {
+        "edit": "Sửa",
+        "delete": "Xóa",
+        "lock": "Khóa",
+        "unlock": "Mở khóa",
+        "create-individual": "Tạo cá nhân"
+      },
+      "new-&-update": {
+        "title-new": "Tạo đối tác",
+        "title-update": "Cập nhật đối tác",
+        "avatar": "Ảnh đại diện cá nhân",
+        "add-success": "Tạo đối tác thành công",
+        "update-success": "Cập nhật đối tác thành công",
+        "enter-hashtag-content": "Nhập nội dung để tạo tag",
+        "lock-success": "Khóa đối tác tin cậy thành công",
+        "unlock-success": "Mở khóa đối tác tin cậy thành công",
+        "check-idcard-infor": "Xác thực thông tin CMND/CCCD",
+        "trusted-partner-info": "Thông tin đối tác",
+        "partner-type": "Loại đối tác cá nhân",
+        "internal-partner": "Cá nhân trong tổ chức",
+        "external-partner": "Cá nhân ngoài tổ chức",
+        "warning": {
+          "enter-cardId-backside": "Tải lên CMND mặt sau mới để kiểm tra thông tin",
+          "enter-cardId-frontside": "Tải lên CMND mặt trước mới để kiểm tra thông tin",
+          "enter-cardId-backside-export": "Tải lên CMND mặt sau mới để kết xuất thông tin",
+          "enter-cardId-frontside-export": "Tải lên CMND mặt trước mới để kết xuất thông tin",
+          "enter-cardId-to-save": "Tải lên CMND mặt trước và sau mới và kiểm tra thông tin trước khi lưu",
+          "individual-existed": "Đối tác với thông tin cmnd/cccd này đã tồn tại"
+        }
+      },
+      "delete": {
+        "buttonCancel": "Hủy",
+        "buttonOk": "Xóa",
+        "title": "Xóa đối tác cá nhân",
+        "question": "Đối tác cá nhân bị xóa không thể khôi phục, bạn có chắc chắn muốn xóa đối tác này",
+        "success": "Xóa đối tác tin cậy thành công"
+      },
+      "search": {
+        "title": "Tìm kiếm đối tác cá nhân",
+        "name": "Họ tên: ",
+        "email": "Email: ",
+        "phone": "SĐT: ",
+        "select-warning": "Chọn đối tác lưu",
+        "empty-list": "Không có đối tác nào"
+      }
+    },
+    "party": {
+      "warning": {
+        "fill-form-to-preview": "Điền đẩy đủ các trường thông tin bắt buộc để xem luồng ký",
+        "fill-form-to-save": "Điền đẩy đủ các trường thông tin bắt buộc để lưu"
+      }
+    }
+  }
+}

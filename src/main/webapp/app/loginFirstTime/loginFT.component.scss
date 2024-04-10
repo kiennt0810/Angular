@@ -1,0 +1,214 @@
+.bg-logo {
+    // height: 100%;
+    background-color: white;
+  }
+  
+  .color-text-ftp-login {
+    color: #f07328;
+  }
+  
+  .property-1logo-default {
+    width: 300px;
+    height: 220px;
+  }
+  
+  .btn-dangnhap:hover {
+    background: #82aefe;
+  }
+  
+  .btn-dangnhap:focus {
+    background: #000066;
+  }
+  
+  .btn-quaylai {
+    border: 1px solid #0000a6;
+    border-radius: 8px;
+    color: #0000a6;
+    height: 5vh;
+    width: 10vw;
+  }
+  
+  .custom-bg {
+    height: 100%;
+  }
+  
+  .bg-logo-1 {
+    // height: 100%;
+    background-image: url('../../content/images/loginPic.png');
+    background-size: cover;
+  }
+  
+  .bg-logo-2 {
+    // height: 100%;
+    background-color: white;
+  }
+  
+  .bottom-15 {
+    bottom: 15px;
+  }
+  
+  .top-15 {
+    top: 15px;
+  }
+  
+  .start-15 {
+    left: 15px;
+  }
+  
+  .img-Group17949 {
+    height: 57.78289031982422px;
+    width: 83px;
+  }
+  
+  .input-group-text-custom {
+    display: flex;
+    align-items: center;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center;
+    white-space: nowrap;
+    /* background-color: #e9ecef; */
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    border-left: none;
+  }
+  
+  @media (min-width: 768px) {
+    .display-logo {
+      display: none;
+    }
+  
+    .img-Group {
+      width: 453px;
+      height: 434px;
+    }
+  
+    .display-logo-fpt,
+    .display-logo-ceca {
+      display: block;
+    }
+  
+    .display-btn-quaylai {
+      display: inline;
+    }
+  
+    .fw-title {
+      font-size: 24px;
+    }
+  
+    .cls-input {
+      border: 1px solid #e8e8e8;
+      border-radius: 8px;
+      background: #ffffff;
+      padding: 4px 16px;
+      width: 29.2vw;
+      height: 54px;
+      background-color: rgb(238, 238, 238);
+    }
+  
+    .cls-input2 {
+      border: 1px solid #e8e8e8;
+      border-radius: 8px;
+      background: #ffffff;
+      padding: 4px 16px;
+      width: 27vw;
+      height: 54px;
+      border-right: none;
+    }
+  
+    .btn-dangnhap {
+      background: #0000a6;
+      border-radius: 8px;
+      color: #ffffff;
+      height: 5vh;
+      width: 10vw;
+    }
+  
+    .mb-xl-costomer {
+      margin-bottom: 0px;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .display-logo {
+      display: block;
+    }
+  
+    .img-Group {
+      width: 250px;
+      height: 250px;
+    }
+  
+    .display-logo-fpt,
+    .display-logo-ceca,
+    .display-btn-quaylai {
+      display: none;
+    }
+  
+    .fw-title {
+      font-size: 24px;
+    }
+  
+    .cls-input {
+      border: 1px solid #e8e8e8;
+      border-radius: 8px;
+      background: #ffffff;
+      padding: 4px 16px;
+      width: 94.2vw;
+      height: 7vh;
+      background-color: rgb(238, 238, 238);
+    }
+  
+    .cls-input2 {
+      border: 1px solid #e8e8e8;
+      border-radius: 8px;
+      background: #ffffff;
+      padding: 4px 16px;
+      width: 92vw;
+      height: 7vh;
+      border-right: none;
+    }
+  
+    .btn-dangnhap {
+      background: #0000a6;
+      border-radius: 8px;
+      color: #ffffff;
+      height: 5vh;
+      width: 94vw;
+    }
+  
+    .property-1logo-dark {
+      width: 91px;
+    }
+  
+    .mb-xl-costomer {
+      margin-bottom: -12%;
+    }
+  }
+  
+  .input-icons {
+    display: inline-block;
+  }
+  
+  .input-icons img {
+    position: absolute;
+    left: auto;
+    right: 10px;
+  }
+  
+  .input-icons {
+    width: 100%;
+  }
+  
+  .icon {
+    padding: 10px;
+    min-width: 40px;
+  }
+  
+  .register:hover {
+    cursor: pointer;
+  }
+  

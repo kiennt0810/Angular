@@ -1,0 +1,63 @@
+<div class="wrapper">
+  <div class="data-list">
+    <div class="title">
+      <h4 class="processing" jhiTranslate="digital-signing.right-bar.control-template-config.new.title">Thêm mới template ô ký</h4>
+    </div>
+  </div>
+  <div class="justify-content-center">
+    <div class="form" [formGroup]="templateForm">
+      <div class="form-group mt-2">
+        <label class="select-box-label" jhiTranslate="digital-signing.right-bar.control-template-config.new.sign-type"> Loại ô ký </label>
+        <select class="form-control select-box" formControlName="signType" [autofocus]="false" [disabled]="true">
+          <option *ngIf="templateForm.get('signType').value === 'digital'">
+            {{ 'digital-signing.right-bar.control-template-config.digital-signature' | translate }}
+          </option>
+          <option *ngIf="templateForm.get('signType').value === 'digital-image'">
+            {{ 'digital-signing.right-bar.control-template-config.image-digital-signature' | translate }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group mt-2">
+        <label class="select-box-label required" jhiTranslate="digital-signing.right-bar.control-template-config.new.template-name">
+          Tên template
+        </label>
+        <input
+          class="form-control select-box"
+          type="text"
+          formControlName="templateName"
+          placeholder="{{ 'digital-signing.right-bar.control-template-config.new.placeholder.name' | translate }}"
+        />
+        <div
+          *ngIf="
+            templateForm.get('templateName')?.invalid &&
+            (templateForm.get('templateName')?.touched || templateForm.get('templateName')?.dirty || isSaving)
+          "
+        >
+          <small class="form-text text-danger" *ngIf="templateForm.get('templateName').errors?.required">
+            <fa-icon [icon]="'exclamation-circle'"></fa-icon>
+            <span jhiTranslate="entity.validation.required"></span>
+          </small>
+        </div>
+      </div>
+      <div class="form-group mt-2 row">
+        <div class="col-6">
+          <label class="select-box-label" jhiTranslate="digital-signing.right-bar.control-template-config.new.width"> Chiều rộng </label>
+          <input class="form-control select-box" type="text" formControlName="width" />
+        </div>
+        <div class="col-6">
+          <label class="select-box-label" jhiTranslate="digital-signing.right-bar.control-template-config.new.height"> Chiều cao </label>
+          <input class="form-control select-box" type="text" formControlName="height" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-end mt-4 mb-3">
+    <button type="button" class="close" (click)="close()">
+      <span jhiTranslate="digital-signing.right-bar.control-template-config.btn.close">Close</span>
+    </button>
+    <button type="button" class="save" (click)="save()">
+      <span jhiTranslate="digital-signing.right-bar.control-template-config.btn.save">Save</span>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<div class="wrapper">
+  <div class="header">
+    <div class="tabs"></div>
+  </div>
+  <div class="content">
+    <form class="row" [formGroup]="filter">
+      <div class="d-flex justify-content-between">
+        <div class="col"></div>
+        <div class="col-3">
+          <input
+            type="text"
+            class="form-control icon"
+            placeholder="Nhập email hoặc số điện thoại"
+            formControlName="keyword"
+            (blur)="getlist()"
+          />
+        </div>
+      </div>
+    </form>
+    <div class="position-relative mt-3">
+      <div class="position-absolute top-0 end-0" style="z-index: 1">
+        <button type="button" class="btn btn-dangnhap">Xuất file excel</button>
+      </div>
+      <ngx-datatable
+        class="bootstrap"
+        [rows]="rows"
+        [columnMode]="ColumnMode.force"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        rowHeight="auto"
+        [limit]="10"
+        [externalSorting]="false"
+        [sorts]="[{ prop: 'STT', dir: 'asc' }]"
+      >
+        <ngx-datatable-column name="STT" [resizeable]="false" [canAutoResize]="false" [draggable]="false">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.stt }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Tên khách hàng" prop="orgName" [resizeable]="false" [draggable]="false">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.orgName }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Mã số thuế" prop="taxCode" [resizeable]="false" [draggable]="false">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.taxCode }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Họ và tên" prop="firstName" [resizeable]="false" [draggable]="false">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.firstName }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Email" prop="email" [resizeable]="false" [draggable]="false">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.email }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Số điện thoại" prop="phoneNumber" [resizeable]="false" [draggable]="false">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.phoneNumber }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Ngày đăng ký" prop="createdDate" [resizeable]="false" [draggable]="false">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.createdDate | date: 'dd/mm/yyyy' }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [sortable]="false" [resizeable]="false" [canAutoResize]="false" [draggable]="false">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <button type="button" class="btn btn-dangnhap" (click)="handerconfirm(row)">Xác nhận</button>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+  </div>
+</div>

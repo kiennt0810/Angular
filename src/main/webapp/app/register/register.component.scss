@@ -1,0 +1,151 @@
+.bg-logo {
+  // height: 100%;
+  background-color: white;
+}
+
+.color-text-ftp-login {
+  color: #f07328;
+}
+
+.property-1logo-default {
+  width: 245.27px;
+  height: 64px;
+}
+
+.btn-dangnhap:hover {
+  background: #82aefe;
+}
+
+.btn-dangnhap:focus {
+  background: #000066;
+}
+
+.btn-quaylai {
+  border: 1px solid #0000a6;
+  border-radius: 8px;
+  color: #0000a6;
+  height: 5vh;
+  width: 16.3vw;
+}
+
+.custom-bg {
+  height: 100%;
+}
+
+.bg-logo-1 {
+  // height: 100%;
+  background-color: #0000a6;
+}
+
+.bg-logo-2 {
+  // height: 100%;
+  background-color: white;
+}
+
+.bottom-15 {
+  bottom: 15px;
+}
+
+.top-15 {
+  top: 15px;
+}
+
+.start-15 {
+  left: 15px;
+}
+
+.img-Group17949 {
+  height: 57.78289031982422px;
+  width: 83px;
+}
+
+@media (min-width: 768px) {
+  .display-logo {
+    display: none;
+  }
+
+  .img-Group {
+    width: 453px;
+    height: 434px;
+  }
+
+  .display-logo-fpt,
+  .display-logo-ceca {
+    display: block;
+  }
+
+  .display-btn-quaylai {
+    display: inline;
+  }
+
+  .fw-title {
+    font-size: 24px;
+  }
+
+  .cls-input {
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    background: #ffffff;
+    padding: 4px 16px;
+    width: 30vw;
+    height: 7vh;
+  }
+
+  .btn-dangnhap {
+    background: #0000a6;
+    border-radius: 8px;
+    color: #ffffff;
+    height: 5vh;
+    width: 16.3vw;
+  }
+
+  .mb-xl-costomer {
+    margin-bottom: 0px;
+  }
+}
+
+@media (max-width: 767px) {
+  .display-logo {
+    display: block;
+  }
+
+  .img-Group {
+    width: 250px;
+    height: 250px;
+  }
+
+  .display-logo-fpt,
+  .display-logo-ceca,
+  .display-btn-quaylai {
+    display: none;
+  }
+
+  .fw-title {
+    font-size: 24px;
+  }
+
+  .cls-input {
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    background: #ffffff;
+    padding: 4px 16px;
+    width: auto;
+    height: 7vh;
+  }
+
+  .btn-dangnhap {
+    background: #0000a6;
+    border-radius: 8px;
+    color: #ffffff;
+    height: 5vh;
+    width: 94vw;
+  }
+
+  .property-1logo-dark {
+    width: 91px;
+  }
+
+  .mb-xl-costomer {
+    margin-bottom: -96%;
+  }
+}

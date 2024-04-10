@@ -1,0 +1,30 @@
+.btn-dangnhap {
+  background: #0000a6;
+  border-radius: 8px;
+  color: #ffffff;
+  height: 4vh;
+  width: 6vw;
+}
+
+.btn-dangnhap:hover {
+  background: #82aefe;
+}
+
+.btn-dangnhap:focus {
+  background: #000066;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  background: white;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 30px;
+}
+
+.icon {
+  padding-left: 25px;
+  //background: url('https://static.thenounproject.com/png/101791-200.png') no-repeat left;
+  background-size: 20px;
+}

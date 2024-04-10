@@ -1,0 +1,63 @@
+<div class="side-bar">
+  <div class="logo">
+    <img src="./content/images/logoToaNhaBDN.jpg" alt="" />
+    <!-- <img src="./content/images/Flag_of_the_Communist_Party_of_Vietnam.svg" alt=""/>
+    <img src="./content/images/Flag_of_Vietnam.svg" alt=""/> -->
+    <div class="back" [class.active]="isShowSideBar" (click)="showSideBar()">
+      <img src="./content/images/layout/sidebar/back-btn.svg" alt="" />
+    </div>
+  </div>
+  <mat-accordion class="app-nav-accordion" style="overflow: auto">
+    <mat-nav-list class="custom-ceca">
+      <ng-container *ngFor="let leaf of menu">
+        <ng-container [ngTemplateOutlet]="leafTmp" [ngTemplateOutletContext]="{ leaf: leaf }"></ng-container>
+      </ng-container>
+    </mat-nav-list>
+  </mat-accordion>
+</div>
+
+<ng-template #leafTmp let-leaf="leaf">
+  <!-- chú ý phần phân quyền đc vào router hay ko -->
+  <ng-container *jhiHasAnyAuthority="leaf.authorities">
+    <!-- <ng-container> -->
+    <ng-container *ngIf="!_isLeaf(leaf.leaves)">
+      <a mat-list-item mat-ripple [routerLink]="leaf.path" [class.active]="isActive(leaf)" (click)="resetDktk()">
+        <img style="height: 1.8em; width: 1.8em;" *ngIf="!_isNullOrUndefined(leaf.icon)" [src]="leaf.icon"
+          [alt]="leaf.name" />
+        <span style="padding-left: 8px; font-size: small;">{{ leaf.name }}</span>
+      </a>
+    </ng-container>
+    <ng-container *ngIf="_isLeaf(leaf.leaves)">
+      <ng-container [ngTemplateOutlet]="leafExpandedTmp" [ngTemplateOutletContext]="{ leaf: leaf }"></ng-container>
+    </ng-container>
+  </ng-container>
+</ng-template>
+
+<ng-template #leafExpandedTmp let-leaf="leaf">
+  <mat-expansion-panel id="{{ 'mat-header-' + leaf.id }}" class="mat-elevation-z0" [expanded]="leaf.active"
+    [hideToggle]="true">
+    <mat-expansion-panel-header style="padding: 0" (click)="onClickMenu($event, leaf)">
+      <a mat-list-item mat-ripple>
+        <span class="d-flex" style="width: 100%;">
+          <img style="height: 1.8em; width: 1.8em;" *ngIf="!_isNullOrUndefined(leaf.icon)" [src]="leaf.icon"
+            [alt]="leaf.name"/>
+          <span style="flex-grow: 1; padding-left: 8px; padding-top: 2.3px; font-size: small;">{{ leaf.name }}</span>
+          <ng-container>
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{ leaf.active ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}
+            </mat-icon>
+          </ng-container>
+        </span>
+      </a>
+    </mat-expansion-panel-header>
+    <ng-container *ngIf="!_isNullOrUndefined(leaf.leaves) && leaf.leaves.length > 0">
+      <mat-nav-list>
+        <ng-container *ngFor="let _leaf of leaf.leaves">
+          <div class="leaves">
+            <ng-container [ngTemplateOutlet]="leafTmp" [ngTemplateOutletContext]="{ leaf: _leaf }"></ng-container>
+          </div>
+        </ng-container>
+      </mat-nav-list>
+    </ng-container>
+  </mat-expansion-panel>
+</ng-template>

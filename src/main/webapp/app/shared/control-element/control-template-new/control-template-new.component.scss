@@ -1,0 +1,86 @@
+::ng-deep .control-template-new-dialog .modal-dialog {
+  max-width: unset;
+  width: 800px;
+}
+
+::ng-deep .control-template-new-dialog .modal-content {
+  border-radius: 8px;
+}
+
+.wrapper {
+  padding: 5px 30px;
+}
+
+.data-list {
+  .title {
+    margin: 20px 0 17px 0;
+
+    .img-title {
+      width: 20px;
+      height: 20px;
+      float: left;
+      margin: 7px 10px 0 0;
+    }
+
+    h4 {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 32px;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.form {
+  border: none !important;
+}
+
+input {
+  border: 1px solid #ecedee;
+  border-radius: 6px;
+  outline: none;
+  line-height: 20px;
+  height: 39px;
+  padding-left: 10px;
+  background: white;
+}
+
+.select-box {
+  border: 1px solid #ecedee;
+  border-radius: 6px;
+  outline: none;
+  line-height: 20px;
+  height: 39px;
+  padding-left: 10px;
+  background: white;
+}
+
+.select-box-label {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  color: #121e28;
+}
+
+button {
+  width: 120px;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-weight: 400;
+}
+
+.close {
+  color: #202020;
+  background: #f3f3f3;
+  margin-right: 10px;
+}
+
+.save {
+  color: #f3f3f3;
+  background: #0000a6;
+}

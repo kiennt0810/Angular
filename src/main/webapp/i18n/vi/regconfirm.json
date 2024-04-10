@@ -1,0 +1,23 @@
+{
+  "regconfirm": {
+    "home": {
+      "systemname": "FPT.eContract",
+      "mxt": "Mã xác thực",
+      "xnBtn": "XÁC NHẬN",
+      "activeSuccess": "Chúc mừng bạn đã xác nhận tài khoản thành công",
+      "activeFreeSuccess": "Chúc mừng bạn đã đăng ký tài khoản thành công!",
+      "activeFreeSuccessSub1": "Vui lòng kiểm tra email ",
+      "activeFreeSuccessSub2": "để có tài khoản đăng nhập!",
+      "activePaySuccess": "Chúc mừng bạn đã xác nhận đăng ký tài khoản thành công!",
+      "activePaySuccessSub1": "Vui lòng kiểm tra email ",
+      "activePaySuccessSub2": "để có hướng dẫn thực hiện thanh toán!",
+      "activeCodeNotCorrect": "Mã xác thực không chính xác vui lòng thử lại",
+      "activeCodeInactive": "Mã xác thực không còn hiệu lực!",
+      "activeDuplicate": "Thông tin đăng ký mở tài khoản của quý khách đã được xác thực!",
+      "activeError": "Xác thực không thành công!",
+      "activeEx": "Đã xảy ra lỗi!",
+      "memo": "FPT e.Contract",
+      "emailuserloginduplicate": "Tài khoản Email đã được sử dụng, vui lòng chọn địa chỉ Email khác!"
+    }
+  }
+}

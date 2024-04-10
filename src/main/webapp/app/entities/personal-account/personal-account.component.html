@@ -1,0 +1,206 @@
+<div class="wrapper">
+  <div class="header">
+    <div class="tabs"></div>
+  </div>
+  <div id="customertab" class="content">
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+      <li [ngbNavItem]="'AccountSettings'">
+        <a ngbNavLink>
+          <img
+            src="../../../../content/images/icon/back.png"
+            alt="back"
+            *ngIf="isHideDigitalCertificate == false"
+            (click)="isHideDigitalCertificate = !isHideDigitalCertificate"
+          />
+          Thiết lập tài khoản</a
+        >
+        <ng-template ngbNavContent>
+          <div class="p-5">
+            <div class="row border border-radius-13">
+              <div class="col-6 d-flex justify-content-center">
+                <div class="card border-0">
+                  <div class="card-body text-center">
+                    <h4 class="card-title fw-bold">Cao Thị Thu Thảo</h4>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">thaoctt0809@gmail.com</h6>
+                    <img
+                      src="../../../content/images/personal-account/avatar.png"
+                      class="rounded-circle"
+                      alt="avatar"
+                      width="110"
+                      height="110"
+                    />
+                    <div class="d-flex justify-content-between">
+                      <a href="#" class="card-link color-0000a6 text-decoration-none">Đổi ảnh</a>
+                      <a href="#" class="card-link color-0000a6 text-decoration-none">Xóa ảnh</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 d-flex justify-content-center">
+                <div class="card border-0 me-5">
+                  <div class="card-body d-flex flex-column text-center">
+                    <h4 class="card-title fw-bold">Chữ ký ảnh</h4>
+                    <img
+                      src="../../../content/images/personal-account/signature.png"
+                      class="rounded-circle"
+                      alt="signature"
+                      width="110"
+                      height="110"
+                    />
+                    <a href="#" class="card-link color-0000a6 text-decoration-none">Thay đổi chữ ký</a>
+                  </div>
+                </div>
+                <div class="card border-0">
+                  <div class="card-body d-flex flex-column text-center">
+                    <h4 class="card-title fw-bold">Chữ ký số</h4>
+                    <img
+                      src="../../../content/images/personal-account/signature.png"
+                      class="rounded-circle"
+                      alt="signature"
+                      width="110"
+                      height="110"
+                    />
+                    <a href="#" class="card-link color-0000a6 text-decoration-none">Thay đổi chữ ký</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="px-5">
+            <form class="row border border-radius-13 p-5" [formGroup]="personalAccountForm">
+              <div class="col-lg-6 col-xl-6 col-xl-6 col-xxl-6 col-sm-12 mb-3">
+                <label for="orgName" class="form-label fw-bold">Tên tổ chức <span class="text-danger">*</span></label>
+                <input
+                  type="text"
+                  class="form-control form-control-lg border-radius-13"
+                  id="orgName"
+                  placeholder="Tên tổ chức"
+                  formControlName="orgName"
+                />
+              </div>
+              <div class="col-lg-6 col-xl-6 col-xl-6 col-xxl-6 col-sm-12 mb-3">
+                <label for="orgAcronym" class="form-label fw-bold">Tên viết tắt <span class="text-danger">*</span></label>
+                <input
+                  type="text"
+                  class="form-control form-control-lg border-radius-13"
+                  id="orgAcronym"
+                  placeholder="Tên viết tắt"
+                  formControlName="orgAcronym"
+                />
+              </div>
+              <div class="col-lg-6 col-xl-6 col-xl-6 col-xxl-6 col-sm-12 mb-3">
+                <label for="taxCode" class="form-label fw-bold">Mã số thuế <span class="text-danger">*</span></label>
+                <input
+                  type="text"
+                  class="form-control form-control-lg border-radius-13"
+                  id="taxCode"
+                  placeholder="Nhập mã số thuế"
+                  formControlName="taxCode"
+                />
+              </div>
+              <!-- <div class="col-lg-6 col-xl-6 col-xl-6 col-xxl-6 col-sm-12 mb-3"></div>
+              <div class="col-lg-6 col-xl-6 col-xl-6 col-xxl-6 col-sm-12 mb-3">
+                <label for="lastName" class="form-label fw-bold">Họ <span class="text-danger">*</span></label>
+                <input type="text" class="form-control form-control-lg border-radius-13" id="lastName" placeholder="Nhập họ" formControlName="firstName" />
+              </div> -->
+              <div class="col-lg-6 col-xl-6 col-xl-6 col-xxl-6 col-sm-12 mb-3">
+                <label for="firstName" class="form-label fw-bold">Họ và tên <span class="text-danger">*</span></label>
+                <input
+                  type="text"
+                  class="form-control form-control-lg border-radius-13"
+                  id="firstName"
+                  placeholder="Họ và tên"
+                  formControlName="firstName"
+                />
+              </div>
+              <div class="col-lg-6 col-xl-6 col-xl-6 col-xxl-6 col-sm-12 mb-3">
+                <label for="email" class="form-label fw-bold">Email <span class="text-danger">*</span></label>
+                <input
+                  type="text"
+                  class="form-control form-control-lg border-radius-13"
+                  id="email"
+                  placeholder="Nhập email"
+                  formControlName="email"
+                />
+              </div>
+              <div class="col-lg-6 col-xl-6 col-xl-6 col-xxl-6 col-sm-12 mb-3">
+                <label for="phoneNumber" class="form-label fw-bold">Số điện thoại <span class="text-danger">*</span></label>
+                <input
+                  type="text"
+                  class="form-control form-control-lg border-radius-13"
+                  id="phoneNumber"
+                  placeholder="Nhập SĐT"
+                  formControlName="phoneNumber"
+                />
+              </div>
+              <div class="col-12 mb-3">
+                <label for="address" class="form-label fw-bold">Địa chỉ <span class="text-danger">*</span></label>
+                <input
+                  type="text"
+                  class="form-control form-control-lg border-radius-13"
+                  id="address"
+                  placeholder="Nhập địa chỉ"
+                  formControlName="address"
+                />
+              </div>
+              <div
+                class="col-12 d-flex justify-content-sm-center justify-content-md-end justify-content-lg-end justify-content-xl-end justify-content-xxl-end"
+              >
+                <button type="submit" class="btn btn-lg btn-0000A6 mb-3">Lưu thay đổi</button>
+              </div>
+            </form>
+          </div>
+        </ng-template>
+      </li>
+      <li [ngbNavItem]="'Settings'">
+        <a ngbNavLink>Cài đặt</a>
+        <ng-template ngbNavContent>
+          <div class="p-5">
+            <div class="border border-radius-13 p-5" *ngIf="isHideDigitalCertificate; else isShowDigitalCertificate">
+              <div class="d-flex justify-content-between align-middle px-5">
+                <div>
+                  <p class="fw-bold">Mật khẩu</p>
+                  <p>Thay đổi mật khẩu cho tài khoản của bạn</p>
+                </div>
+                <a class="color-0000a6 text-decoration-none" (click)="opentModalChangePassword()">Đổi mật khẩu</a>
+              </div>
+              <hr class="my-5" />
+              <div class="d-flex justify-content-between align-middle px-5">
+                <div>
+                  <p class="fw-bold">Cấu hình chứng thư số</p>
+                  <p>Danh sách chứng thư số của bạn</p>
+                </div>
+                <a class="color-0000a6 text-decoration-none" (click)="visitViewDigitalCertificate()">Xem danh sách</a>
+              </div>
+              <hr class="my-5" />
+
+              <div class="d-flex justify-content-between align-middle px-5">
+                <div>
+                  <p class="fw-bold">Ngôn ngữ</p>
+                  <p>Thay đổi hiện thị ngôn ngữ trên CeCA</p>
+                </div>
+                <div>
+                  <a href="#" class="color-0000a6 text-decoration-none me-5">English</a>
+                  <a href="#" class="color-0000a6 text-decoration-none">Tiếng việt</a>
+                </div>
+              </div>
+              <hr class="my-5" />
+              <div class="d-flex justify-content-between align-middle px-5">
+                <div>
+                  <p class="fw-bold">Đăng xuất</p>
+                  <p>Đăng xuất tài khoản này</p>
+                </div>
+                <a href="#" class="color-0000a6 text-decoration-none" (click)="logout()">Đăng xuất</a>
+              </div>
+            </div>
+            <ng-template #isShowDigitalCertificate>
+              <jhi-digital-certificate></jhi-digital-certificate>
+            </ng-template>
+          </div>
+        </ng-template>
+      </li>
+    </ul>
+
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+  </div>
+</div>

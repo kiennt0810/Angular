@@ -1,0 +1,133 @@
+.header-title {
+  padding: 24px 0px 5px 20px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #121e28;
+  text-transform: uppercase;
+}
+label {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #71787e;
+}
+.small-input {
+  min-height: 36px;
+  border: 1px solid #ecedee;
+  box-sizing: border-box;
+  border-radius: 6px;
+  background: #fafbfb;
+}
+
+.create-signature-template {
+  border: none;
+  outline: none;
+  background: #0000a6;
+  color: white;
+  border-radius: 9px;
+  width: 90%;
+  padding: 7px 0;
+}
+
+.position-label {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #121e28;
+  text-transform: uppercase;
+  padding: 20px 0 5px 20px;
+}
+
+.position-content {
+  padding: 3px 1.25rem !important;
+}
+
+input[type='text']:focus {
+  box-shadow: none;
+  outline: 0 none;
+  border: 1px solid #2e6cf6;
+}
+.ng-select.custom ::ng-deep .ng-select-container {
+  border: 1px solid #ecedee;
+  box-sizing: border-box;
+  border-radius: 6px;
+  background: #fafbfb;
+}
+::ng-deep .ng-select.ng-select-focused.ng-select-opened > .ng-select-container {
+  box-shadow: none;
+  outline: 0 none;
+  border: 1px solid #2e6cf6;
+}
+::ng-deep .ng-select.ng-select-focused:not(.ng-select-opened) > .ng-select-container {
+  box-shadow: none;
+  outline: 0 none;
+  border: 1px solid #2e6cf6;
+}
+// Customize check box
+input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  z-index: 1000;
+}
+.checkmark {
+  position: absolute;
+  top: 2px;
+  left: 0px;
+  height: 20px;
+  width: 20px;
+  background: url('/app/content/images/control/checkbox-unchecked.svg') no-repeat center center;
+  background-size: 20px 20px;
+}
+input[type='checkbox']:checked ~ .checkmark {
+  background: url('/app/content/images/control/checkbox-checked.svg') no-repeat center center;
+}
+input[type='checkbox']:not(:checked):hover ~ .checkmark {
+  background: url('/app/content/images/control/checkbox-hover.svg') no-repeat center center;
+}
+input[type='checkbox']:not(:checked):hover ~ .form-check-label {
+  color: #2e6cf6;
+}
+.form-check-label {
+  margin-left: 8px;
+  &:hover {
+    cursor: pointer;
+  }
+  &.checked {
+    color: #121e28;
+  }
+}
+:host ::ng-deep {
+  .card-header {
+    margin-bottom: 0px !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    button {
+      padding: 0px;
+      font-weight: bold;
+    }
+  }
+  .card-body {
+    padding: 1.25rem;
+  }
+  .accordion > .card {
+    overflow: visible;
+  }
+  .card {
+    border: none;
+  }
+
+  .mr-5px {
+    margin-right: 5px;
+  }
+
+  .mr-15px {
+    margin-right: 15px;
+  }
+
+  .mt-10px {
+    margin-top: 10px;
+  }
+}

@@ -1,0 +1,34 @@
+<div class="_navbar d-flex" style="background-color: #1A4792;">
+  <div style="flex-grow: 1">
+    <div class="title" style="color: white; font-weight: bold;">
+      <span >NGHIỆP VỤ LỄ TÂN ĐỐI NGOẠI ĐẢNG</span>
+    </div>
+    <div class="url" style="color: white;">
+      <span> 
+        <span (click)="home()" class="link">Trang chủ</span> 
+        <span *ngIf="parentName" (click)="loadingParent()" class="link"> > {{parentName}} </span> 
+        <label *ngIf="childName" (click)="loadingChild()" class="link"> > {{childName}}</label>
+        <label *ngIf="subName" (click)="loadingSub()" class="link"> > {{subName}}</label>
+      </span>
+    </div>
+  </div>
+  <div>
+    <!-- <div (click)="logout()">Logout</div>
+    <div class="profile">
+      <span>AB</span>
+    </div> -->
+
+    <div ngbDropdown class="d-inline-block tt">
+      <button type="button" class="btn btn-outline-primary d-inline-block userbtn" id="dropdownBasic1" ngbDropdownToggle>
+        <img class="test222" src="../../../content/images/icon/user.png" alt="user">         
+        <span>{{ account?.hoTen }}</span>
+      </button>      
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <!-- <button ngbDropdownItem routerLink="/personal-account">Tài khoản</button> -->
+        <button ngbDropdownItem (click)="logout()">Đăng xuất</button>
+        <button ngbDropdownItem (click)="changePass()">Đổi mật khẩu</button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-alert></app-alert>

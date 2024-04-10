@@ -1,0 +1,42 @@
+.signature-icon {
+  width: 164px;
+  height: 80px;
+  background-color: #eaffee;
+  border: 1px solid #4a9f4c;
+  border-radius: 0.25rem;
+  ._signature-icon {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .signature-icon-content {
+      display: flex;
+      flex-flow: column;
+      .signature-icon-text-en {
+        margin: 0;
+        color: #4a9f4c;
+        font-size: 13.5px;
+        font-weight: 500;
+      }
+
+      .signature-icon-text-vi {
+        margin: 0;
+        color: #4a9f4c;
+        font-size: 1rem;
+        font-weight: 500;
+      }
+
+      img {
+        margin-top: 0.25rem;
+        height: 3rem;
+      }
+    }
+    .resize-button {
+      position: absolute;
+      bottom: 3px;
+      right: 3px;
+    }
+    path {
+      fill: #4a9f4c;
+    }
+  }
+}

@@ -1,0 +1,129 @@
+<div class="comment-info-wrapper" [formGroup]="commentForm">
+  <div class="content created-by" *ngIf="commentInfo.createdBy">
+    <div style="width: 90%">
+      <span style="word-break: break-all"
+        ><span jhiTranslate="digital-signing.left-bar.comment.created-by">Người tạo:</span> {{ commentInfo.createdBy }}</span
+      >
+    </div>
+    <div class="d-flex justify-content-end show-comment-option-trigger" style="width: 10%">
+      <fa-icon
+        *ngIf="canDeleteAndEdit() && !isCreatingComment"
+        class="comment-option-trigger"
+        style="margin-right: 5px; cursor: pointer"
+        [icon]="'ellipsis-v'"
+        (click)="showSubCommentOption()"
+      >
+        ellipsis-v
+      </fa-icon>
+    </div>
+
+    <div class="comment-option show-comment-option-trigger" *ngIf="isShowSubCommentOption">
+      <div class="show-comment-option-trigger d-flex justify-content-end option-item" (click)="editComment()">
+        <span class="show-comment-option-trigger" jhiTranslate="digital-signing.left-bar.comment.edit">Chỉnh sửa</span>
+      </div>
+      <div class="show-comment-option-trigger d-flex justify-content-end option-item" (click)="removeComment()">
+        <span class="show-comment-option-trigger" style="margin-top: 3px" jhiTranslate="digital-signing.left-bar.comment.delete">Xóa</span>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <span jhiTranslate="digital-signing.left-bar.comment.send-to">Gửi tới:</span>
+    <!--    <ng-select [items]="recipientList" bindLabel="email" bindValue="email" [searchable]="true"-->
+    <!--               [multiple]="true" placeholder="{{ 'form-input.comment.select-send-to' | translate}}"-->
+    <!--               formControlName="listSend">-->
+    <!--    </ng-select>-->
+  </div>
+  <div class="content">
+    <span jhiTranslate="digital-signing.left-bar.comment.content">Nội dung:</span>
+    <textarea
+      placeholder="{{ 'digital-signing.left-bar.comment.content-placeholder' | translate }}"
+      cols="30"
+      rows="3"
+      formControlName="commentContent"
+    ></textarea>
+  </div>
+
+  <div class="action-btn" *ngIf="isEditingComment">
+    <div class="privacy-comment">
+      <div class="select-wrapper" (click)="isCollapse = !isCollapse">
+        <img *ngIf="getCommentPrivacy() === 'global'" class="global privacy-img" alt="" />
+        <span *ngIf="getCommentPrivacy() === 'global'" class="privacy-label">Công khai</span>
+        <img *ngIf="getCommentPrivacy() === 'private'" class="private privacy-img" alt="" />
+        <span *ngIf="getCommentPrivacy() === 'private'" class="privacy-label">Riêng tư</span>
+        <fa-icon class="collapse-btn" icon="angle-down" *ngIf="!isCollapse"></fa-icon>
+        <fa-icon class="collapse-btn" icon="angle-up" *ngIf="isCollapse"></fa-icon>
+      </div>
+      <div class="select" *ngIf="isCollapse">
+        <div class="option" (click)="setCommentPrivacy('global')">
+          <img class="global privacy-img" alt="" />
+          <span class="privacy-label">Công khai</span>
+        </div>
+        <div class="option" (click)="setCommentPrivacy('private')">
+          <img class="private privacy-img" alt="" />
+          <span class="privacy-label">Riêng tư</span>
+        </div>
+      </div>
+    </div>
+    <div class="buttons">
+      <button class="save-btn" (click)="saveComment()" jhiTranslate="digital-signing.left-bar.comment.save">Lưu</button>
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center justify-content-between">
+    <div class="action-btn" *ngIf="!isEditingComment && !isCreatingComment">
+      <div class="privacy-comment" style="cursor: unset !important">
+        <div class="select-wrapper" style="cursor: unset !important">
+          <img *ngIf="getCommentPrivacy() === 'global'" class="global privacy-img" alt="" />
+          <span *ngIf="getCommentPrivacy() === 'global'" class="privacy-label">Công khai</span>
+          <img *ngIf="getCommentPrivacy() === 'private'" class="private privacy-img" alt="" />
+          <span *ngIf="getCommentPrivacy() === 'private'" class="privacy-label">Riêng tư</span>
+          <fa-icon class="collapse-btn" icon="angle-down"></fa-icon>
+        </div>
+      </div>
+    </div>
+    <div class="edited-label d-flex justify-content-end" *ngIf="isModified && !isEditingComment">
+      <span (click)="openHistoryDialog()" jhiTranslate="digital-signing.left-bar.comment.edited">Đã chỉnh sửa</span>
+    </div>
+  </div>
+
+  <div class="action-btn" *ngIf="isCreatingComment">
+    <div class="privacy-comment">
+      <div class="select-wrapper" (click)="isCollapse = !isCollapse">
+        <img *ngIf="getCommentPrivacy() === 'global'" class="global privacy-img" alt="" />
+        <span *ngIf="getCommentPrivacy() === 'global'" class="privacy-label">Công khai</span>
+        <img *ngIf="getCommentPrivacy() === 'private'" class="private privacy-img" alt="" />
+        <span *ngIf="getCommentPrivacy() === 'private'" class="privacy-label">Riêng tư</span>
+        <fa-icon class="collapse-btn" icon="angle-down" *ngIf="!isCollapse"></fa-icon>
+        <fa-icon class="collapse-btn" icon="angle-up" *ngIf="isCollapse"></fa-icon>
+      </div>
+      <div class="select" *ngIf="isCollapse">
+        <div class="option" (click)="setCommentPrivacy('global')">
+          <img class="global privacy-img" alt="" />
+          <span class="privacy-label">Công khai</span>
+        </div>
+        <div class="option" (click)="setCommentPrivacy('private')">
+          <img class="private privacy-img" alt="" />
+          <span class="privacy-label">Riêng tư</span>
+        </div>
+      </div>
+    </div>
+    <div class="buttons">
+      <button
+        class="delete-btn"
+        (click)="removeComment()"
+        [disabled]="!canDeleteAndSave('delete')"
+        jhiTranslate="digital-signing.left-bar.comment.delete"
+      >
+        Xóa
+      </button>
+      <button
+        class="save-btn"
+        (click)="saveComment()"
+        [disabled]="!canDeleteAndSave('save')"
+        jhiTranslate="digital-signing.left-bar.comment.save"
+      >
+        Lưu
+      </button>
+    </div>
+  </div>
+</div>

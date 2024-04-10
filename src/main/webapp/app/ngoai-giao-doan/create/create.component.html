@@ -1,0 +1,206 @@
+<div style="background-color: white;">
+  <div>
+    <br>
+    <form name="createForm" (ngSubmit)="createDV()" action="" style="background-color: white;" [formGroup]="createForm">
+      <div class="me-3 ms-3">
+        <div class="row">
+          <div class="col-12">
+            <div class="row">
+              <div class="col-2">
+                <h6 class="pt-1">Tên hoạt động&nbsp;<span style="color: red;" class="pt-2">*</span></h6>
+              </div>
+              <div class="col-10">
+                <input class="form-control" type="text" name="tenHD" formControlName="tenHD" id="tenHD" />
+                <div
+                  *ngIf="createForm.get('tenHD')!.invalid && (createForm.get('tenHD')!.dirty || createForm.get('tenHD')!.touched)">
+
+                  <small class="form-text text-danger" *ngIf="createForm.get('tenHD')?.errors?.required">
+                    Trường này không được để trống.
+                  </small>
+                </div>
+              </div>
+            </div>
+            <div class="row pt-3">
+              <div class="col-2">
+                <h6 class="pt-1">Cơ quan đại diện</h6>
+              </div>
+              <div class="col-10">
+                <div class="col d-flex justify-content-start"><input class="form-control" type="text" name="coQuan"
+                    formControlName="coQuan" /></div>
+              </div>
+            </div>
+            <div class="row pt-3">
+              <div class="col-2">
+                <h6 class="pt-1">Quốc gia</h6>
+              </div>
+              <div class="col-10">
+                <div class="input-group">
+                  <select class="form-select" style="background-color: #fff" name="quocGia" formControlName="quocGia">
+                    <option [value]=null selected>Chọn</option>
+                    <option *ngFor="let item of quocGia" [value]="item.ten">{{ item.ten }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row pt-3">
+              <div class="col-2">
+                <h6 class="pt-1">Hình thức</h6>
+              </div>
+              <div class="col-10">
+                <div class="col d-flex justify-content-start"><input class="form-control" type="text" name="hinhThuc"
+                    formControlName="hinhThuc" /></div>
+              </div>
+            </div>
+            <div class="row pt-3">
+              <div class="col-2">
+                <h6>Tặng phẩm</h6>
+              </div>
+              <div class="col-10">
+                <div *ngFor="let d of tangPham">
+                  <p>
+                    <input type="checkbox" [checked]="d.checked" (change)="d.checked = !d.checked"
+                      [attr.disabled]="disableTextbox? true : null" />
+                    &nbsp;{{ d.name }}
+                  </p>
+                  <div class="col d-flex justify-content-start" aria-disabled="true"
+                    *ngIf="tangPhamKhac && d.name == 'Khác'">
+                    <textarea class="form-control" type="text" name="tangPham" formControlName="tangPham" id="tangPham"></textarea>
+                  </div>
+                </div>
+              </div>
+              <pre style="display: none;">{{this.result | json}}</pre>
+            </div>
+            <div class="row pt-3">
+              <div class="col-2">
+                <h6 class="pt-1">Thời gian&nbsp;<span style="color: red;" class="pt-2">*</span></h6>
+              </div>
+              <div class="col-10">
+                <div>
+                  <input class="form-control" type="text" placeholder="dd/mm/yyyy" bsDatepicker
+                    [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',showWeekNumbers: false }" name="thoiGian"
+                    formControlName="thoiGian" id="thoiGian" (change)="isInvalidDate($event)" />
+                </div>
+                <div
+                  *ngIf="createForm.get('thoiGian')!.invalid && (createForm.get('thoiGian')!.dirty || createForm.get('thoiGian')!.touched)">
+
+                  <small class="form-text text-danger" *ngIf="createForm.get('thoiGian')?.errors?.required">
+                    Trường này không được để trống.
+                  </small>
+                </div>
+              </div>
+            </div>
+            <div class="row pt-3">
+              <div class="col-2">
+                <h6 class="pt-1">Địa điểm</h6>
+              </div>
+              <div class="col-10">
+                <div class="col d-flex justify-content-start"><input class="form-control" type="text" name="diaDiem"
+                    formControlName="diaDiem" /></div>
+              </div>
+            </div>
+            <div class="row pt-3">
+              <div class="col-2">
+                <h6 class="pt-1">Ghi chú</h6>
+              </div>
+              <div class="col-10">
+                <div class="col d-flex justify-content-start"><textarea class="form-control" type="text" name="ghiChu"
+                    formControlName="ghiChu"></textarea></div>
+              </div>
+            </div>
+            <div class="row pt-3">
+              <div class="col-2">
+                <h6 class="pt-1">Hồ sơ đính kèm</h6>
+              </div>
+              <div class="col-10 custom-file-button">
+                <small for="uploadDocument">Tải tệp file không lớn hơn
+                  <strong>100 MB</strong></small>
+                <mat-chip-list #chipList>
+                  <label class="input-group-text label-cus mt-1" for="inputGroupFile">Tải tập
+                    tin</label>
+                  <mat-chip style="background-color: #e3e5e6;" *ngFor="let file of lstUploadedFiles; let index = index"
+                    [removable]="true" (removed)="removeFile(file.AttachmentName, index)">
+                    {{file.AttachmentName}}
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                  </mat-chip>
+                  <input type="file" id="inputGroupFile" multiple #uploadFile (change)="handleFileInput($event)"
+                    name="fileHoSo" formControlName="fileHoSo" [matChipInputFor]="chipList" class="form-control">
+                </mat-chip-list>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="me-3 ms-3">
+        <div>
+          <h6>Thành phần tham dự</h6>
+        </div>
+        <div>
+          <table class="table table-bordered table-striped"
+            style="border: rgb(199, 199, 199) 1px; box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25)" id="table-data">
+            <thead>
+              <tr>
+                <th scope="col" class="text-center" style="width: 6%;"><span>STT</span> </th>
+                <th scope="col" class="text-center"><span>Họ và tên</span> </th>
+                <th scope="col" class="text-center" style="width: 7%;"><span>Giới tính</span></th>
+                <th scope="col" class="text-center"><span>Chức vụ</span></th>
+                <th scope="col" class="text-center"><span>Cơ quan công tác</span></th>
+                <th scope="col" class="text-center" style="width: 11%;"><span>Thao tác</span></th>
+              </tr>
+            </thead>
+            <tbody formArrayName="hdThanhPhanThamDu">
+              <tr *ngFor="let item of controls; let i = index" [formGroupName]="i">
+                <td class="text-center"></td>
+                <td>
+                  <input type="text" formControlName="hoTen" name="hoTen" class="form-control"
+                    style="padding: 0% !important;">
+                </td>
+                <td>
+                  <select class="form-select" style="background-color: #fff;padding: 0% !important;" name="gioiTinh"
+                    formControlName="gioiTinh">
+                    <option [value]=null selected>Chọn</option>
+                    <option value="true">Nam</option>
+                    <option value="false">Nữ</option>
+                  </select>
+                </td>
+                <td>
+                  <input type="text" formControlName="chucVu" name="chucVu" class="form-control "
+                    style="padding: 0% !important;">
+                </td>
+                <td>
+                  <input type="text" formControlName="coQuan" name="coQuan" class="form-control "
+                    style="padding: 0% !important;">
+                </td>
+                <td class="text-center">
+                  <a class="add" title="Thêm dòng" data-toggle="tooltip" (click)="addRowTable()"><i
+                      class="material-icons">&#xE03B;</i></a>&nbsp;&nbsp;
+                  <a class="delete" title="Xóa" data-toggle="tooltip" (click)="deleteRowTable(i)"><i
+                      class="material-icons">&#xE872;</i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+      <br>
+
+      <div class="d-flex justify-content-end me-3 ms-3">
+        <button class="btn btn-primary jh-create-entity me-3 iconBG buttonborder"
+          style="color: aliceblue; background-color: #1A4792; border-radius: 7px; width: 100px;">
+          <fa-icon class="iconColor" icon="save"></fa-icon>&nbsp;<span>Lưu</span>
+        </button>
+
+        <button class="btn btn-primary jh-create-entity iconBG buttonborder"
+          style="color: aliceblue; background-color: #1A4792; border-radius: 7px;" [routerLink]="['/ngoai-giao-doan']">
+          <fa-icon class="iconColor" icon="arrow-left"></fa-icon>&nbsp;<span>Quay lại</span>
+        </button>
+      </div>
+    </form>
+  </div>
+  <br>
+
+
+</div>
+
+<app-alert></app-alert>

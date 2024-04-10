@@ -1,0 +1,218 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+.title{
+  color: #1A4792;
+  font-size: 22px;
+  font-weight: 400;
+
+  .bi-search {
+    font-weight: bold;
+  }
+}
+
+.form-input {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 0 20px;
+  font-size: 16px;
+  font-weight: 500;  
+}
+
+.input-wrapper {
+    height: 50px;
+    margin: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .c2 {
+    display: flex;
+    width: 170px;
+    font-size: 20px;
+  }
+  
+  .input-container {
+    height: 35px;
+    border-radius: 4px;
+  }
+  
+  .content-wrapper {
+      max-width: 100%;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;  
+    }
+
+  table {
+    width: 100%;
+  }
+
+  .table-responsive{
+    background-color: #fff;
+    // padding: 0 40px;
+  }
+
+  .data-table {
+    text-align: center;
+  }
+
+  .col-2i {
+    height: 35px;
+    width: 600px;
+    position: relative;
+  }
+
+  thead {
+    background-color: #1A4792;
+    color: #fff;
+    font-size: 90%;
+  }
+
+  .bi {
+    font-size: 20px;
+    font-weight: 900;
+    margin: 0 10px;
+  }
+
+  .bi-folder {
+    font-size: 30px;
+  }
+
+  .my-custom-scrollbar {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }
+
+    table {
+      counter-reset: rowNumber - 1;
+    }
+
+    table tr {
+      counter-increment: rowNumber;
+    }
+    
+    table tr td:first-child::before {
+      content: counter(rowNumber);
+      min-width: 1em;
+      margin-right: 0.5em;
+    }
+
+    .iconColor {
+      color: white;
+  }
+  .iconBG {
+      background-color: #1A4792;
+  }
+  .divBGColor {
+      background-color: white;
+  }
+  .navBGColor {
+      background-color: #1A4792; 
+      color: white;
+  }
+  .textColor {
+      color: #1A4792;
+  }
+  .thAlign {
+      text-align: center;
+  }
+  table {
+      counter-reset: rowNumber - 1;
+    }
+  
+    table tr {
+      counter-increment: rowNumber;
+    }
+    
+    table tr td:first-child::before {
+      content: counter(rowNumber);
+      min-width: 1em;
+      margin-right: 0.5em;
+    }
+    .title{
+      color: #1A4792;
+      font-size: 22px;
+      font-weight: bold;
+    
+      .bi-search {
+        font-weight: bolder;
+      }
+    }
+  
+    .col-1-5 {
+      flex: 0 0 9.5%;
+      max-width: 9.5%;
+      position: relative;
+      width: 100%;
+      padding-right: 15px;
+      padding-left: 15px;
+  }
+  .col-3-5 {
+    flex: 0 0 40.5%;
+    max-width: 40.5%;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .inputBorder {
+    border-radius: 10px;
+  }
+  .buttonborder {
+    border-radius: 7px;
+  }
+  table.table td div button i {
+    vertical-align: middle;
+}
+table.table td div button {
+  border-radius: 100%;
+  height: 38px;
+  background-color: white;
+}
+table.table td.colButton {
+  text-align: center;
+}
+
+table.table td div button.download{
+  border: 1px solid green;
+}
+table.table td div button.edit{
+  border: 1px solid blue;
+}
+table.table td div button.view{
+  border: 1px solid orange;
+}
+table.table td div button.delete{
+  border: 1px solid red;
+}
+
+table.table td div button i.download {
+  color: green;
+}
+table.table td div button i.edit {
+  color: blue;
+}
+table.table td div button i.view {
+  color: orange;
+}
+table.table td div button i.delete {
+  color: red;
+}
+
+table.table td.vertical {
+  vertical-align: middle;
+}
+
+
+
+.modal-dialog {
+    max-width: 97%;
+    margin-right: auto;
+    margin-left: auto;
+  }

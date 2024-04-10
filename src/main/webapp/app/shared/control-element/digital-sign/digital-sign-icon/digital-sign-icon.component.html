@@ -1,0 +1,11 @@
+<div class="signature-icon" draggable="true" (dragstart)="onDragStart($event)" #icon>
+  <div class="_signature-icon">
+    <div #content class="signature-icon-content justify-content-center align-items-center">
+      <img src="/content/images/digital-signing/fb/field/digitalsign.svg" alt="" />
+      <p class="signature-icon-text"><span jhiTranslate="digital-signing.left-bar.field.digital">Digital signature</span></p>
+    </div>
+    <svg class="resize-button" height="10" width="10" cdkDrag [cdkDragDisabled]="true" #resizeBtn="cdkDrag">
+      <path d="M10 0 L10 10 L0 10 Z" />
+    </svg>
+  </div>
+</div>

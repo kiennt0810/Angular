@@ -1,0 +1,97 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+.page {
+  margin-bottom: 20px; 
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px; 
+  background-color: #fff;
+  padding: 10px 20px;
+}
+
+.title{
+  color: #1A4792;
+  font-size: 22px;
+  font-weight: bold;
+  background-color: #fff;
+  .bi-search {
+    font-size: 22px;
+  }
+}
+
+
+.form {
+  display: flex;
+  background-color: #fff;
+  width: 1000px;
+  padding-left: 140px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.label {
+  width: 20%;
+  margin-right: 20px; 
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 78%;
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+  height: 40px;
+  padding: 0 20px;
+  font-size: 16px;
+  font-weight: 500; 
+}
+.iconColor {
+  color: white;
+}
+.iconBG{
+  background-color: #1A4792;
+}
+
+.buttonborder {
+  border-radius: 7px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  
+  .content-wrapper {
+      max-width: 100%;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;  
+    }
+
+  table {
+    width: 100%;
+  }
+
+  .table-responsive{
+    background-color: #fff;
+    padding: 10px 20px;
+  }
+
+  .data-table {
+    text-align: center;
+  }
+
+
+  thead {
+    background-color: #1A4792;
+    color: #fff;
+  }
+
+  .bi {
+    font-size: 22px;
+    margin-right:10px;
+  }
+
+  .bi-folder {
+    font-size: 26px;
+  }
+
+  .bi-calendar {
+    width: 10px;
+    right: 105px;
+    top: 2px
+}

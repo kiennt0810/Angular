@@ -1,0 +1,25 @@
+<!-- <jhi-page-ribbon></jhi-page-ribbon> -->
+<div class="wrapper">
+  <div *ngIf="displayNavbar()" class="sidebar" [class.active]="isShowSideBar">
+    <jhi-side-bar (sideBarAction)="handleSideBarAction($event)"></jhi-side-bar>
+  </div>
+  <div class="main" [class.active]="isShowSideBar" [class.authenticated]="displayNavbar()">
+    <div *ngIf="displayNavbar()" class="_navbar">
+      <router-outlet name="navbar"></router-outlet>
+    </div>
+    <div
+      class="content"
+      [class.container-fluid]="displayNavbar()"
+      [class.authenticated]="displayNavbar()"
+      [class.no-padding]="_noPaddingContent()"
+    >
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <!-- <jhi-footer></jhi-footer> -->
+  <div class="alerts">
+    <app-alert></app-alert>
+  </div>
+</div>
+
+<!-- <jhi-verification></jhi-verification> -->

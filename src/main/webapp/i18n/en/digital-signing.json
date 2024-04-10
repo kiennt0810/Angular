@@ -1,0 +1,110 @@
+{
+  "digital-signing": {
+    "left-bar": {
+      "signature-info": "Signature information",
+      "digital-signature": "Digital signature",
+      "field": {
+        "digital": "Digital signature",
+        "image-digital": "Image digital signature"
+      },
+      "comment": {
+        "title": "Bình luận",
+        "drag-create-comment": "Drag and drop icon to document to create comment",
+        "created-by": "Created by: ",
+        "send-to": "Send to: ",
+        "select-send-to": "Select recipient",
+        "content": "Comment: ",
+        "content-placeholder": "Enter content...",
+        "comment": "Comment: ",
+        "created-date": "Created date: ",
+        "page": "Page: ",
+        "enter-comment": "Enter comment...",
+        "confirm": "Confirm",
+        "save": "Save",
+        "edit": "Edit",
+        "delete": "Delete",
+        "cancel": "Cancel",
+        "reply": "Reply",
+        "edited": "Edited",
+        "history": {
+          "title": "Comment edit history",
+          "date": "Date: "
+        },
+        "comment-reply-amount": "{{amount}} reply"
+      },
+      "highlight-comment": {
+        "title": "Highlight document",
+        "highlight-comment-create": "Select color then click and select the document area to highlight"
+      }
+    },
+    "right-bar": {
+      "props": {
+        "general-info": "General information",
+        "create-temp-btn": "Create signature template",
+        "position-info": "Location - size",
+        "id": "Code",
+        "name": "Name",
+        "validator": "Constraint",
+        "validators": "Constraints",
+        "length": "Length",
+        "value": "Value",
+        "required": "Required",
+        "email": "Email",
+        "min": "Min",
+        "max": "Max",
+        "width": "Width",
+        "height": "Height",
+        "image-signature": "Image sign",
+        "digital-signature": "Digital sign",
+        "size": "Size",
+        "size-default": "Default",
+        "size-large": "Large",
+        "multi-line": "Multiple line",
+        "fixed": "Fixed"
+      },
+      "control-template-config": {
+        "image-signature": "Image signature",
+        "digital-signature": "Digital signature",
+        "image-digital-signature": "Image-digital signature",
+        "btn": {
+          "close": "CLose",
+          "save": "Save"
+        },
+        "detail": {
+          "title": "Signature box template configuration",
+          "sign-type": "Sign type",
+          "empty": "No template found"
+        },
+        "new": {
+          "title": "Add new signature box template configuration",
+          "sign-type": "Sign type",
+          "template-name": "Template name",
+          "width": "Width",
+          "height": "Height",
+          "new-btn": "Add new signature box template configuration",
+          "placeholder": {
+            "name": "Enter template name"
+          }
+        },
+        "delete": {
+          "confirm": {
+            "title": "Delete data field template",
+            "question": "Deleted template cannot be restored, are you sure to delete this template?",
+            "btn-ok": "Delete",
+            "btn-cancel": "Cancel"
+          }
+        },
+        "title": {
+          "delete-btn": "Delete template"
+        },
+        "alert": {
+          "success-create-new": "Create new template successfully",
+          "success-delete": "Delete template successfully",
+          "error-create-new": "Error occurred while creating a new template",
+          "error-delete": "Error occurred while deleting template",
+          "error-get-all": "Error occurred while loading template list"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,169 @@
+<div class="newHCNG">
+    <div style="background-color: white;" class="pt-5">
+        <div class="me-3 ms-3">
+            <form name="form" role="form" [formGroup]="viewForm" *ngIf="hoChieuNgoaiGiao">
+                <div class="row">
+                    <div class="col-sm-10">
+                        <div class="row">
+                            <div class="col-1-5 pt-2">
+                                <h6>Số hộ chiếu&nbsp;<span style="color: red;" class="pt-2">*</span></h6>
+                            </div>
+                            <div class="col-3-5">
+                                <input class="form-control disableDiv" readonly type="text" name="soHC"
+                                    formControlName="soHC">
+                            </div>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-1-5 pt-2">
+                                <h6>Họ và tên&nbsp;<span style="color: red;" class="pt-2">*</span></h6>
+                            </div>
+                            <div class="col-3-5">
+                                <input class="form-control disableDiv" readonly type="text" name="hoTen"
+                                    formControlName="hoTen">
+                            </div>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-1-5 pt-2">
+                                <h6>Giới tính</h6>
+                            </div>
+                            <div class="col-2-5">
+                                <input class="form-control disableDiv" readonly type="text" name="gioiTinh"
+                                    formControlName="gioiTinh">
+                            </div>
+                            <div class="col-1-5 pt-2" style="padding-left: 70px;">
+                                <h6>CCCD</h6>
+                            </div>
+                            <div class="col-2-5">
+                                <input class="form-control disableDiv" readonly type="text" name="cmndSo"
+                                    formControlName="cmndSo">
+                            </div>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-1-5 pt-2">
+                                <h6>Ngày sinh</h6>
+                            </div>
+                            <div class="col-2-5">
+                                <div class="input-group">
+                                    <input class="form-control disableDiv" type="text" readonly
+                                        name="ngaySinh" formControlName="ngaySinh" />
+                                </div>
+                            </div>
+                            <div class="col-1-5 pt-2" style="padding-left: 70px;">
+                                <h6>Nơi sinh</h6>
+                            </div>
+                            <div class="col-2-5">
+                                <input class="form-control disableDiv" readonly type="text" name="noiSinh"
+                                    formControlName="noiSinh">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="row text-center">
+                            <img [src]=imageUrl style="max-width: 90%; height: 220px; border: 1px solid transparent;
+                            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="row pt-4">
+                            <div class="col-0-5 pt-2">
+                                <h6>Chức vụ</h6>
+                            </div>
+                            <div class="col-4-5">
+                                <input class="form-control disableDiv" readonly type="text" name="chucVu"
+                                    formControlName="chucVu">
+                            </div>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-0-5 pt-2">
+                                <h6>Cơ quan</h6>
+                            </div>
+                            <div class="col-4-5">
+                                <input class="form-control disableDiv" readonly type="text" name="coQuan"
+                                    formControlName="coQuan">
+                            </div>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-0-5 pt-2">
+                                <h6>Loại hộ chiếu&nbsp;<span style="color: red;" class="pt-2">*</span></h6>
+                            </div>
+                            <div class="col-4-5">
+                                <input class="form-control disableDiv" readonly type="text" name="loaiHC"
+                                    formControlName="loaiHC">
+                            </div>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-0-5 pt-2">
+                                <h6>Ngày cấp</h6>
+                            </div>
+                            <div class="col-0-1">
+                                <div class="input-group">
+                                    <input class="form-control disableDiv" readonly type="text" placeholder="dd/mm/yyyy"
+                                        name="cmndNgayCap" formControlName="cmndNgayCap" />
+                                </div>
+                            </div>
+                            <div class="col-0-5 pt-2" style="padding-left: 40px;">
+                                <h6>Có giá trị đến</h6>
+                            </div>
+                            <div class="col-0-1">
+                                <div class="input-group">
+                                    <input class="form-control disableDiv" readonly type="text" placeholder="dd/mm/yyyy"
+                                        name="tGianHetHan" formControlName="tGianHetHan" style="border-right: none;" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-0-5 pt-2">
+                                <h6>Nơi cấp</h6>
+                            </div>
+                            <div class="col-4-5">
+                                <input class="form-control disableDiv" readonly type="text" name="cmndNoiCap"
+                                    formControlName="cmndNoiCap">
+                            </div>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-0-5 pt-2">
+                                <h6>Hồ sơ đính kèm</h6>
+                            </div>
+                            <div class="col-4-5">
+                                <table class="table table-bordered">
+                                    <thead style="background-color: #1A4792; color: white;">
+                                        <tr>
+                                            <th class="text-center">STT</th>
+                                            <th class="text-center col-10">Tên file</th>
+                                            <th class="text-center">Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let d of hoChieuNgoaiGiao.listHCFileVM">
+                                            <td class="text-center align-middle" style="font-weight: bold;"></td>
+                                            <td>{{d.fileName}}</td>
+                                            <td class="text-center"><a class="add" style="color: #27C46B"
+                                                    title="Tải tệp tin" data-toggle="tooltip"
+                                                    (click)="downloadFile(d.id, d.fileName)">
+                                                    <i class="material-icons align-middle">file_download</i></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div><br>
+                        <div class="d-flex justify-content-end">
+                            <button type="button" (click)="Print()" class="btn btn-primary jh-create-entity me-3"
+                                style="color: aliceblue; background-color: #1A4792; border-radius: 7px; width: 100px;">
+                                <fa-icon class="bi bi-printer iconColor"></fa-icon> <span class="iconColor">In</span>
+                            </button>
+                            <button type="button" class="btn btn-primary"
+                                style="color: aliceblue; background-color: #1A4792; border-radius: 7px;"
+                                [routerLink]="['/HoChieu/quanlyHCNgoaiGiao']">
+                                <fa-icon class="iconColor" icon="arrow-left"></fa-icon>
+                                <span>Quay lại</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <br>
+        </div>
+    </div>
+</div>

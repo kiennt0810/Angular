@@ -1,0 +1,137 @@
+<div class="page">
+    <div class="title"><i class="bi bi-search"></i>Điều kiện tìm kiếm</div>
+    <hr>
+
+    <div class="row mt-4 mb-4">
+      <div class="col d-flex justify-content-center">
+        <span class="label" >Họ và tên</span>
+        <input class="input " [(ngModel)]="fields.hoTen" name="hoTen" type="text">
+      </div>
+      <div class="col d-flex justify-content-center">
+        <span class="label" style="margin-right: 0; padding-left: 40px;">Email</span>
+        <input class="input" [(ngModel)]="fields.email" name="email">
+      </div>
+    </div>
+
+    <div class="row mb-4">
+      <div class="col d-flex justify-content-center">
+        <span class="label">Tên tài khoản</span>
+        <input class="input" [(ngModel)]="fields.maNhanVien" name="maNhanVien">
+      </div>
+      <div class="col d-flex justify-content-center">
+        <span class="label"style="margin-right: 0; padding-left: 40px;">Chức vụ</span>
+        <input class="input" 
+                [(ngModel)]="fields.chucDanh"
+                name="chucDanh"
+        >
+      </div>
+    </div>
+
+    <div class="row mt-4 mb-4" style="width: 50%;">
+      <div class="col d-flex ">
+        <span class="label">Tình trạng</span>
+        <select class="input " [(ngModel)]="fields.tinhTrang" name="tinhTrang" style="width: 40%;">
+          <option [value]= "null" default>Tất cả</option>
+          <option value="true" >Hiệu lực</option>
+          <option value="false">Hết hiệu lực</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="row ">
+        <div class="d-flex justify-content-end mb-3" >
+            <button class="btn btn-primary jh-create-entity me-3 iconBG buttonborder"  (click)="search()">
+              <fa-icon class="bi iconColor" icon="search"></fa-icon>
+              <span class="iconColor">Tìm kiếm</span>
+            </button>
+            <button class="btn btn-primary jh-create-entity me-3 iconBG buttonborder" [routerLink]="['./', 'create']" >
+              <fa-icon class="iconColor bi" icon="plus"></fa-icon><span class="iconColor">Thêm mới</span>
+            </button>
+            <button class="btn btn-primary jh-create-entity iconBG buttonborder" routerLink="">
+              <fa-icon class="bi bi-box-arrow-left iconColor"></fa-icon> <span class="iconColor">Thoát</span>
+            </button>
+        </div>
+    </div>
+</div>
+<jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+<div class="table-responsive content-wrapper" *ngIf="resultSearch">
+    <div class="title" style="margin-bottom: 10px;"><fa-icon class="bi bi-folder2"></fa-icon>Kết quả tìm kiếm</div>
+    <table class="table table-striped table-bordered" aria-describedby="user-management-page-heading" *ngIf="resultSearch?.length > 0">
+      <thead class="data-table">
+        <tr >
+          <th *ngFor="let column of headers" scope="col" ><span>{{column}}</span></th>
+        </tr>
+      </thead>
+      <tbody *ngIf="resultSearch">
+        <tr *ngFor="let user of resultSearch | slice: (page-1) * itemsPerPage : (page-1) * itemsPerPage + itemsPerPage | myFilter :filter;">
+          <td class="data-table">{{resultSearch.indexOf(user)+1}}</td>
+          <td class="">{{ user.hoTen }}</td>
+          <td class="">{{ user.maNhanVien }}</td>
+          <td class="">{{ user.email }}</td>
+          <td class="data-table">{{ user.ngaySinh }}</td>
+          <td class="data-table" *ngIf="user.gioiTinh == true">Nam</td>
+          <td class="data-table" *ngIf="user.gioiTinh == false">Nữ</td>
+          <td class="data-table" *ngIf="user.gioiTinh == null"></td>
+          <td class="">{{ user.chucDanh }}</td>
+          <td class="data-table" *ngIf="user.tinhTrang" style="color: green; ">Hiệu lực</td>
+          <td class="data-table" *ngIf="!user.tinhTrang" style="color: red;">Hết hiệu lực</td>
+          <td class="" style="width: 8%;">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['./edit', user.id]" class="edit" style="margin-right: 10%;">
+                <i class="material-icons edit">edit</i>
+              </button>
+
+              <button 
+              style="margin-right: 10%;"
+                type="button" 
+                (click)="deleteUser(user)"  
+                class="delete" 
+                
+                >
+                <i class="material-icons delete">delete</i>
+              </button>
+
+              <button type="submit" (click)="resetPassword(user)" class="download">
+                <i class="material-icons download">lock_open</i>
+              </button>
+
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="row" *ngIf="resultSearch?.length > 0">
+        <div class="col-sm" style="font-weight: bold;">
+            Tổng số người sử dụng: {{totalItems}}
+        </div>
+      
+          <div class="col-sm d-flex justify-content-center" >
+            <ngb-pagination
+              [collectionSize]="totalItems"
+              [(page)]="page"
+              [pageSize]="itemsPerPage"
+              [maxSize]="5"
+              [rotate]="true"
+              [boundaryLinks]="true"
+              (pageChange)="transition()"
+            ></ngb-pagination>
+      </div>
+    
+      <div class="col-sm d-flex justify-content-end">
+        Trang {{page}} / {{totalPages}}
+      </div>
+      
+    </div>
+
+    <div class="table-responsive content-wrapper mt-2 divBGColor" *ngIf="resultSearch?.length <= 0">
+      <br><br><br>
+      <div class="text-center">
+          <h5 style="font-weight: bold;">Không tìm thấy bản ghi thỏa mãn điều kiện!</h5>
+      </div>
+      <br><br><br>
+  </div>
+  <app-alert></app-alert>

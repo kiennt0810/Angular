@@ -1,0 +1,24 @@
+<form *ngIf="user" name="deleteForm" (ngSubmit)="confirmDelete(user.maQG)">
+  <div class="modal-header">
+    <h4 class="modal-title" >Xác nhận xóa</h4>
+
+  </div>
+
+  <div class="modal-body">
+    <jhi-alert-error></jhi-alert-error>
+
+    <p >
+       Bạn có chắc muốn xóa bản ghi?
+    </p>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+      <i class="bi bi-skip-backward-fill"></i><span>Thoát</span>
+    </button>
+
+    <button type="submit" class="btn btn-danger">
+      <i class="bi bi-trash"></i><span >Xóa</span>
+    </button>
+  </div>
+</form>

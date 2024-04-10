@@ -1,0 +1,23 @@
+{
+  "regconfirm": {
+    "home": {
+      "systemname": "FPT.eContract",
+      "mxt": "Verification codes",
+      "xnBtn": "XÁC NHẬN",
+      "activeSuccess": "Congratulations on successful account confirmation",
+      "activeFreeSuccess": "Congratulations on successful account registration!",
+      "activeFreeSuccessSub1": "Please check your email ",
+      "activeFreeSuccessSub2": "to have an account to login!",
+      "activePaySuccess": "Congratulations on successful account registration confirmation!",
+      "activePaySuccessSub1": "Please check your email ",
+      "activePaySuccessSub2": "for instructions on how to make a payment!",
+      "activeCodeNotCorrect": "Authentication code is incorrect, please try again",
+      "activeCodeInactive": "Validation code is no longer valid!",
+      "activeDuplicate": "Your sign up registration information has been verified!",
+      "activeError": "Authentication failed!",
+      "activeEx": "An error occurred!",
+      "memo": "FPT e.Contract",
+      "emailuserloginduplicate": "Email account is already in use, please choose a another email address!"
+    }
+  }
+}

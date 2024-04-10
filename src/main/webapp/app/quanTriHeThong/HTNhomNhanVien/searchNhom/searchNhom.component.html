@@ -1,0 +1,31 @@
+<div class="modal-content p-3">
+    <div class="modal-header">
+      <h4 class="modal-title">Danh mục nhóm người sử dụng</h4>
+    </div>
+    <div class="modal-body">
+      <table class="table table-striped table-bordered" aria-describedby="user-management-page-heading">
+        <thead class="data-table">
+          <tr >
+            <th *ngFor="let column of headers" scope="col"><span>{{column}}</span></th>
+          </tr>
+        </thead>
+        <tbody *ngIf="users">
+          <tr *ngFor="let user of users">
+            <td class="data-table">{{users.indexOf(user)+1}}</td>
+            <td class="data-table">{{ user.maNhom }}</td>
+            <td class="">{{ user.ten }}</td>
+            <!-- <td class="data-table" *ngIf="user.tinhTrang">Hiệu lực</td>
+            <td class="data-table" *ngIf="!user.tinhTrang">Hết hiệu lực</td> -->
+            <td class="data-table " >
+              <div class="btn-group select-search" (click)="getTen(user)">
+                <i class="bi bi-check-lg" ></i>  
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="modal-footer">
+      
+  </div>
+  

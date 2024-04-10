@@ -1,0 +1,170 @@
+<div class="row custom-bg">
+  <div class="col-lg-4 col-xl-4 col-xl-4 col-xxl-4 col-sm-12 col-md-12 bg-logo-1 position-relative">
+    <div class="position-absolute top-15 start-15 display-logo">
+    </div>
+    <div class="position-absolute top-50 start-50 translate-middle">
+      <img src="../../content/images/Group.png" class="img-Group" alt="Group" />
+    </div>
+    <div class="position-absolute bottom-15 start-50 translate-middle-x display-logo-fpt">
+      <img src="../../content/images/Group 17949.png" class="img-Group17949" alt="Group 17949" />
+    </div>
+  </div>
+  <form
+    class="col-lg-8 col-xl-8 col-xl-8 col-xxl-8 col-sm-12 col-md-12 col-xl-12 bg-logo-2 position-relative mb-xl-costomer"
+    [formGroup]="registerForm"
+    (ngSubmit)="save()"
+    #formDir="ngForm"
+  >
+    <div class="position-absolute top-50 start-50 translate-middle">
+      <div class="d-flex align-items-start flex-column">
+        <div class="mb-3 display-logo-ceca">
+          <img src="../../../content/images/Property 1=logo default.png" class="property-1logo-default" alt="Property 1=logo default" />
+        </div>
+        <p class="color-text-ftp-login mb-3 fw-bold fw-title">Đăng ký mới FPT.CeCA</p>
+        <div class="row">
+          <div class="col-lg-6 col-xl-6 col-xl-6 col-xxl-6 col-sm-12 mb-3">
+            <label for="orgName" class="form-label">Tên tổ chức <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="orgName" placeholder="Tên tổ chức" formControlName="orgName" />
+            <div
+              *ngIf="
+                (registerForm.get('orgName')!.invalid && (registerForm.get('orgName')!.dirty || registerForm.get('orgName')!.touched)) ||
+                formDir.submitted
+              "
+            >
+              <!-- jhiTranslate="settings.messages.validate.orgName.required" -->
+              <small class="form-text text-danger" *ngIf="registerForm.get('orgName')?.errors?.required">
+                Trường này bắt buộc phải nhập
+              </small>
+            </div>
+          </div>
+          <div class="col-lg-6 col-xl-6 col-xl-6 col-xxl-6 col-sm-12 mb-3">
+            <label for="orgAcronym" class="form-label">Tên viết tắt <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="orgAcronym" placeholder="Tên viết tắt" formControlName="orgAcronym" />
+            <div
+              *ngIf="
+                (registerForm.get('orgAcronym')!.invalid &&
+                  (registerForm.get('orgAcronym')!.dirty || registerForm.get('orgAcronym')!.touched)) ||
+                formDir.submitted
+              "
+            >
+              <!-- jhiTranslate="settings.messages.validate.orgAcronym.required" -->
+              <small class="form-text text-danger" *ngIf="registerForm.get('orgAcronym')?.errors?.required">
+                Trường này bắt buộc phải nhập
+              </small>
+            </div>
+          </div>
+          <div class="col-lg-6 col-xl-6 col-xl-6 col-xxl-6 col-sm-12 mb-3">
+            <label for="taxCode" class="form-label">Mã số thuế <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="taxCode" placeholder="Nhập mã số thuế" formControlName="taxCode" />
+            <div
+              *ngIf="
+                (registerForm.get('taxCode')!.invalid && (registerForm.get('taxCode')!.dirty || registerForm.get('taxCode')!.touched)) ||
+                formDir.submitted
+              "
+            >
+              <!-- jhiTranslate="settings.messages.validate.taxCode.required" -->
+              <small class="form-text text-danger" *ngIf="registerForm.get('taxCode')?.errors?.required">
+                Trường này bắt buộc phải nhập
+              </small>
+            </div>
+          </div>
+          <div class="col-lg-6 col-xl-6 col-xl-6 col-xxl-6 col-sm-12 mb-3"></div>
+          <div class="col-lg-6 col-xl-6 col-xl-6 col-xxl-6 col-sm-12 mb-3">
+            <label for="lastName" class="form-label">Họ <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="lastName" placeholder="Nhập họ" formControlName="lastName" />
+            <div
+              *ngIf="
+                (registerForm.get('lastName')!.invalid && (registerForm.get('lastName')!.dirty || registerForm.get('lastName')!.touched)) ||
+                formDir.submitted
+              "
+            >
+              <!-- jhiTranslate="settings.messages.validate.lastName.required" -->
+              <small class="form-text text-danger" *ngIf="registerForm.get('lastName')?.errors?.required">
+                Trường này bắt buộc phải nhập
+              </small>
+            </div>
+          </div>
+          <div class="col-lg-6 col-xl-6 col-xl-6 col-xxl-6 col-sm-12 mb-3">
+            <label for="firstName" class="form-label">Tên và đệm <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="firstName" placeholder="Nhập tên và đệm" formControlName="firstName" />
+            <div
+              *ngIf="
+                (registerForm.get('firstName')!.invalid &&
+                  (registerForm.get('firstName')!.dirty || registerForm.get('firstName')!.touched)) ||
+                formDir.submitted
+              "
+            >
+              <!-- jhiTranslate="settings.messages.validate.firstName.required" -->
+              <small class="form-text text-danger" *ngIf="registerForm.get('firstName')?.errors?.required">
+                Trường này bắt buộc phải nhập
+              </small>
+            </div>
+          </div>
+          <div class="col-lg-6 col-xl-6 col-xl-6 col-xxl-6 col-sm-12 mb-3">
+            <label for="email" class="form-label">email <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="email" placeholder="Nhập email" formControlName="email" />
+            <div
+              *ngIf="
+                (registerForm.get('email')!.invalid && (registerForm.get('email')!.dirty || registerForm.get('email')!.touched)) ||
+                formDir.submitted
+              "
+            >
+              <!-- jhiTranslate="settings.messages.validate.email.required" -->
+              <small class="form-text text-danger" *ngIf="registerForm.get('email')?.errors?.required">
+                Trường này bắt buộc phải nhập
+              </small>
+            </div>
+          </div>
+          <div class="col-lg-6 col-xl-6 col-xl-6 col-xxl-6 col-sm-12 mb-3">
+            <label for="phoneNumber" class="form-label">SĐT <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              id="phoneNumber"
+              placeholder="Nhập SĐT"
+              formControlName="phoneNumber"
+              (keypress)="numericOnly($event)"
+            />
+            <div
+              *ngIf="
+                (registerForm.get('phoneNumber')!.invalid &&
+                  (registerForm.get('phoneNumber')!.dirty || registerForm.get('phoneNumber')!.touched)) ||
+                formDir.submitted
+              "
+            >
+              <!-- jhiTranslate="settings.messages.validate.phoneNumber.required" -->
+              <small class="form-text text-danger" *ngIf="registerForm.get('phoneNumber')?.errors?.required">
+                Trường này bắt buộc phải nhập
+              </small>
+            </div>
+          </div>
+          <div class="col-12 mb-3">
+            <label for="address" class="form-label">Địa chỉ <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="address" placeholder="Nhập địa chỉ" formControlName="address" />
+            <div
+              *ngIf="
+                (registerForm.get('address')!.invalid && (registerForm.get('address')!.dirty || registerForm.get('address')!.touched)) ||
+                formDir.submitted
+              "
+            >
+              <!-- jhiTranslate="settings.messages.validate.address.required" -->
+              <small class="form-text text-danger" *ngIf="registerForm.get('address')?.errors?.required">
+                Trường này bắt buộc phải nhập
+              </small>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <button type="button" class="btn btn-quaylai display-btn-quaylai" routerLink="/login" routerLinkActive="router-link-active">
+            <img src="../../../content/images/login/Vector.png" alt="Vector" />
+            Quay lại
+          </button>
+          <button type="submit" class="btn btn-dangnhap">Đăng ký</button>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <img src="../../../content/images/login/Group 17901.png" class="display-logo" alt="Group 17901" />
+      </div>
+    </div>
+  </form>
+</div>

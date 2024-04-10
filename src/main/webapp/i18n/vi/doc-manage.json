@@ -1,0 +1,17 @@
+{
+  "doc-manage": {
+    "my-doc": {
+      "ordinal-number": "STT",
+      "file-name": "Tên file",
+      "status": "Trạng thái",
+      "title": "Tiêu đề",
+      "note": "Ghi chú",
+      "created-date": "Ngày tạo",
+      "created-by": "Người tạo",
+      "org": "Tổ chức",
+      "user-name": "Họ và tên",
+      "email": "Email"
+    },
+    "org-doc": {}
+  }
+}

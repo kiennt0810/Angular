@@ -1,0 +1,178 @@
+<div style="background-color: white;" *ngIf="TkForm">
+  <div>
+    <form action="" style="background-color: white;">
+      <div class="me-3 ms-3">
+        <br>
+        <div class="row">
+          <div class="col-12">
+            <div class="row">
+              <div class="col-2">
+                <h6 class="pt-1">Tên hoạt động&nbsp;<span style="color: red;">*</span></h6>
+              </div>
+              <div class="col-10">
+                <div class="col d-flex justify-content-start"><input class="form-control disableDiv" readonly
+                    type="text" name="tenHD" [(ngModel)]="TkForm.tenHD" [ngModelOptions]="{standalone: true}" /></div>
+              </div>
+            </div>
+            <div class="row pt-3">
+              <div class="col-2">
+                <h6 class="pt-1">Cơ quan đại diện</h6>
+              </div>
+              <div class="col-10">
+                <div class="col d-flex justify-content-start"><input class="form-control disableDiv" readonly
+                    type="text" name="coQuan" [(ngModel)]="TkForm.coQuan" [ngModelOptions]="{standalone: true}" /></div>
+              </div>
+            </div>
+            <div class="row pt-3">
+              <div class="col-2">
+                <h6 class="pt-1">Quốc gia</h6>
+              </div>
+              <div class="col-10">
+                <div class="input-group">
+                  <input class="form-control disableDiv" readonly type="text" name="quocGia"
+                    [(ngModel)]="TkForm.quocGia" [ngModelOptions]="{standalone: true}" />
+                </div>
+              </div>
+            </div>
+            <div class="row pt-3">
+              <div class="col-2">
+                <h6 class="pt-1">Hình thức</h6>
+              </div>
+              <div class="col-10">
+                <div class="col d-flex justify-content-start"><input class="form-control disableDiv" readonly
+                    type="text" name="hinhThuc" [(ngModel)]="TkForm.hinhThuc" [ngModelOptions]="{standalone: true}" />
+                </div>
+              </div>
+            </div>
+            <div class="row pt-3">
+              <div class="col-2">
+                <h6>Tặng phẩm</h6>
+              </div>
+              <div class="col-10">
+                <div *ngFor="let d of tangPham">
+                  <p>
+                    <input input type="checkbox" [checked]="d.checked" (change)="d.checked = !d.checked"
+                      [attr.disabled]="disableTextbox? true : null" [attr.disabled]="true" />
+                    &nbsp;{{ d.name }}
+                  </p>
+                  <div class="col d-flex justify-content-start" aria-disabled="true"
+                    *ngIf="d.name == 'Khác' && tangPhamKhac">
+                    <textarea class="form-control disableDiv" type="text" readonly [value]="dataTangPham"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row pt-3">
+              <div class="col-2">
+                <h6 class="pt-1">Thời gian&nbsp;<span style="color: red;" class="pt-2">*</span></h6>
+              </div>
+              <div class="col-10">
+                <div class="input-group">
+                  <input class="form-control disableDiv" readonly type="text" placeholder="dd/mm/yyyy" name="thoiGian"
+                    [(ngModel)]="TkForm.thoiGian" [ngModelOptions]="{standalone: true}" />
+
+                </div>
+              </div>
+            </div>
+            <div class="row pt-3">
+              <div class="col-2">
+                <h6 class="pt-1">Địa điểm</h6>
+              </div>
+              <div class="col-10">
+                <div class="col d-flex justify-content-start"><input class="form-control disableDiv" readonly
+                    type="text" name="diaDiem" [(ngModel)]="TkForm.diaDiem" [ngModelOptions]="{standalone: true}" />
+                </div>
+              </div>
+            </div>
+            <div class="row pt-3">
+              <div class="col-2">
+                <h6 class="pt-1">Ghi chú</h6>
+              </div>
+              <div class="col-10">
+                <div class="col d-flex justify-content-start"><textarea class="form-control disableDiv" readonly
+                    type="text" name="ghiChu" [(ngModel)]="TkForm.ghiChu"
+                    [ngModelOptions]="{standalone: true}"></textarea></div>
+              </div>
+            </div>
+            <div class="row pt-3">
+              <div class="col-2">
+                <h6>Hồ sơ đính kèm</h6>
+              </div>
+              <div class="col-10">
+                <table class="table table-bordered table-striped">
+                  <thead style="background-color: #1A4792; color: white">
+                    <tr>
+                      <th scope="col" class="text-center">STT</th>
+                      <th scope="col" class="text-center col-10">Tên file</th>
+                      <th scope="col" class="text-center">Thao tác</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let d of TkForm.listHDDtlFileVM">
+                      <td class="text-center align-middle">{{TkForm.listHDDtlFileVM.indexOf(d)+1}}</td>
+                      <td>{{d.fileName}}</td>
+                      <td class="text-center"><a class="add" style="color: #27C46B" title="Tải tệp tin"
+                          data-toggle="tooltip" (click)="downloadFile(d.id, d.fileName)">
+                          <i class="material-icons align-middle">file_download</i></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="me-3 ms-3">
+        <h6>Thành phần tham dự</h6>
+      </div>
+      <div class="me-3 ms-3">
+        <table class="table table-bordered table-striped table-responsive text-nowrap"
+          style="border: rgb(199, 199, 199) 1px; box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25)" id="table-data">
+          <thead style="background-color: #1A4792; color: white">
+            <tr>
+              <th scope="col" class="text-center" style="width: 6%;"><span>STT</span> </th>
+              <th scope="col" class="text-center"><span>Họ và tên</span> </th>
+              <th scope="col" class="text-center" style="width: 7%;"><span>Giới tính</span></th>
+              <th scope="col" class="text-center"><span>Chức vụ</span></th>
+              <th scope="col" class="text-center"><span>Cơ quan công tác</span></th>
+            </tr>
+          </thead>
+          <tbody class="align-middle">
+            <tr
+              *ngFor="let item of TkForm.lsThanhPhanThamDu">
+              <td class="text-center ">{{TkForm.lsThanhPhanThamDu.indexOf(item)+1}}</td>
+              <td class="text-col">{{item.hoTen}}</td>
+              <td class="text-col">{{item.gioiTinh}}</td>
+              <td class="text-col">{{item.chucVu}}</td>
+              <td class="text-col">{{item.coQuan}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- <div *ngIf="TkForm" class="me-3 ms-3">
+        <div class="row pt-1">
+          <div class="col-4 pt-2">
+            <h6><i>Tổng số : {{totalItems}}</i></h6>
+          </div>
+          <div class="col-4 d-flex justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
+              [rotate]="true" [boundaryLinks]="true" (pageChange)="transition()"></ngb-pagination>
+          </div>
+          <div class="col-4 d-flex justify-content-end pt-2">
+            <h6><i>Trang {{page}} / {{totalPage}}</i></h6>
+          </div>
+        </div>
+      </div> -->
+      <br>
+      <div class="d-flex justify-content-end me-3 ms-3">
+        <button class="btn btn-primary jh-create-entity "
+          style="color: aliceblue; background-color: #1A4792; border-radius: 7px;" [routerLink]="['/ngoai-giao-doan']">
+          <fa-icon class="iconColor" icon="arrow-left"></fa-icon>&nbsp;<span>Quay lại</span>
+        </button>
+      </div>
+    </form>
+  </div>
+  <br>
+
+
+</div>

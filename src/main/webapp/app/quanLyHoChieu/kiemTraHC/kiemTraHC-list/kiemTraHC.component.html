@@ -1,0 +1,177 @@
+<div>
+    <div class="divBGColor2">
+        <br>
+        <div class="me-3 ms-3">
+            <div class="col-md-8">
+                <h5 class="title"><fa-icon class="bi bi-search"></fa-icon>&nbsp;Kiểm tra hộ chiếu theo danh sách</h5>
+            </div>
+        </div>
+        <hr class="me-3 ms-3">
+        <br>
+        <div class="me-3 ms-3 pb-3">
+            <form name="form" role="form">
+                <div class="row">
+                    <div class="col-1-5 text-nowrap pt-2">
+                        <h6 class="form-label">File danh sách</h6>
+                    </div>
+                    <div class="col-2-5 input-group custom-file-button">
+                        <input type="file" class="form-control d-flex justify-content-end" id="inputGroupFile" (change)="handleFileInput($event)"
+                            accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                        <label class="input-group-text" for="inputGroupFile">Tải tập tin</label>
+                    </div>
+                    <div class="col-3-5 d-flex justify-content-end text-nowrap">
+                        <button type="button" (click)="kiemTra()" class="btn iconBG2 borderCus me-2">
+                            <fa-icon class="iconColor2" icon="check"></fa-icon>
+                            <span class="iconColor2">Kiểm tra</span>
+                        </button>
+                        <button *ngIf="checkData == 1" (click)="checkPrint()" type="button"
+                            class="btn iconBG2 borderCus me-2">
+                            <fa-icon class="bi bi-printer iconColor2"></fa-icon> <span class="iconColor2">In báo
+                                cáo</span>
+                        </button>
+                        <button *ngIf="checkData == 1" (click)="checkExport()" type="button"
+                            class="btn iconBG2 borderCus me-2">
+                            <fa-icon class="bi bi-file-earmark-arrow-down iconColor2"></fa-icon>
+                            <span class="iconColor2">Kết xuất</span>
+                        </button>
+                        <button (click)="downloadFile()" type="button" class="btn iconBG2 borderCus me-2">
+                            <fa-icon class="bi bi-download iconColor2"></fa-icon>
+                            <span class="iconColor2">Mẫu File</span>
+                        </button>
+                        <button type="button" class="btn iconBG2 borderCus" routerLink="" >
+                            <fa-icon class="iconColor2" icon="arrow-left"></fa-icon>
+                            <span class="iconColor2">Thoát</span>
+                        </button>
+                    </div>
+                </div>
+                <br>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- *ngIf="checkData == 1" -->
+    <div *ngIf="checkData == 1 && kiemTraHCs.length > 0">
+        <div class="mt-2 divBGColor2">
+            <br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 d-flex justify-content-center">
+                        <h4 style="color: green; font-weight: bold;">{{ConHan}}</h4>
+                    </div>
+                    <div class="col-md-3 d-flex justify-content-center">
+                        <h4 style="color: orange; font-weight: bold;">{{SapHetHan}}</h4>
+                    </div>
+                    <div class="col-md-3 d-flex justify-content-center">
+                        <h4 style="color: red; font-weight: bold;">{{HetHan}}</h4>
+                    </div>
+                    <div class="col-md-3 d-flex justify-content-center">
+                        <h4 style="color: blue; font-weight: bold;">{{KhongTonTai}}</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 d-flex justify-content-center">
+                        <h4 style="font-weight: bold;">Còn hạn</h4>
+                    </div>
+                    <div class="col-md-3 d-flex justify-content-center">
+                        <h4 style="font-weight: bold;">Sắp hết hạn</h4>
+                    </div>
+                    <div class="col-md-3 d-flex justify-content-center">
+                        <h4 style="font-weight: bold;">Đã hết hạn</h4>
+                    </div>
+                    <div class="col-md-3 d-flex justify-content-center">
+                        <h4 style="font-weight: bold;">Không tồn tại</h4>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+        <!-- *ngIf="checkData == 1" -->
+        <div class="mt-2 divBGColor2" *ngIf="checkData == 1 && kiemTraHCs.length > 0">
+            <div class="me-3 ms-3 pt-1">
+                <div class="col-md-8 mt-4 ">
+                    <h5 class="title"><fa-icon class="bi bi-folder2"></fa-icon>&nbsp;Kết quả kiểm tra</h5>
+                </div>
+            </div>
+            <hr class="me-3 ms-3">
+            <div class="table-responsive me-3 ms-3" *ngIf="kiemTraHCs">
+                <table [style.width.%]="140" class="table table-bordered table-striped" style="border: rgb(199, 199, 199) 1px;">
+                    <thead class="navBGColor2 text-nowrap">
+                        <tr class="thAlign2">
+                            <th scope="col" [style.width.%]="1"><span>STT</span></th>
+                            <th scope="col" [style.width.%]="3"><span>Số hộ chiếu</span></th>
+                            <th scope="col" [style.width.%]="6"><span>Họ và tên</span></th>
+                            <th scope="col" [style.width.%]="2"><span>Giới tính</span></th>
+                            <th scope="col" [style.width.%]="3"><span>CCCD</span></th>
+                            <th scope="col" [style.width.%]="3"><span>Ngày sinh</span></th>
+                            <th scope="col" [style.width.%]="6"><span>Chức vụ</span></th>
+                            <th scope="col" [style.width.%]="6"><span>Cơ quan</span></th>
+                            <th scope="col" [style.width.%]="6"><span>Loại hộ chiếu</span></th>
+                            <th scope="col" [style.width.%]="3"><span>Ngày cấp</span></th>
+                            <th scope="col" [style.width.%]="3"><span>Ngày hết hạn</span></th>
+                            <th scope="col" [style.width.%]="3"><span>Thời hạn còn lại</span></th>
+                            <th scope="col" [style.width.%]="3"><span>Trạng thái</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            *ngFor="let GNHchieu of kiemTraHCs | slice: (page-1) * itemsPerPage : (page-1) * itemsPerPage + itemsPerPage">
+                            <td class="text-center align-middle">{{ GNHchieu.stt }}</td>
+                            <td class="text-center align-middle">{{ GNHchieu.soHC }}</td>
+                            <td class="align-middle">{{ GNHchieu.hoTen }}</td>
+                            <td class="text-center align-middle">{{ GNHchieu.gioiTinh == 'null' ? "" : GNHchieu.gioiTinh}}</td>
+                            <td class="text-center align-middle">{{ GNHchieu.cmndSo == 'null' ? "" : GNHchieu.cmndSo }}</td>
+                            <td class="text-center align-middle">{{ GNHchieu.ngaySinh }}</td>
+                            <td class="align-middle">{{ GNHchieu.chucVu == 'null' ? "" : GNHchieu.chucVu}}</td>
+                            <td class="align-middle">{{ GNHchieu.coQuan == 'null' ? "" : GNHchieu.coQuan}}</td>
+                            <td class="align-middle">{{ GNHchieu.loaiHC }}</td>
+                            <td class="text-center align-middle">{{ GNHchieu.cmndNgayCap }}</td>
+                            <td class="text-center align-middle">{{ GNHchieu.cmndNgayHL }}</td>
+                            <td class="text-center align-middle">{{ GNHchieu.tGianHL }}</td>
+                            <td class="text-center align-middle">
+                                <b style="color: green;" *ngIf="GNHchieu.trangThai == '0'">
+                                    Còn hạn
+                                </b>
+                                <b style="color: orange;" *ngIf="GNHchieu.trangThai == '1'">
+                                    Sắp hết hạn
+                                </b>
+                                <b style="color: red;" *ngIf="GNHchieu.trangThai == '2'">
+                                    Đã hết hạn
+                                </b>
+                                <b style="color: blue;" *ngIf="GNHchieu.trangThai == '3'">
+                                    Không tồn tại
+                                </b>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *ngIf="kiemTraHCs">
+                <div class="row me-2 ms-2 pt-1">
+                    <div class="col-4 pt-2">
+                        <h6><i><jhi-item-count
+                                    [params]="{ nameModule: nameModule, totalItems: totalItems }"></jhi-item-count></i>
+                        </h6>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center">
+                        <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage"
+                            [maxSize]="5" [rotate]="true" [boundaryLinks]="true"
+                            (pageChange)="transition()"></ngb-pagination>
+                    </div>
+                    <div class="col-4 d-flex justify-content-end pt-2">
+                        <h6><i>Trang {{page}} / {{totalPage}}</i></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="divBGColor2 mt-2" *ngIf="checkData == 1 && kiemTraHCs.length <= 0">
+        <br><br><br>
+        <div class="text-center">
+            <h5 style="font-weight: bold;">Danh sách kiểm tra trống!</h5>
+        </div>
+        <br><br><br>
+    </div>
+
+</div>
+<app-alert></app-alert>

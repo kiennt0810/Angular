@@ -1,0 +1,192 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+body {
+    color: #404E67;
+    background: #F5F7FA;
+    font-family: 'Open Sans', sans-serif;
+}
+.table-wrapper {
+    width: 700px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px;	
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.table-title {
+    padding-bottom: 10px;
+    margin: 0 0 10px;
+}
+.table-title h2 {
+    margin: 6px 0 0;
+    font-size: 22px;
+}
+.table-title .add-new {
+    float: right;
+    height: 30px;
+    font-weight: bold;
+    font-size: 12px;
+    text-shadow: none;
+    min-width: 100px;
+    border-radius: 50px;
+    line-height: 13px;
+}
+.table-title .add-new i {
+    margin-right: 4px;
+}
+table.table {
+    table-layout: fixed;
+}
+table.table tr th, table.table tr td {
+    border-color: #e9e9e9;
+}
+table.table th i {
+    font-size: 13px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+table.table th:last-child {
+    width: 100px;
+}
+table.table td a {
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 5px;
+    min-width: 24px;
+}    
+table.table td a.add {
+    color: #27C46B;
+}
+table.table td a.edit {
+    color: #FFC107;
+}
+table.table td a.delete {
+    color: #70B603;
+}
+table.table td i {
+    font-size: 19px;
+}
+table.table td a.add i {
+    font-size: 24px;
+    margin-right: -1px;
+    position: relative;
+    top: 3px;
+}    
+table.table .form-control {
+    height: 32px;
+    line-height: 32px;
+    box-shadow: none;
+    border-radius: 2px;
+}
+table.table .form-control.error {
+    border-color: #70B603;
+}
+.custom-wrapper {
+    max-width: 100%;
+    margin-top: 1%;
+  }
+// .group-gap {
+//     margin-bottom: px;
+// }
+
+.avatar-upload {
+    position: relative;
+    max-width: 100%;
+    height: 200px;
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+
+  .avatar-upload .avatar-edit {
+    position: absolute;
+    right: 1%;
+    z-index: 1;
+    top: 1%;
+  }
+  
+  .avatar-upload .avatar-edit input {
+    display: none;
+  }
+  
+  .avatar-upload .avatar-edit .custom-label {
+    // display: inline-block;
+    width: 1%;
+    height: 1%;
+    margin-bottom: 0;
+    // border-radius: 100%;
+    background: #3efc78;
+    border: 1px solid transparent;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    font-weight: normal;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .avatar-upload .avatar-edit .upload-image {
+    background: #3efc78;
+  }
+  
+  .avatar-upload .avatar-edit .remove-image {
+    background: rgba(233, 30, 98, 0.075);
+  }
+  
+  .avatar-upload .avatar-edit .custom-label:hover {
+    opacity: 1;
+  }
+  
+  .avatar-upload .avatar-edit .custom-label:after {
+    position: absolute;
+    text-align: center;
+    margin: auto;
+    top: 8px;
+    right: 0;
+    left: 2px;
+    width: 18px;
+  }
+  
+  .avatar-upload .avatar-edit .upload-image:after {
+    content: url('/assets/edit.svg');
+  }
+  
+  .avatar-upload .avatar-edit .remove-image:after {
+    content: url('/assets/close.svg');
+    left: 0px !important;
+  }
+  
+  .avatar-upload .avatar-preview {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    // border-radius: 100%;
+    overflow: hidden;
+    border: 3px solid #fff;
+    -webkit-box-shadow: 0 0 45px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 0 45px rgba(0, 0, 0, .2);
+    box-shadow: 0 0 45px rgba(0, 0, 0, .2);
+  }
+  
+  .avatar-upload .avatar-preview>div {
+    width: 100%;
+    height: 100%;
+    // border-radius: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .col-sm-10{
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+
+  table {
+    counter-reset: rowNumber - 1;
+  }
+
+  table tr {
+    counter-increment: rowNumber;
+  }
+  
+  table tr td:first-child::before {
+    content: counter(rowNumber);
+    min-width: 1em;
+    margin-right: 0.5em;
+  }

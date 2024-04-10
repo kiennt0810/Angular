@@ -1,0 +1,79 @@
+//@import '~bootstrap/scss/functions';
+//@import '~bootstrap/scss/variables';
+//.navbar-version {
+//  font-size: 0.65em;
+//  color: $navbar-dark-color;
+//}
+
+._navbar {
+  //position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  padding: 16px 6px 6px 16px;
+
+  .title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    color: #262626;
+    margin-left: 15%;
+    text-align: center; 
+    vertical-align: middle;
+  }
+
+  .url {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #8c8c8c;
+    margin-top: 7px;
+  }
+
+  .profile {
+    position: absolute;
+    right: 20px;
+    top: 14px;
+    border: 1px solid #cccccc;
+    border-radius: 50%;
+    width: 43px;
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    background: #f2f2f2;
+    font-weight: 600;
+    color: #747474;
+  }
+}
+
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+
+.test222 {
+  //background-image: url('../../../content/images/icon/user.png');
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+}
+.userbtn {
+  display: inline-block; 
+  border: none;
+  background-color: #1A4792;
+  color: white;
+}
+
+.link:hover {
+  cursor: pointer !important;
+  text-decoration: underline;
+}

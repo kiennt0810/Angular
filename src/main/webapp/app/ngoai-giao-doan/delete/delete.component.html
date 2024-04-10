@@ -1,0 +1,26 @@
+<form *ngIf="user" name="deleteForm" (ngSubmit)="confirmDelete(user.id)">
+    <div class="modal-header">
+      <h4 class="modal-title">Bạn có chắc chắn muốn xoá bản ghi!</h4>
+  
+      <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()"></button>
+    </div>
+  
+    <div class="modal-body">
+      <jhi-alert-error></jhi-alert-error>
+  
+      <!-- <p jhiTranslate="userManagement.delete.question" [translateValues]="{ login: user.login }">
+        Are you sure you want to delete user {{ user.login }}?
+      </p> -->
+    </div>
+  
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+        <fa-icon icon="ban"></fa-icon>&nbsp;Hủy
+      </button>
+  
+      <button type="submit" class="btn btn-danger">
+        <fa-icon icon="times"></fa-icon>&nbsp;Xóa
+      </button>
+    </div>
+  </form>
+  

@@ -1,0 +1,60 @@
+    <div class="d-flex justify-content-center" style="height: 420px; margin-top: 15vh;">
+        <form name="editForm" class="form" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm" > 
+            <div class="col mt-5">
+              <div class="row d-flex flex-column mb-4">
+                <label class="label mt-2 mb-1" style="font-weight: bold; width: 100%;">Mã quốc gia <span class="text-danger">*</span></label>
+                  <input type="text" class="input "  name="maQG" formControlName="maQG" autocomplete="off"/>
+          
+                  <div *ngIf="editForm.get('maQG')!.invalid && (editForm.get('maQG')!.dirty || editForm.get('maQG')!.touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('maQG')?.errors?.required" >
+                      Trường này không được để trống.
+                    </small>
+                    
+                  </div>
+              </div>
+  
+              <div class="row d-flex flex-column  mb-4">
+                <label class="label mb-1" style="font-weight: bold; width: 100%;">Tên quốc gia <span class="text-danger">*</span></label>
+                  <input type="text" class="input " name="ten" formControlName="ten" autocomplete="off"/>
+          
+                  <div *ngIf="editForm.get('ten')!.invalid && (editForm.get('ten')!.dirty || editForm.get('ten')!.touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('ten')?.errors?.required" >
+                      Trường này không được để trống.
+                    </small>
+                    <!-- <small
+                      class="form-text text-danger"
+                      *ngIf="editForm.get('ten')?.errors?.maxlength"
+                    >
+                      This field cannot be longer than 50 characters.
+                    </small> -->
+                  </div>
+              </div>
+  
+              <div class="row d-flex flex-column mb-2">
+                <span class="label mb-1" style="width: 100%;">Tình trạng</span>
+                <select 
+                  style="width: 30%; background-color: #e9ecef;"
+                  class="input"               
+                  disabled          
+                >
+                  <option >Hiệu lực</option>
+                </select> 
+              </div>  
+  
+              <div class="d-flex justify-content-end mb-5" style="margin-right: 180px;">
+                <button type="submit" [disabled]="editForm.invalid || isSaving" class="btn btn-primary jh-create-entity me-3 iconBG buttonborder">
+                  <fa-icon class="bi bi-floppy iconColor"></fa-icon>
+                    <span class="iconColor">Lưu</span>
+                </button>
+        
+                <button type="button" class="btn btn-primary jh-create-entity iconBG buttonborder" (click)="previousState()">
+                  <fa-icon class="bi bi-box-arrow-left iconColor"></fa-icon>
+                  <span class="iconColor">Quay lại</span>
+                </button>
+                
+              </div>
+            </div>
+
+        </form>
+    </div>
+    <app-alert></app-alert>

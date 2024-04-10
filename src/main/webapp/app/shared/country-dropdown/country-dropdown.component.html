@@ -1,0 +1,8 @@
+
+<div class="input-group">
+    <select class="form-select" style="background-color: #fff" name="quocGia" formControlName="quocGia">
+      <option value="" disabled selected >Select an item</option>
+      <option *ngFor="let item of items" [value]="item.value">{{ item.text }}</option>
+    </select>
+</div> 
+

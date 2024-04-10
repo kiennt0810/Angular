@@ -1,0 +1,170 @@
+    <div style="background-color: #fff; padding-top: 40px;">
+        <form 
+          class="me-5 pb-4"
+          name="editForm" 
+          role="form" 
+          novalidate 
+          (ngSubmit)="save()" 
+          [formGroup]="editForm" 
+          style="margin-left: 100px; "
+        >
+
+            <!-- <div class="mb-3" [hidden]="!editForm.value.id">
+              <label >ID</label>
+              <input type="text" class="form-control" name="id"  readonly />
+            </div>      
+             -->
+
+            <div class="row mb-5">
+                <label class="label">Họ và tên &nbsp;<span class="text-danger"> *</span></label>
+                <input type="text" class="input" name="hoTen" formControlName="hoTen" />
+        
+                <div *ngIf="editForm.get('hoTen')!.invalid && (editForm.get('hoTen')!.dirty || editForm.get('hoTen')!.touched)">
+                  <small 
+                class="form-text text-danger" 
+                *ngIf="editForm.get('hoTen')?.errors?.required" 
+                style="margin-left: 21%;">
+                Trường này không được để trống.              
+              </small>
+                </div>
+            </div>
+
+            <div class="row mb-5">
+                <label class="label"  >Tên tài khoản &nbsp;<span class="text-danger">*</span></label>
+                <input type="text" class="input" name="maNhanVien" formControlName="maNhanVien" />
+        
+                <div *ngIf="editForm.get('maNhanVien')!.invalid && (editForm.get('maNhanVien')!.dirty || editForm.get('maNhanVien')!.touched)">
+              <small 
+                class="form-text text-danger" 
+                *ngIf="editForm.get('maNhanVien')?.errors?.required" 
+                style="margin-left: 21%;">
+                Trường này không được để trống.              
+              </small>
+                </div>
+            </div>
+
+                   
+
+          <div class="row mb-5">
+            <label class="label">Email &nbsp;<span class="text-danger">*</span></label>
+            <input type="email" class="input " name="email" formControlName="email" />
+            <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
+              <small 
+                class="form-text text-danger" 
+                *ngIf="editForm.get('email')?.errors?.required" 
+                style="margin-left: 21%;">
+                Trường này không được để trống.              
+              </small>
+              <small
+                class="form-text text-danger"
+                *ngIf="editForm.get('email')?.errors?.maxlength"
+                style="margin-left: 21%;"
+              >
+              Không được dài quá 254 ký tự.
+            </small>
+    
+              <small
+                class="form-text text-danger"
+                *ngIf="editForm.get('email')?.errors?.minlength"
+                style="margin-left: 21%;"
+              >
+              Nhập ít nhất 5 ký tự
+              </small>
+    
+              <small
+                class="form-text text-danger"
+                *ngIf="editForm.get('email')?.errors?.pattern  && (!editForm.get('email')?.errors?.minlength && !editForm.get('email')?.errors?.maxlength)"
+                style="margin-left: 21%;"
+              >
+              Sai định dạng email
+              </small>
+              
+            </div>
+          </div>
+        
+          <div class="row mb-5">
+            <span class="label" style="align-items: start; padding-top: 9px;">Ngày sinh</span>
+            
+              <span style="width: 67%" class="row">
+                  <div class="col position-relative" style="padding: 0">
+                    <input 
+                    autocomplete="off"
+                      class="input " 
+                      style="width: 80%;"
+                      type="text" 
+                      placeholder="dd/mm/yyyy" 
+                      bsDatepicker
+                      [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false }" 
+                      name="ngaySinh"
+                      formControlName="ngaySinh" 
+                      (change)="isInvalidDate($event)" 
+                      (bsValueChange)="checkDateNgay($event)" 
+                      id="ngaySinh"
+                      maxlength="10"
+                    />
+                    <div>
+                      <small 
+                        class="form-text text-danger" 
+                        *ngIf="showWarning" 
+                        >
+                        Vui lòng nhập ngày theo định dạng DD/MM/YYYY           
+                      </small>
+                      <small 
+                        class="form-text text-danger" 
+                        *ngIf="showError" 
+                        >
+                        Ngày sinh không được lớn hơn ngày hiện tại         
+                      </small>
+                    </div>
+                  </div>
+  
+              <div class="col d-flex" style="padding: 0;">
+                <span class="label" style="margin-left: 6%; align-items: start; padding-top: 9px;">Giới tính</span>
+                <select 
+                  style="width: 70%;"
+                  class="input"               
+                  formControlName="gioiTinh"
+                >
+                <option [ngValue]= "null"></option>
+                <option [ngValue]="true" >Nam</option>
+                <option [ngValue]="false">Nữ</option>
+              </select> 
+              </div>
+              </span>
+          </div>
+
+          <div class="row mb-5">
+            <span class="label">Chức vụ</span>
+            <input type="text" class="input" name="chucDanh" formControlName="chucDanh" />
+      </div>
+
+      <div class="row mb-5">
+        <span class="label">Tình trạng</span>
+        <select 
+          style="width: 30%; background-color: #e9ecef;"
+          class="input"               
+          disabled          
+        >
+        <option >Hiệu lực</option>
+      </select> 
+      </div>  
+      
+      <div class="d-flex justify-content-end">
+        <button 
+          type="submit" 
+          [disabled]="editForm.get('email').invalid || editForm.get('hoTen').invalid || editForm.get('maNhanVien').invalid || isSaving" 
+          class="btn btn-primary jh-create-entity me-3 iconBG buttonborder">
+          <fa-icon class="bi bi-floppy iconColor"></fa-icon>
+            <span class="iconColor">Lưu</span>
+        </button>
+
+        <button type="button" class="btn btn-primary jh-create-entity iconBG buttonborder" (click)="previousState()">
+          <fa-icon class="bi bi-box-arrow-left iconColor"></fa-icon>
+          <span class="iconColor">Quay lại</span>
+        </button>
+      </div>
+
+        </form>
+        <app-alert></app-alert>
+    </div>
+   

@@ -1,0 +1,109 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+.iconColor2 {
+    color: white;
+}
+.borderCus {
+  border-radius: 7px;
+}
+.iconBG2 {
+    background-color: #1A4792;
+}
+.divBGColor2 {
+    background-color: white;
+}
+.navBGColor2 {
+    background-color: #1A4792; 
+    color: aliceblue;
+}
+.textColor2 {
+    color: #1A4792;
+}
+.thAlign2 {
+    text-align: center;
+}
+
+ .custom-file-button {
+	input[type="file"] {
+		margin-left: -2px !important;
+
+		&::-webkit-file-upload-button {
+			display: none;
+		}
+		&::file-selector-button {
+			display: none;
+		}
+	}
+
+	&:hover {
+		label {
+			background-color: #70B603;
+			cursor: pointer;
+            color: white;
+		}
+	}
+}
+
+// table {
+//     counter-reset: rowNumber - 1;
+//   }
+
+//   table tr {
+//     counter-increment: rowNumber;
+//   }
+  
+//   table tr td:first-child::before {
+//     content: counter(rowNumber);
+//     min-width: 1em;
+//   }
+  .title{
+    color: #1A4792;
+    font-size: 22px;
+    font-weight: bold;
+  
+    .bi-check {
+      font-weight: bold;
+      font-size: x-large;
+    }
+  }
+
+  .col-1-5 {
+    flex: 0 0 10%;
+    max-width: 10%;
+    position: relative;
+    width: 100%;
+}
+.col-2-5 {
+  flex: 0 0 49%;
+  max-width: 49%;
+  position: relative;
+  width: 100%;
+}
+.col-3-5 {
+  flex: 0 0 39%;
+  max-width: 39%;
+  position: relative;
+  width: 100%;
+}
+
+
+ngb-pagination ::ng-deep ul > li:not(.active) > a {
+  background-color: white !important;
+  //border-color: black !important;
+}
+
+// ::ng-deep ul > li.disabled > span {
+//   background-color: brown !important;
+//   border-color: black !important;
+// }
+
+ngb-pagination ::ng-deep ul > li.active > a {
+  background-color: #1A4792 !important;
+  border-color: #1A4792  !important;
+}
+ngb-pagination ::ng-deep .page-item.active .page-link:focus, .page-link:not(:disabled):not(.disabled):active:focus {
+  box-shadow: 0 0 0 0.1rem #1A4792;
+}
+
+ngb-pagination ::ng-deep .page-link:not(:disabled):not(.disabled):active:focus {
+  box-shadow: 0 0 0 0.1rem #1A4792;
+}

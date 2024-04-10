@@ -1,0 +1,150 @@
+
+  .table-space tr{
+    height: 50px;
+  }
+.title{
+  color: #1A4792;
+  font-size: 22px;
+  font-weight: 400;
+
+  .bi-search {
+    font-weight: bold;
+  }
+}
+
+.form-input {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 0 20px;
+  font-size: 16px;
+  font-weight: 500;  
+}
+
+.input-wrapper {
+    height: 50px;
+    margin: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .c2 {
+    display: flex;
+    width: 170px;
+    font-size: 20px;
+  }
+  
+  .input-container {
+    height: 35px;
+    border-radius: 4px;
+  }
+  
+  .content-wrapper {
+      max-width: 100%;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;  
+    }
+
+  table {
+    width: 100%;
+  }
+
+  .table-responsive{
+    background-color: #fff;
+    // padding: 0 40px;
+  }
+
+  .data-table {
+    text-align: center;
+  }
+  .buttonborder {
+    border-radius: 7px;
+  }
+  .iconColor {
+    color: white;
+  }
+  .title3 {
+    font-family: Verdana;
+    font-size: 11px;
+    color: #ff3300;
+    font-weight: none
+  }
+  .col-2i {
+    height: 35px;
+    width: 600px;
+    position: relative;
+  }
+  .title{
+    color: #1A4792;
+    font-size: 22px;
+    font-weight: 400;
+  
+    .bi-search {
+      font-weight: bold;
+    }
+  }
+  thead {
+    background-color: #1A4792;
+    color: #fff;
+    font-size: 90%;
+  }
+  .iconBG {
+    background-color: #1A4792;
+}
+  .bi {
+    margin: 0 0px !important;
+  }
+
+  .bi-folder {
+    font-size: 30px;
+  }
+
+  .my-custom-scrollbar {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }
+    .disableDiv {
+      background-color: rgb(206, 206, 206);
+      border-radius: 7px;
+  }
+   
+
+
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+    }
+    .table-striped td {
+        padding: 0.5rem;
+        border: 1px solid gray;
+    }
+    .table-striped th {
+        padding: 0.5rem;
+        border: 1px solid gray;
+    }
+
+    .table-striped{
+      vertical-align: middle
+    }
+
+    table tbody tr td:first-child {
+      position: -webkit-sticky;
+      position: sticky;
+      left: 0px;
+      top: 0px;
+      z-index: 2;
+    }
+
+    #test {
+      position: -webkit-sticky;
+      position: sticky;
+      left: 0px;
+      z-index: 2;
+    }

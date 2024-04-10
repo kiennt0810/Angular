@@ -1,0 +1,59 @@
+.wrapper {
+  display: flex;
+}
+
+.wrapper .sidebar {
+  background: white;
+  height: 100vh;
+  width: 0;
+  border-right: 1px solid #e0e0e0;
+  transition: 0.5s;
+  transform: translateX(-250px);
+
+  &.active {
+    width: 310px;
+    transform: translateX(0);
+  }
+}
+
+.wrapper .main {
+  background: white;
+  height: 100vh;
+  width: 100%;
+  transition: 0.5s;
+
+  ._navbar {
+    width: 100%;
+    height: 75px;
+    padding-left: 40px;
+    transition: 0.5s;
+  }
+
+  .content {
+    overflow: auto;
+    background: #f3f3f3;
+    width: 100%;
+    height: calc(100% - 75px);
+    &:not(.authenticated) {
+      height: 100%;
+    }
+    &.authenticated {
+      height: calc(100% - 75px);
+    }
+    &:not(.no-padding) {
+      padding: 19px;
+    }
+  }
+
+  &.active {
+    &:not(.authenticated) {
+      width: 100%;
+    }
+    &.authenticated {
+      width: calc(100% - 310px);
+    }
+    ._navbar {
+      padding-left: 0;
+    }
+  }
+}
