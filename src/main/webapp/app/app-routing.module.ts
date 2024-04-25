@@ -10,22 +10,14 @@ import { UserRouteAccessService } from './core/auth/user-route-access.service';
   imports: [
     RouterModule.forRoot(
       [
-        {
-          path: 'admin',
-          // data: {
-          //   authorities: [Authority.ADMIN],
-          // },
-          // canActivate: [UserRouteAccessService],
-          loadChildren: () => import('./admin/admin-routing.module').then(m => m.AdminRoutingModule),
-        },
-        {
-          path: 'doanVao',
-          data: {
-            authorities: ['03001'],
-          },
-          canActivate: [UserRouteAccessService],
-          loadChildren: () => import('./quanLyDoan/doanVao-routing.module').then(m => m.CategoriesRoutingModule),
-        },
+        // {
+        //   path: 'doanVao',
+        //   data: {
+        //     authorities: ['03001'],
+        //   },
+        //   canActivate: [UserRouteAccessService],
+        //   loadChildren: () => import('./quanLyDoan/doanVao-routing.module').then(m => m.CategoriesRoutingModule),
+        // },
         // {
         //   path: 'quanLyTV',
         //   data: {
@@ -34,14 +26,14 @@ import { UserRouteAccessService } from './core/auth/user-route-access.service';
         //   canActivate: [UserRouteAccessService],
         //   loadChildren: () => import('./quanLyDoan/qltv-routing.module').then(m => m.quanLyTVRoutingModule),
         // },
-        {
-          path: 'doanRa',
-          data: {
-            authorities: ['04001'],
-          },
-          canActivate: [UserRouteAccessService],
-          loadChildren: () => import('./quanLyDoan/doanRa-routing.module').then(m => m.DelegationOutRoutingModule),
-        },
+        // {
+        //   path: 'doanRa',
+        //   data: {
+        //     authorities: ['04001'],
+        //   },
+        //   canActivate: [UserRouteAccessService],
+        //   loadChildren: () => import('./quanLyDoan/doanRa-routing.module').then(m => m.DelegationOutRoutingModule),
+        // },
         // {
         //   path: 'quanLyTVRa',
         //   data: {
@@ -77,7 +69,7 @@ import { UserRouteAccessService } from './core/auth/user-route-access.service';
         {
           path: 'quanlydanhmuc',
           data: {
-            authorities: ['02001'],
+            authorities: ['02000'],
           },
           canActivate: [UserRouteAccessService],
           loadChildren: () => import('./quanlydanhmuc/quanlydanhmuc-routing.module').then(m => m.QuanlydanhmucRoutingModule),
@@ -90,21 +82,21 @@ import { UserRouteAccessService } from './core/auth/user-route-access.service';
           canActivate: [UserRouteAccessService],
           loadChildren: () => import('./quanTriHeThong/quanTriHeThong-routing.module').then(m => m.QuanTriHeThongRoutingModule),
         },
+        // {
+        //   data: {
+        //     authorities: ['05000'],
+        //   },
+        //   canActivate: [UserRouteAccessService],
+        //   path: 'tiep-khach-quoc-te',
+        //   loadChildren: () => import('./tiep-khach-quoc-te/tiepkhachquocte-routing.module').then(m => m.TiepkhachquocteRoutingModule),
+        // },
         {
           data: {
-            authorities: ['05000'],
+            authorities: ['03000'],
           },
           canActivate: [UserRouteAccessService],
-          path: 'tiep-khach-quoc-te',
-          loadChildren: () => import('./tiep-khach-quoc-te/tiepkhachquocte-routing.module').then(m => m.TiepkhachquocteRoutingModule),
-        },
-        {
-          data: {
-            authorities: ['06000'],
-          },
-          canActivate: [UserRouteAccessService],
-          path: 'ngoai-giao-doan',
-          loadChildren: () => import('./ngoai-giao-doan/ngoai-giao-doan-routing.module').then(m => m.NgoaiGiaoDoanRoutingModule),
+          path: 'product',
+          loadChildren: () => import('./product/product-routing.module').then(m => m.ProductRoutingModule),
         },
         {
           data: {

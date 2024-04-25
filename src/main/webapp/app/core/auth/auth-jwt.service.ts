@@ -11,6 +11,7 @@ import { clearSession, isNullOrUndefined } from 'app/shared/util/func-util';
 import { NavigationExtras, Router } from '@angular/router';
 import { API_URL } from 'app/app.constants';
 import { AlertServiceCheck } from 'app/alertNew/alertNew.service';
+import { Base64 } from 'js-base64';
 
 type JwtToken = {
   data: string;
@@ -72,7 +73,7 @@ export class AuthServerProvider {
     const jwt = response.data;
     if (jwt) {
       let jwtdata = jwt.split('.')[1];
-      let decodedjwtjsondata = window.atob(jwtdata);
+      let decodedjwtjsondata = Base64.decode(jwtdata);
       let decodedjwtdata = JSON.parse(decodedjwtjsondata);
       this.sessionStorageService.store('userID', decodedjwtdata['Id']);
       this.sessionStorageService.store('userName', decodedjwtdata['UserName']);

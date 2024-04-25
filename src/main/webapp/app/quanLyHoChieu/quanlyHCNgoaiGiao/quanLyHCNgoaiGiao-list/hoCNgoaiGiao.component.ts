@@ -20,8 +20,6 @@ import { THOI_GIAN_HIEU_LUC } from 'app/app.constants';
 import { AccountService } from 'app/core/auth/account.service';
 import { Account } from 'app/core/auth/account.model';
 import { NavBarService } from 'app/layouts/navbar/nav-bar.service';
-import { QuanLyTVService } from 'app/quanLyDoan/quanLyTVRa/service/quanLyTVRa.service';
-import { QuanLyTV } from 'app/quanLyDoan/quanLyTVRa/quanLyTVRa.model';
 import { SessionStorageService } from 'ngx-webstorage';
 
 declare var $: any;
@@ -56,7 +54,6 @@ export class HChieuNGComponent implements OnInit {
   giaoNhanHCs: GiaoNhanHC[] | null = null;
   totalGnHc = 0;
 
-  TVDoanRas: QuanLyTV[] | null = null;
   totalsTVDoanRa = 0;
   checkLoadList = false;
 
@@ -77,7 +74,6 @@ export class HChieuNGComponent implements OnInit {
     private alert: AlertServiceCheck,
     private accountService: AccountService,
     private NavbarService: NavBarService,
-    private qltvService: QuanLyTVService,
     private sessionStorageService: SessionStorageService,
   ) { }
 
@@ -89,7 +85,6 @@ export class HChieuNGComponent implements OnInit {
     }
     this.handleNavigation();
     this.loadAllGnHoChieu();
-    this.loadAllTVDoanRa();
     this.currentPath = this.router.url;
     this.NavbarService.getPath(this.currentPath);
     this.roles = this.sessionStorageService.retrieve('roles');
@@ -281,27 +276,7 @@ export class HChieuNGComponent implements OnInit {
       });
   }
 
-  loadAllTVDoanRa(): void {
-    this.isLoading = true;
-    this.qltvService
-      .query({
-        page: this.page - 1,
-        size: this.itemsPerPage,
-        sort: this.sort(),
-      })
-      .subscribe({
-        next: (res: HttpResponse<QuanLyTV[]>) => {
-          this.isLoading = false;
-          this.onSuccessTVDoanRa(res.body, res.headers);
-        },
-        error: () => (this.isLoading = false),
-      });
-  }
 
-  private onSuccessTVDoanRa(TVDoanRa: QuanLyTV[] | null, headers: HttpHeaders): void {
-    this.totalGnHc = TVDoanRa.length;
-    this.TVDoanRas = TVDoanRa;
-  }
 
   private onSuccessGnHc(GnHoC: GiaoNhanHC[] | null, headers: HttpHeaders): void {
     this.totalsTVDoanRa = GnHoC.length;
@@ -317,16 +292,6 @@ export class HChieuNGComponent implements OnInit {
           const modalRef = this.modalService.open(DeleteCheckComponent, { size: 'lg', backdrop: 'static' });
           modalRef.componentInstance.hoChieu = hoChieu;
           break;
-        }
-      }
-      if (check == true) {
-        for (let i = 0; i < this.TVDoanRas?.length; i++) {
-          if (hoChieu.soHC == this.TVDoanRas[i].soHoChieu) {
-            check = false;
-            const modalRef = this.modalService.open(DeleteCheckComponent, { size: 'lg', backdrop: 'static' });
-            modalRef.componentInstance.hoChieu = hoChieu;
-            break;
-          }
         }
       }
       if (check == true) {
@@ -350,16 +315,6 @@ export class HChieuNGComponent implements OnInit {
           const modalRef = this.modalService.open(DeleteCheckComponent, { size: 'lg', backdrop: 'static' });
           modalRef.componentInstance.hoChieu = hoChieu;
           break;
-        }
-      }
-      if (check == true) {
-        for (let i = 0; i < this.TVDoanRas?.length; i++) {
-          if (hoChieu.soHC == this.TVDoanRas[i].soHoChieu) {
-            check = false;
-            const modalRef = this.modalService.open(DeleteCheckComponent, { size: 'lg', backdrop: 'static' });
-            modalRef.componentInstance.hoChieu = hoChieu;
-            break;
-          }
         }
       }
       if (check == true) {

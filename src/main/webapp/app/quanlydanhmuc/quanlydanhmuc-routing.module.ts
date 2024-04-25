@@ -15,10 +15,17 @@ import { RouterModule } from '@angular/router';
         loadChildren: () => import('./loaihochieu/loaihochieu.module').then(m => m.PassportManagementModule),
       },
       {
-        path: 'chucVu',
-        loadChildren: () => import('./ChucVu/ChucVu.module').then(m => m.ChucVuManagementModule),
+        path: 'color',
+        loadChildren: () => import('./Color/Color.module').then(m => m.ColorManagementModule),
       },
-
+      {
+        path: 'storage',
+        loadChildren: () => import('./Storage/Storage.module').then(m => m.StorageManagementModule),
+      },
+      {
+        path: 'brand',
+        loadChildren: () => import('./Brand/Brand.module').then(m => m.BrandManagementModule),
+      },
 
       /* jhipster-needle-add-admin-route - JHipster will add admin routes here */
     ]),

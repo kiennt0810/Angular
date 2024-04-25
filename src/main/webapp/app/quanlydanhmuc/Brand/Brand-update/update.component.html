@@ -1,0 +1,33 @@
+<div class="d-flex justify-content-center " style="height: 420px; margin-top: 15vh;">
+    <form name="editForm" class="form" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm" > 
+
+       <div class="col mt-5">
+            <div class="row d-flex flex-column mb-4">
+              <span class="label mt-2 mb-1">Thương hiệu &nbsp;<span class="text-danger">*</span></span>
+              <input type="text" class="input" name="thuongHieu" formControlName="thuongHieu"/>
+            </div>
+
+            <div class="row d-flex flex-column mb-2">
+                <span class="label mb-1" style="width: 100%;">Trạng thái</span>
+                <select style="width: 30%;" name="trangThai" formControlName="trangThai"  class="input">
+                  <option [ngValue]="true">Hiệu lực</option>
+                  <option [ngValue]="false">Hết hiệu lực</option>
+                </select>
+            </div>
+            <div class="d-flex justify-content-end mb-5" style="margin-right: 180px;">
+              <button type="submit" [disabled]="editForm.invalid || isSaving" class="btn btn-primary jh-create-entity me-3 iconBG buttonborder">
+                <fa-icon class="bi bi-floppy iconColor"></fa-icon>
+                  <span class="iconColor">Lưu</span>
+              </button>
+      
+              <button type="button" class="btn btn-primary jh-create-entity iconBG buttonborder" (click)="previousState()">
+                <fa-icon class="bi bi-box-arrow-left iconColor"></fa-icon>
+                <span class="iconColor">Quay lại</span>
+              </button>
+            </div>
+        </div>
+
+
+
+    </form>
+</div>
