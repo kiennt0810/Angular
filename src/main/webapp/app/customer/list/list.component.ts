@@ -9,40 +9,36 @@ import { ASC, DESC, SORT } from 'app/config/navigation.constants';
 import { Account } from 'app/core/auth/account.model';
 import { AlertServiceCheck } from 'app/alertNew/alertNew.service';
 import { NavBarService } from 'app/layouts/navbar/nav-bar.service';
-import { Product } from '../product.model';
-import { ProductService } from '../product.service';
+import { Customer } from '../customer.model';
+import { CustomerService } from '../customer.service';
 import { SessionStorageService } from 'ngx-webstorage';
-import { Brand } from 'app/quanlydanhmuc/Brand/Brand.model';
-import { BrandService } from 'app/quanlydanhmuc/Brand/Brand.service';
-import { ProductDeleteDialogComponent } from '../delete/delete.component';
+
 
 @Component({
   selector: 'jhi-passport-mgmt',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
 })
-export class ProductManagementComponent implements OnInit {
+export class CustomerManagementComponent implements OnInit {
   currentAccount: Account | null = null;
-  products: Product[] | null = null;
-  SearchItems: Product[] | null = null;
+  customers: Customer[] | null = null;
+  SearchItems: Customer[] | null = null;
   isLoading = false;
   totalItems = 0;
   itemsPerPage = ITEMS_PER_PAGE;
   page!: number;
   predicate!: string;
   ascending!: boolean;
-  nameModule = 'sản phẩm';
+  nameModule = 'khách hàng';
   totalPage = 0;
   currentPath: string;
   roles: string;
-  brands: Brand[] | null = null;
   checkAuth = false;
   constructor(
-    private Service: ProductService,
+    private Service: CustomerService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private modalService: NgbModal,
-    private BrandService: BrandService,
     private alert: AlertServiceCheck,
     private NavbarService: NavBarService,
     private sessionStorageService: SessionStorageService,
@@ -61,18 +57,6 @@ export class ProductManagementComponent implements OnInit {
         }
       }
     })
-    this.loadAllBrand();
-  }
-
-  deleteObj(product: Product): void {
-    const modalRef = this.modalService.open(ProductDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
-    modalRef.componentInstance.product = product;
-    modalRef.closed.subscribe(reason => {
-      if (reason === 'deleted') {
-        this.loadAll();
-        this.alert.success('Xóa thành công');
-      }
-    });
   }
 
   loadAll(): void {
@@ -84,7 +68,7 @@ export class ProductManagementComponent implements OnInit {
         sort: this.sort(),
       })
       .subscribe({
-        next: (res: HttpResponse<Product[]>) => {
+        next: (res: HttpResponse<Customer[]>) => {
           this.isLoading = false;
           this.onSuccess(res.body, res.headers);
         },
@@ -99,15 +83,15 @@ export class ProductManagementComponent implements OnInit {
   }
 
   fields = {
-    tenSp: '',
-    thuongHieu: ''
+    hoTen: '',
+    trangThai: null
   };
   filter = {};
 
   updateFilters() {
-      this.SearchItems = this.products;
+      this.SearchItems = this.customers;
     Object.keys(this.fields).forEach(key => this.fields[key] === '' ? delete this.fields[key] : key);
-      this.SearchItems = this.products;
+      this.SearchItems = this.customers;
       this.filter = Object.assign({}, this.fields);
       this.SearchItems = this.transform(this.SearchItems, this.filter);
       this.totalItems = Number(this.SearchItems.length);
@@ -121,7 +105,7 @@ export class ProductManagementComponent implements OnInit {
         this.fields[key] = this.fields[key].trim();
       }
     }); Object.keys(this.fields).forEach(key => this.fields[key] === '' ? delete this.fields[key] : key);
-    this.SearchItems = this.products;
+    this.SearchItems = this.customers;
     this.filter = Object.assign({}, this.fields);
     this.SearchItems = this.transform(this.SearchItems, this.filter);
     this.totalItems = Number(this.SearchItems.length);
@@ -178,25 +162,11 @@ export class ProductManagementComponent implements OnInit {
     return result;
   }
 
-  private onSuccess(obj: Product[] | null, headers: HttpHeaders): void {
+  private onSuccess(obj: Customer[] | null, headers: HttpHeaders): void {
     this.totalItems = obj.length;
-    this.products = obj;
+    this.customers = obj;
     this.totalPage = Math.ceil(this.totalItems / this.itemsPerPage);
-    for (let i = 0; i < this.products.length; i++) {
-      this.products[i].giaThanh = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(Number(this.products[i].giaThanh));
-    }
     this.updateFilters();
-  }
-
-  loadAllBrand(): void {
-    this.BrandService.getLstBrand().subscribe({
-      next: (res: HttpResponse<Brand[]>) => {
-        this.onSuccessLstBrand(res.body);
-      }
-    });
-  }
-  private onSuccessLstBrand(brand: Brand[] | null): void {
-    this.brands = brand;
   }
 
 }

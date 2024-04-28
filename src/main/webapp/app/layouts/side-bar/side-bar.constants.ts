@@ -221,4 +221,13 @@ export const MENU = [
     active: false,
     leaves: [],
   },
+  {
+    id: '55',
+    name: 'Quản lý khách hàng',
+    icon: './content/images/layout/sidebar/passport-svgrepo-com.svg',
+    path: '/customer',
+    authorities: ['05000'],
+    active: false,
+    leaves: [],
+  },
 ];

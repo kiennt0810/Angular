@@ -82,14 +82,14 @@ import { UserRouteAccessService } from './core/auth/user-route-access.service';
           canActivate: [UserRouteAccessService],
           loadChildren: () => import('./quanTriHeThong/quanTriHeThong-routing.module').then(m => m.QuanTriHeThongRoutingModule),
         },
-        // {
-        //   data: {
-        //     authorities: ['05000'],
-        //   },
-        //   canActivate: [UserRouteAccessService],
-        //   path: 'tiep-khach-quoc-te',
-        //   loadChildren: () => import('./tiep-khach-quoc-te/tiepkhachquocte-routing.module').then(m => m.TiepkhachquocteRoutingModule),
-        // },
+        {
+          data: {
+            authorities: ['05000'],
+          },
+          canActivate: [UserRouteAccessService],
+          path: 'customer',
+          loadChildren: () => import('./customer/customer-routing.module').then(m => m.CustomerRoutingModule),
+        },
         {
           data: {
             authorities: ['03000'],
