@@ -7,10 +7,6 @@ import { RouterModule } from '@angular/router';
     /* jhipster-needle-add-admin-module - JHipster will add admin modules here */
     RouterModule.forChild([
       {
-        path: 'quocgiavavunglanhtho',
-        loadChildren: () => import('./quocgiavavunglanhtho/quocgiavavunglanhtho.module').then(m => m.QuocgiavavunglanhthoModule),
-      },
-      {
         path: 'loaihochieu',
         loadChildren: () => import('./loaihochieu/loaihochieu.module').then(m => m.PassportManagementModule),
       },
@@ -25,6 +21,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'brand',
         loadChildren: () => import('./Brand/Brand.module').then(m => m.BrandManagementModule),
+      },
+      {
+        path: 'adFile',
+        loadChildren: () => import('./AdFile/adFile.module').then(m => m.AdFileManagementModule),
       },
 
       /* jhipster-needle-add-admin-route - JHipster will add admin routes here */

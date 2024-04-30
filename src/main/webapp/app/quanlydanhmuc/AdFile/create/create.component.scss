@@ -1,0 +1,34 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+.test{
+    height: 200px;
+    width:100%;
+    border:1px solid black;
+    padding-bottom: 14px;
+}
+
+.testh1{
+    width:110px;
+    margin-top:-13px;
+    margin-left:7px;
+    background:white;
+    font-weight: 900;
+}
+.custom-file-button {
+	input[type="file"] {
+    display: none;
+		&::-webkit-file-upload-button {
+			display: none;
+		}
+		&::file-selector-button {
+			display: none;
+		}
+	}
+
+	&:hover {
+		.label-cus {
+			background-color: #70B603;
+			cursor: pointer;
+      color: white;
+		}
+	}
+}

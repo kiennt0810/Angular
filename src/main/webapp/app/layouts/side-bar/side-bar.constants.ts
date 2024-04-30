@@ -210,6 +210,16 @@ export const MENU = [
         active: false,
         leaves: null,
       },
+      {
+        id: '99',
+        parentId: '29',
+        name: 'Danh mục ảnh quảng cáo',
+        icon: './content/images/layout/sidebar/document-check-svgrepo-com.svg',
+        path: '/quanlydanhmuc/adFile',
+        authorities: ['02000'],
+        active: false,
+        leaves: null,
+      },
     ],
   },
   {
