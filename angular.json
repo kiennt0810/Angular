@@ -23,7 +23,8 @@
             "allowedCommonJsDependencies":[
               "file-saver",
               "exceljs/dist/exceljs.min.js",
-              "moment"
+              "moment",
+              "@ckeditor/ckeditor5-build-classic"
             ],
             "customWebpackConfig": {
               "path": "./webpack/webpack.custom.js"

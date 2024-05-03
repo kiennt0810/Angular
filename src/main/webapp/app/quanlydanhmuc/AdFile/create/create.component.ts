@@ -16,7 +16,7 @@ export interface IFileUpload {
     AttachmentContent: any;
     FormType: string;
     AttachmentFlag: boolean;
-  }
+}
 
 @Component({
     selector: '',
@@ -40,6 +40,9 @@ export class newAdFileComponent {
     fileUploaded: IFileUpload = null;
     fileList: File[] = [];
 
+    urlList: string[] = [];
+    checkUpload = false;
+
     AdfileForm = new FormGroup({
         id: new FormControl(Template.id),
         fileImg: new FormControl(Template.fileImg, { validators: [Validators.required] }),
@@ -59,98 +62,115 @@ export class newAdFileComponent {
         this.fileList = [];
         this.currentPath = this.router.url;
         this.navbarService.getSubPath(this.currentPath, 'Thêm Mới');
-        // this.userService.authorities().subscribe(authorities => (this.authorities = authorities));
-
     }
 
     previousState(): void {
         window.history.back();
     }
+
+    onRemove(event) {
+        this.fileList.splice(this.fileList.indexOf(event), 1);
+    }
+
     create(): void {
         this.isSaving = true;
         const formData = new FormData();
-        const createForm = this.AdfileForm.value;
+        if (this.urlList.length > 0) {
+            for (let i = 0; i < this.urlList.length; i++) {
+                formData.append('listFile', this.urlList[i]);     
+            }
+            this.Service.create(formData).subscribe({ next: () => this.onSaveSuccess(), error: () => this.processError() });
+        }
+    }
+
+    upLoad(): void {
+        this.checkUpload = false;
         for (let i = 0; i < this.fileList.length; i++) {
-            formData.append('listFile', this.fileList[i]);
-          }
-          console.log(formData.getAll('listFile'));
-          this.Service.create(formData).subscribe({ next: (response) => this.onSaveSuccess(), error: response => this.processError(response) });
+            this.readUploadedFileAsDataUrl(this.fileList[i]).then(fileContents => {
+                this.Service.upload2imgur(fileContents).then((ret: any) => {
+                    ret = JSON.parse(ret.target.response);
+                    this.urlList.push((ret.data.link).toString());
+                    this.onRemove(this.fileList[i]);
+                    if (i = this.fileList.length) {
+                        this.alert.success('Upload ảnh thành công');
+                        this.checkUpload = true;
+                    }
+                })
+            });
+        }
     }
 
     private onSaveSuccess(): void {
         this.isSaving = false;
         this.previousState();
         this.alert.success('Thêm thành công');
-        
+
     }
 
-    private processError(response: HttpErrorResponse): void {
+    private processError(): void {
         this.alert.error('Thêm mới không thành công');
     }
 
     handleFileInput = async (event) => {
         this.selectedFile = event.target.files;
-    
+
         Template.fileImg = event.target.files;
         this.isuploadDocument = false;
         if (Template.fileImg.length > 0) {
-          for (let i = 0; i < Template.fileImg.length; i++) {
-            this.fileToUpload = Template.fileImg.item(i);
-            for (let j = 0; j < this.nameFile.length; j++) {
-              if (this.fileToUpload.name == this.nameFile[j]) {
-                this.checkNameFile = false;
-                break;
-              }
+            for (let i = 0; i < Template.fileImg.length; i++) {
+                this.fileToUpload = Template.fileImg.item(i);
+                for (let j = 0; j < this.nameFile.length; j++) {
+                    if (this.fileToUpload.name == this.nameFile[j]) {
+                        this.checkNameFile = false;
+                        break;
+                    }
+                }
+                if (this.checkNameFile) {
+                    this.totalFileSize = this.totalFileSize + this.fileToUpload.size;
+                    if (this.totalFileSize <= 104857600) {
+                        this.fileUploaded = {
+                            RequestID: '',
+                            AttachmentFlag: true,
+                            FormType: 'MRF',
+                            AttachmentName: this.fileToUpload.name,
+                            AttachmentContent: await this.readUploadedFileAsDataUrl(Template.fileImg.item(i))
+                        };
+                        this.lstUploadedFiles.push(this.fileUploaded);
+                        this.fileList.push(this.selectedFile[i]);
+                        this.isuploadDocument = true;
+                    } else {
+                        this.isuploadDocument = false;
+                        this.alert.error('Tải file không quá 100 MB');
+                    }
+                }
             }
-            if (this.checkNameFile) {
-              this.totalFileSize = this.totalFileSize + this.fileToUpload.size;
-              if (this.totalFileSize <= 104857600) {
-                this.fileUploaded = {
-                  RequestID: '',
-                  AttachmentFlag: true,
-                  FormType: 'MRF',
-                  AttachmentName: this.fileToUpload.name,
-                  AttachmentContent: await this.readUploadedFileAsDataUrl(Template.fileImg.item(i))
-                };
-                this.lstUploadedFiles.push(this.fileUploaded);
-                this.fileList.push(this.selectedFile[i]);
-                console.log('lstUploadedFiles' + this.lstUploadedFiles);
-                this.isuploadDocument = true;
-              } else {
-                this.isuploadDocument = false;
-                // this.toastrService.error('Combined file size must not exceed 4 MB', 'Error!');
-                this.alert.error('Tải file không quá 100 MB');
-                //this.toast.addAlert({ message: 'Tải file không quá 100 MB', type: 'danger', toast: true })
-              }
-            }
-          }
         }
-      }
+    }
 
-      remove(filename: string, i: number): void {
+    remove(filename: string, i: number): void {
         this.fileList.splice(i, 1);
         $('#inputGroupFile').val(null);
         Template.fileImg = [].slice.call(Template.fileImg).filter(e => e.name !== filename);
         this.lstUploadedFiles = this.lstUploadedFiles.filter(e => e.AttachmentName !== filename);
         this.totalFileSize = 0;
         this.lstUploadedFiles.forEach(fl => {
-          this.totalFileSize = this.totalFileSize + fl.AttachmentContent.length;
+            this.totalFileSize = this.totalFileSize + fl.AttachmentContent.length;
         });
-      }
+    }
 
-      readUploadedFileAsDataUrl = (inputFile) => {
+    readUploadedFileAsDataUrl = (inputFile) => {
         const temporaryFileReader = new FileReader();
         return new Promise((resolve, reject) => {
-          temporaryFileReader.onerror = () => {
-            temporaryFileReader.abort();
-            reject(this.alert.error('Không thể tải file'));
-          };
-          temporaryFileReader.onload = () => {
-            resolve(temporaryFileReader.result);
-          };
-          temporaryFileReader.readAsDataURL(inputFile);
+            temporaryFileReader.onerror = () => {
+                temporaryFileReader.abort();
+                reject(this.alert.error('Không thể tải file'));
+            };
+            temporaryFileReader.onload = () => {
+                resolve(temporaryFileReader.result);
+            };
+            temporaryFileReader.readAsDataURL(inputFile);
         });
-      }
+    }
 
 
 }

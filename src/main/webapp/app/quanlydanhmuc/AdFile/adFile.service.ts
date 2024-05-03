@@ -13,6 +13,8 @@ export class AdFileService {
 
   private resourceUrl = API_URL + "/api/AdFile";
 
+  readonly userid = "Client-ID ef2c5ad206c6ed1";
+
   constructor(private http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
 
   create(formData: FormData) {
@@ -42,6 +44,21 @@ export class AdFileService {
 
   getCurrentData(brandId: number): Observable<any> {
     return this.http.get(`${this.resourceUrl}/${brandId}`);
+  }
+
+  async upload2imgur(image:any){
+    return new Promise((resolve,reject) => {
+      let img = image.substr(image.indexOf(',') + 1); 
+      let fd = new FormData();
+      fd.append('image',img);      
+      let xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://api.imgur.com/3/image', true);    
+      xhr.onload = resolve;
+      //xhr.onerror = reject;
+      xhr.setRequestHeader("Authorization", this.userid);
+      xhr.send(fd);
+    })
+    
   }
 
 }

@@ -43,7 +43,7 @@ export class MainComponent implements OnInit {
           console.log("session expired");
           clearSession();
           this.accountService.authenticate(null);
-          this.router.navigate(['/login']);
+          window.location.reload();
       }
     })
   }

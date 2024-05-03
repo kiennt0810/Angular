@@ -55,7 +55,7 @@
           <thead style="color: aliceblue; background-color: #1A4792;">
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="transition()">
               <th scope="col" class="text-center"><span>STT</span></th>
-              <th scope="col" class="text-center"><span>Tên File</span></th>
+              <th scope="col" class="text-center"><span>File</span></th>
               <th scope="col" class="text-center"><span>Thao tác</span></th>
             </tr>
           </thead>
@@ -63,7 +63,8 @@
             <tr
               *ngFor="let item of files | slice: (page-1) * itemsPerPage : (page-1) * itemsPerPage + itemsPerPage | myFilter :filter; ">
               <td class="text-center align-middle"></td>
-              <td class="align-middle">{{item.fileName}}</td>
+              
+              <td class="align-middle">{{item.url}}</td>
               <td class="text-center">
                 <div class="btn-group">
                   <!-- <button *ngIf="checkAuth" type="submit" [routerLink]="['./editBrand' , item.id]" queryParamsHandling="merge" class="edit">

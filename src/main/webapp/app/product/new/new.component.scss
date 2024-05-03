@@ -14,3 +14,22 @@
     font-weight: 900;
 }
 
+.custom-file-button {
+	input[type="file"] {
+    display: none;
+		&::-webkit-file-upload-button {
+			display: none;
+		}
+		&::file-selector-button {
+			display: none;
+		}
+	}
+
+	&:hover {
+		.label-cus {
+			background-color: #70B603;
+			cursor: pointer;
+      color: white;
+		}
+	}
+}

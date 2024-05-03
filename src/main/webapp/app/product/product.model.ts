@@ -1,3 +1,4 @@
+import { ProFile } from "./proFile.model";
 
 export interface IProduct {
     id: number | null;
@@ -9,6 +10,8 @@ export interface IProduct {
     idStorage?: number | null;
     idColor?: number | null;
     createdBy?: string | null;
+    fileImg?: FileList | null,
+    listUrl?: Array<ProFile> | null,
   }
   
   export class Product implements IProduct {
@@ -21,7 +24,9 @@ export interface IProduct {
       public idBrand?: number | null,
       public idStorage?: number | null,
       public idColor?: number | null,
-      public createdBy?: string | null
+      public createdBy?: string | null,
+      public fileImg?: FileList | null,
+      public listUrl?: Array<ProFile> | null,
     ) {}
   }
   

@@ -5,7 +5,7 @@
     </div>
     <div style="background-color: white;">
         <div class="me-3 ms-3">
-            <form name="form" role="form" (ngSubmit)="save()" [formGroup]="editForm">
+            <form name="form" role="form" [formGroup]="editForm">
                 <div class="row">
                     <div class="col-12">
                         <div class="row">
@@ -78,10 +78,64 @@
                                 </ckeditor>
                             </div>
                         </div>
+                        <div class="row pt-4">
+                            <div class="col-md-2 pt-2">
+                                <h6 class="form-label">File ảnh cũ</h6>
+                            </div>
+                            <div class="col-10">
+                                <table class="table table-bordered">
+                                    <thead style="background-color: #1A4792; color: white;">
+                                        <tr>
+                                            <th class="text-center">STT</th>
+                                            <th class="text-center col-10">Url file</th>
+                                            <th class="text-center">Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody formArrayName="listHC">
+                                        <tr *ngFor="let d of listFileControls; let i = index" [formGroupName]="i">
+                                            <td class="text-center align-middle" style="font-weight: bold;"></td>
+                                            <td><input readonly type="text" class="form-control" name="imgUrl"
+                                                formControlName="imgUrl"></td>
+                                            <td class="text-center align-middle">
+                                                <!-- <a class="delete" title="Xóa" data-toggle="tooltip"
+                                                    (click)="deleteRowFile(i)">
+                                                    <i class="material-icons align-middle">&#xE872;</i></a> -->
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-md-2 pt-2">
+                                <h6 class="form-label">File ảnh</h6>
+                            </div>
+                            <div class="col-10 custom-file-button">
+                                <mat-chip-list #chipList>
+                                    <label class="input-group-text label-cus mt-1" for="inputGroupFile">Tải tập
+                                        tin</label>
+                                    <mat-chip style="background-color: #e3e5e6;"
+                                        *ngFor="let file of lstUploadedFiles; let index = index" [removable]="true"
+                                        (removed)="remove(file.AttachmentName, index)">
+                                        {{file.AttachmentName}}
+                                        <mat-icon matChipRemove>cancel</mat-icon>
+                                    </mat-chip>                           
+                                    <input type="file" id="inputGroupFile" multiple #uploadFile
+                                        (change)="handleFileInput($event)" name="fileImg" formControlName="fileImg"
+                                        [matChipInputFor]="chipList" class="form-control">
+                                    
+                                </mat-chip-list>
+                            </div>
+                        </div>
                         <br>
                         <div class="d-flex justify-content-end">
-                            <button type="submit" [disabled]="editForm.invalid" class="btn btn-primary"
-                                data-cy="submit"
+                            <button type="button" (click)="uploadImg()" class="btn btn-primary"
+                                style="color: aliceblue; background-color: #1A4792; border-radius: 7px;">
+                                <fa-icon class="iconColor" icon="save"></fa-icon>
+                                <span>Upload</span>
+                            </button>
+                            &nbsp;
+                            <button type="button" [disabled]="editForm.invalid" class="btn btn-primary" (click)="save()"
                                 style="color: aliceblue; background-color: #1A4792; border-radius: 7px;">
                                 <fa-icon class="iconColor" icon="save"></fa-icon>
                                 <span>Cập nhật</span>

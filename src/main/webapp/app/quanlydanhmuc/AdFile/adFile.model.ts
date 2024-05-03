@@ -4,6 +4,7 @@ export interface IAdFile {
     id?: number | null;
     fileImg?: FileList | null,
     listAdFileVM?: Array<FileImg>,
+    url?: string | null,
 }
 
 export class AdFile implements IAdFile {
@@ -11,5 +12,6 @@ export class AdFile implements IAdFile {
         public id: number | null,
         public fileImg?: FileList | null,
         public listAdFileVM?: Array<FileImg>,
+        public url?: string | null,
     ) {}
 }

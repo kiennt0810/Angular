@@ -5,7 +5,7 @@
     </div>
     <div style="background-color: white;">
         <div class="me-3 ms-3">
-            <form name="form" role="form" (ngSubmit)="createProduct()" [formGroup]="ProductForm" *ngIf="!success">
+            <form name="form" role="form" [formGroup]="ProductForm" *ngIf="!success">
                 <div class="row">
                     <div class="col-12">
                         <div class="row">
@@ -89,11 +89,37 @@
                                 </ckeditor>
                             </div>
                         </div>
+                        <div class="row pt-4">
+                            <div class="col-md-2 pt-2">
+                                <h6 class="form-label">File ảnh</h6>
+                            </div>
+                            <div class="col-10 custom-file-button">
+                                <mat-chip-list #chipList>
+                                    <label class="input-group-text label-cus mt-1" for="inputGroupFile">Tải tập
+                                        tin</label>
+                                    <mat-chip style="background-color: #e3e5e6;"
+                                        *ngFor="let file of lstUploadedFiles; let index = index" [removable]="true"
+                                        (removed)="remove(file.AttachmentName, index)">
+                                        {{file.AttachmentName}}
+                                        <mat-icon matChipRemove>cancel</mat-icon>
+                                    </mat-chip>                           
+                                    <input type="file" id="inputGroupFile" multiple #uploadFile
+                                        (change)="handleFileInput($event)" name="fileImg" formControlName="fileImg"
+                                        [matChipInputFor]="chipList" class="form-control">
+                                    
+                                </mat-chip-list>
+                            </div>
+                        </div>
                         <br>
                         <div class="d-flex justify-content-end">
-                            <button type="submit" [disabled]="ProductForm.invalid" class="btn btn-primary"
-                                data-cy="submit"
-                                style="color: aliceblue; background-color: #1A4792; width: 100px; border-radius: 7px;">
+                            <button type="button" (click)="uploadImg()" class="btn btn-primary"
+                                style="color: aliceblue; background-color: #1A4792; border-radius: 7px;">
+                                <fa-icon class="iconColor" icon="save"></fa-icon>
+                                <span>Upload</span>
+                            </button>
+                            &nbsp;
+                            <button type="button" (click)="createProduct()" [disabled]="ProductForm.invalid" class="btn btn-primary"
+                                style="color: aliceblue; background-color: #1A4792; border-radius: 7px;">
                                 <fa-icon class="iconColor" icon="save"></fa-icon>
                                 <span>Lưu</span>
                             </button>

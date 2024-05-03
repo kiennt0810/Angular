@@ -14,14 +14,16 @@ export class ProductService {
 
   private resourceUrl = API_URL + '/api/Product';
 
+  readonly userid = "Client-ID ef2c5ad206c6ed1";
+
   constructor(private http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
 
-  create(pro: Product): Observable<Product> {
-    return this.http.post<Product>(this.resourceUrl, pro);
+  create(formData: FormData) {
+    return this.http.post(this.resourceUrl, formData, { observe: 'response' });
   }
 
-  update(pro: Product): Observable<Product> {
-    return this.http.put<Product>(this.resourceUrl, pro);
+  update(formData: FormData) {
+    return this.http.put(this.resourceUrl, formData, { observe: 'response' });
   }
 
   find(id: string): Observable<Product> {
@@ -45,5 +47,19 @@ export class ProductService {
 		return this.http.get(`${this.resourceUrl}/download/${id}`, {responseType: 'blob'});
   }
 
+  async upload2imgur(image:any){
+    return new Promise((resolve,reject) => {
+      let img = image.substr(image.indexOf(',') + 1);
+      let fd = new FormData();
+      fd.append('image',img);
+      let xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://api.imgur.com/3/image', true);    
+      xhr.onload = resolve;
+      //xhr.onerror = reject;
+      xhr.setRequestHeader("Authorization", this.userid);
+      xhr.send(fd);
+    })
+    
+  }
 
 }

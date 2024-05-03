@@ -5,7 +5,7 @@
     </div>
     <div style="background-color: white;">
         <div class="me-3 ms-3">
-            <form name="form" role="form" enctype="multipart/form-data" (ngSubmit)="create()" [formGroup]="AdfileForm" *ngIf="!success">
+            <form name="form" role="form" enctype="multipart/form-data" [formGroup]="AdfileForm" *ngIf="!success">
                 <div class="row">
                     <div class="col-12">
                         <div class="row">
@@ -14,8 +14,6 @@
                                 </h6>
                             </div>
                             <div class="col-md-10 custom-file-button">
-                                <small for="uploadDocument">Tải tệp file không lớn hơn
-                                    <strong>100 MB</strong></small>
                                 <mat-chip-list #chipList>
                                     <label class="input-group-text label-cus mt-1" for="inputGroupFile">Tải tập
                                         tin</label>
@@ -34,9 +32,15 @@
                         </div>
                         <br>
                         <div class="d-flex justify-content-end">
-                            <button type="submit" [disabled]="AdfileForm.invalid" class="btn btn-primary"
-                                data-cy="submit"
-                                style="color: aliceblue; background-color: #1A4792; width: 100px; border-radius: 7px;">
+                            <button type="button" [disabled]="AdfileForm.invalid" class="btn btn-primary"
+                                data-cy="button" (click)="upLoad()"
+                                style="color: aliceblue; background-color: #1A4792; border-radius: 7px;">
+                                <fa-icon class="iconColor" icon="save"></fa-icon>
+                                <span>Upload</span>
+                            </button>
+                            &nbsp;
+                            <button *ngIf="checkUpload" type="button" class="btn btn-primary" data-cy="button" (click)="create()"
+                                style="color: aliceblue; background-color: #1A4792; border-radius: 7px;">
                                 <fa-icon class="iconColor" icon="save"></fa-icon>
                                 <span>Lưu</span>
                             </button>

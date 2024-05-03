@@ -35,6 +35,7 @@ export class AdFileManagementComponent implements OnInit {
   currentPath: string;
   roles: string;
   checkAuth = false;
+  imageUrlOld: any;
   constructor(
     private Service: AdFileService,
     private activatedRoute: ActivatedRoute,
@@ -166,6 +167,9 @@ export class AdFileManagementComponent implements OnInit {
   private onSuccess(obj: AdFile[] | null, headers: HttpHeaders): void {
     this.totalItems = obj.length;
     this.files = obj;
+    for (let index = 0; index < obj.length; index++) {
+      this.imageUrlOld = obj[index].url;
+    }  
     this.totalPage = Math.ceil(this.totalItems / this.itemsPerPage);
     this.updateFilters();
   }

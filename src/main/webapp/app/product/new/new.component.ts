@@ -18,6 +18,7 @@ import { Color } from 'app/quanlydanhmuc/Color/Color.model';
 import { ColorService } from 'app/quanlydanhmuc/Color/Color.service';
 import { Storage } from 'app/quanlydanhmuc/Storage/Storage.model';
 import { StorageService } from 'app/quanlydanhmuc/Storage/Storage.service';
+import { IFileUpload } from 'app/quanlydanhmuc/AdFile/create/create.component';
 
 const ProductTemplate = {} as Product;
 declare var $: any;
@@ -32,7 +33,7 @@ export class newProductComponent implements OnInit {
   public componentEvents: string[] = [];
   public isDisabled = false;
   public editorData =`<p>Mô tả</p>`;
-
+  
   success = false;
   errorPassportExists = false;
   error = false;
@@ -47,6 +48,19 @@ export class newProductComponent implements OnInit {
   brands: Brand[] | null = null;
   colors: Color[] | null = null;
   storages: Storage[] | null = null;
+
+  lstUploadedFiles: IFileUpload[] = [];
+  selectedFile = null;
+  isuploadDocument: boolean;
+  fileToUpload: File = null;
+  checkNameFile = true;
+  nameFile: string[] = [];
+  totalFileSize: number;
+  fileUploaded: IFileUpload = null;
+  fileList: File[] = [];
+  checkUpload = false;
+
+  urlList: string[] = [];
 
   toggleDisableEditors() {
     this.isDisabled = !this.isDisabled;
@@ -89,8 +103,9 @@ export class newProductComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.totalFileSize = 0;
+    this.fileList = [];
     this.currentPath = this.router.url;
-    console.log(this.currentPath);
     this.navbarService.getSubPath(this.currentPath, 'Thêm mới');
     this.loadAllBrand();
     this.loadAllColor();
@@ -144,15 +159,66 @@ export class newProductComponent implements OnInit {
     }
   };
 
+  onRemove(event) {
+    this.fileList.splice(this.fileList.indexOf(event), 1);
+  }
 
+  uploadImg() {
+    this.checkUpload = false;
+        for (let i = 0; i < this.fileList.length; i++) {
+            this.readUploadedFileAsDataUrl(this.fileList[i]).then(fileContents => {
+                this.Service.upload2imgur(fileContents).then((ret: any) => {
+                    ret = JSON.parse(ret.target.response);
+                    this.urlList.push((ret.data.link).toString());
+                    this.onRemove(this.fileList[i]);
+                    if (i = this.fileList.length) {
+                        this.alert.success('Upload ảnh thành công');
+                        this.checkUpload = true;
+                    }
+                })
+            });
+        }
+  }
 
   createProduct(): void {
     const formData = new FormData();
-    const create = this.ProductForm.getRawValue();
+    const create = this.ProductForm.value;
+    var idBrand: number;
+    var idColor: number;
+    var idStorage: number;
+
+    for (let i = 0; i <= this.brands.length; i++) {
+      if (this.brands[i]?.id === create.idBrand) {
+        idBrand = this.brands[i].id;
+        break;
+      }
+    }
+    for (let i = 0; i <= this.colors.length; i++) {
+      if (this.colors[i]?.id === create.idColor) {
+        idColor = this.colors[i].id;
+        break;
+      }
+    }
+    for (let i = 0; i <= this.storages.length; i++) {
+      if (this.storages[i]?.id === create.idStorage) {
+        idStorage = this.storages[i].id;
+        break;
+      }
+    }
     let userName: string = this.sessionStorageService.retrieve('userName');
-    create.createdBy = userName;
-    create.moTa = this.editorData.toString();
-    this.Service.create(create).subscribe({ next: () => this.processSuscess(), error: response => this.processError(response) });
+    formData.append('id', "");
+    formData.append('tenSp', create.tenSp);
+    formData.append('soLuong', create.soLuong);
+    formData.append('idBrand', String(idBrand));
+    formData.append('idColor', String(idColor));
+    formData.append('idStorage', String(idStorage));
+    formData.append('giaThanh', create.giaThanh);
+    formData.append('mota', this.editorData.toString());
+    formData.append('createdBy', userName);
+    for (let i = 0; i < this.urlList.length; i++) {
+      formData.append('listFile', this.urlList[i]);     
+  }
+    this.Service.create(formData).subscribe({ next: () => this.processSuscess(), error: response => this.processError(response) });
     }
 
   private processSuscess(): void {
@@ -207,4 +273,64 @@ export class newProductComponent implements OnInit {
     this.storages = objSto;
   }
 
+  handleFileInput = async (event) => {
+    this.selectedFile = event.target.files;
+
+    ProductTemplate.fileImg = event.target.files;
+    this.isuploadDocument = false;
+    if (ProductTemplate.fileImg.length > 0) {
+        for (let i = 0; i < ProductTemplate.fileImg.length; i++) {
+            this.fileToUpload = ProductTemplate.fileImg.item(i);
+            for (let j = 0; j < this.nameFile.length; j++) {
+                if (this.fileToUpload.name == this.nameFile[j]) {
+                    this.checkNameFile = false;
+                    break;
+                }
+            }
+            if (this.checkNameFile) {
+                this.totalFileSize = this.totalFileSize + this.fileToUpload.size;
+                if (this.totalFileSize <= 104857600) {
+                    this.fileUploaded = {
+                        RequestID: '',
+                        AttachmentFlag: true,
+                        FormType: 'MRF',
+                        AttachmentName: this.fileToUpload.name,
+                        AttachmentContent: await this.readUploadedFileAsDataUrl(ProductTemplate.fileImg.item(i))
+                    };
+                    this.lstUploadedFiles.push(this.fileUploaded);
+                    this.fileList.push(this.selectedFile[i]);
+                    this.isuploadDocument = true;
+                } else {
+                    this.isuploadDocument = false;
+                    this.alert.error('Tải file không quá 100 MB');
+                }
+            }
+        }
+    }
+}
+
+remove(filename: string, i: number): void {
+    this.fileList.splice(i, 1);
+    $('#inputGroupFile').val(null);
+    ProductTemplate.fileImg = [].slice.call(ProductTemplate.fileImg).filter(e => e.name !== filename);
+    this.lstUploadedFiles = this.lstUploadedFiles.filter(e => e.AttachmentName !== filename);
+    this.totalFileSize = 0;
+    this.lstUploadedFiles.forEach(fl => {
+        this.totalFileSize = this.totalFileSize + fl.AttachmentContent.length;
+    });
+}
+
+readUploadedFileAsDataUrl = (inputFile) => {
+    const temporaryFileReader = new FileReader();
+    return new Promise((resolve, reject) => {
+        temporaryFileReader.onerror = () => {
+            temporaryFileReader.abort();
+            reject(this.alert.error('Không thể tải file'));
+        };
+        temporaryFileReader.onload = () => {
+            resolve(temporaryFileReader.result);
+        };
+        temporaryFileReader.readAsDataURL(inputFile);
+    });
+}
 }

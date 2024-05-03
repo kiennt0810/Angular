@@ -10,38 +10,6 @@ import { UserRouteAccessService } from './core/auth/user-route-access.service';
   imports: [
     RouterModule.forRoot(
       [
-        // {
-        //   path: 'doanVao',
-        //   data: {
-        //     authorities: ['03001'],
-        //   },
-        //   canActivate: [UserRouteAccessService],
-        //   loadChildren: () => import('./quanLyDoan/doanVao-routing.module').then(m => m.CategoriesRoutingModule),
-        // },
-        // {
-        //   path: 'quanLyTV',
-        //   data: {
-        //     authorities: ['03002'],
-        //   },
-        //   canActivate: [UserRouteAccessService],
-        //   loadChildren: () => import('./quanLyDoan/qltv-routing.module').then(m => m.quanLyTVRoutingModule),
-        // },
-        // {
-        //   path: 'doanRa',
-        //   data: {
-        //     authorities: ['04001'],
-        //   },
-        //   canActivate: [UserRouteAccessService],
-        //   loadChildren: () => import('./quanLyDoan/doanRa-routing.module').then(m => m.DelegationOutRoutingModule),
-        // },
-        // {
-        //   path: 'quanLyTVRa',
-        //   data: {
-        //     authorities: ['04002'],
-        //   },
-        //   canActivate: [UserRouteAccessService],
-        //   loadChildren: () => import('./quanLyDoan/qltvRa-routing.module').then(m => m.quanLyTVRoutingModule),
-        // },
         {
           path: 'account',
           loadChildren: () => import('./account/account.module').then(m => m.AccountModule),
@@ -97,30 +65,6 @@ import { UserRouteAccessService } from './core/auth/user-route-access.service';
           canActivate: [UserRouteAccessService],
           path: 'product',
           loadChildren: () => import('./product/product-routing.module').then(m => m.ProductRoutingModule),
-        },
-        {
-          data: {
-            authorities: ['07001'],
-          },
-          canActivate: [UserRouteAccessService],
-          path: 'HoChieu',
-          loadChildren: () => import('./quanLyHoChieu/HCNG-routing.module').then(m => m.HChieuNGRoutingModule),
-        },
-        {
-          data: {
-            authorities: ['07002'],
-          },
-          canActivate: [UserRouteAccessService],
-          path: 'HoChieu',
-          loadChildren: () => import('./quanLyHoChieu/GNHC-routing.module').then(m => m.GNHCRoutingModule),
-        },
-        {
-          data: {
-            authorities: ['07003'],
-          },
-          canActivate: [UserRouteAccessService],
-          path: 'HoChieu',
-          loadChildren: () => import('./quanLyHoChieu/KTHC-routing.module').then(m => m.KTHCRoutingModule),
         },
         navbarRoute,
         ...errorRoute,
