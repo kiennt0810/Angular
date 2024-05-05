@@ -78,7 +78,8 @@ export class ProductUpdateComponent implements OnInit {
     idStorage: new FormControl(),
     idColor: new FormControl(),
     createdBy: new FormControl(),
-    listUrl: listOldFile,
+    fileImg: new FormControl(),
+    listProFile: listOldFile,
   });
 
   public Editor = ClassicEditor;
@@ -116,15 +117,16 @@ export class ProductUpdateComponent implements OnInit {
         idStorage: new FormControl(result['idStorage']),
         idColor: new FormControl(result['idColor']),
         createdBy: new FormControl(result['createdBy']),
-        listUrl: listOldFile,
+        fileImg: new FormControl(result['listFile']),
+        listProFile: listOldFile,
       })
       this.editorData = result['moTa'];
       listOldFile.clear();
-      for (let i = 0; i < this.loadProduct.listUrl.length; i++) {
+      for (let i = 0; i < result.listProFile.length; i++) {
         this.listfileUp = new FormGroup({
-          id: new FormControl(this.loadProduct.listUrl[i].id),
-          imgUrl: new FormControl(this.loadProduct.listUrl[i].imgUrl),
-          idProduct: new FormControl(this.loadProduct.listUrl[i].idProduct),
+          id: new FormControl(result.listProFile[i].id),
+          imgUrl: new FormControl(result.listProFile[i].imgUrl),
+          idProduct: new FormControl(result.listProFile[i].idProduct),
         })
         listOldFile.push(this.listfileUp);
       }
@@ -141,7 +143,7 @@ export class ProductUpdateComponent implements OnInit {
   })
 
   get listFileControls() {
-    return (<FormArray>this.editForm.get('listUrl')).controls;
+    return (<FormArray>this.editForm.get('listProFile')).controls;
   }
 
   previousState(): void {
@@ -175,7 +177,6 @@ export class ProductUpdateComponent implements OnInit {
         break;
       }
     }
-    formData.append('id', "");
     formData.append('tenSp', product.tenSp);
     formData.append('soLuong', product.soLuong);
     formData.append('idBrand', String(idBrand));

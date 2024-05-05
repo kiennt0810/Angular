@@ -11,7 +11,7 @@ export interface IProduct {
     idColor?: number | null;
     createdBy?: string | null;
     fileImg?: FileList | null,
-    listUrl?: Array<ProFile> | null,
+    listProFile?: Array<ProFile> | null,
   }
   
   export class Product implements IProduct {
@@ -26,7 +26,7 @@ export interface IProduct {
       public idColor?: number | null,
       public createdBy?: string | null,
       public fileImg?: FileList | null,
-      public listUrl?: Array<ProFile> | null,
+      public listProFile?: Array<ProFile> | null,
     ) {}
   }
   

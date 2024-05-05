@@ -88,7 +88,8 @@ export class newProductComponent implements OnInit {
     idBrand: new FormControl(ProductTemplate.idBrand),
     idStorage: new FormControl(ProductTemplate.idStorage),
     idColor: new FormControl(ProductTemplate.idColor),
-    createdBy: new FormControl(ProductTemplate.createdBy)
+    createdBy: new FormControl(ProductTemplate.createdBy),
+    fileImg: new FormControl(ProductTemplate.fileImg),
   });
 
   constructor(
@@ -206,7 +207,6 @@ export class newProductComponent implements OnInit {
       }
     }
     let userName: string = this.sessionStorageService.retrieve('userName');
-    formData.append('id', "");
     formData.append('tenSp', create.tenSp);
     formData.append('soLuong', create.soLuong);
     formData.append('idBrand', String(idBrand));

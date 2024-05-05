@@ -18,41 +18,28 @@
                                     <input class="form-control input-border" required type="text"
                                         formControlName="tenSp" id="tenSp">
                                 </div>
-                                <div>
-                                    <small class="form-text text-danger" *ngIf="checkKyTu">
-                                        Số hộ chiếu không được chứa ký tự đặc biệt!
-                                    </small>
-                                    <small class="form-text text-danger" *ngIf="checkNullSoHC">
-                                        Số hộ chiếu không được để trống!
-                                    </small>
-                                    <small class="form-text text-danger" *ngIf="checkDouble">
-                                        Số hộ chiếu không tồn tại!
-                                    </small>
-                                </div>
                             </div>
                             <div class="col-md-2 pt-2">
                                 <h6 class="form-label" style="padding-left: 40px;">Số lượng&nbsp;<span style="color: red;" class="pt-2">*</span></h6>
                             </div>
                             <div class="col-md-4">
-                                <input formControlName="soLuong" class="form-control" type="text" id="soLuong">
+                                <input formControlName="soLuong" class="form-control" required type="text" id="soLuong">
                             </div>
                         </div>
                         <div class="row pt-4">
                             <div class="col-md-2 pt-2">
                                 <h6>Thương hiệu&nbsp;<span style="color: red;" class="pt-2">*</span></h6>
                             </div>
-                            <div class="col-10">
+                            <div class="col-md-4">
                                 <select class="form-select input-Border" required style="background-color: white;"
                                     name="idBrand" formControlName="idBrand" id="idBrand">
                                     <option *ngFor="let obj of brands" [ngValue]="obj.id">{{ obj.thuongHieu }}</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="row pt-4">
                             <div class="col-md-2 pt-2">
-                                <h6>Màu&nbsp;<span style="color: red;" class="pt-2">*</span></h6>
+                                <h6 class="form-label" style="padding-left: 40px;">Mã màu&nbsp;<span style="color: red;" class="pt-2">*</span></h6>
                             </div>
-                            <div class="col-10">
+                            <div class="col-md-4">
                                 <select class="form-select input-Border colorSelect" required style="background-color: white;"
                                     name="idColor" formControlName="idColor" id="idColor">
                                     <option *ngFor="let obj of colors" [style.color]="obj.maMau" [ngValue]="obj.id">{{ obj.maMau }}</option>
@@ -63,19 +50,17 @@
                             <div class="col-md-2 pt-2">
                                 <h6>Dung lượng&nbsp;<span style="color: red;" class="pt-2">*</span></h6>
                             </div>
-                            <div class="col-10">
+                            <div class="col-md-4">
                                 <select class="form-select input-Border" required style="background-color: white;"
                                     name="idStorage" formControlName="idStorage" id="idStorage">
                                     <option *ngFor="let obj of storages" [ngValue]="obj.id">{{ obj.dungLuong }}</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="row pt-4">
                             <div class="col-2 pt-2">
-                                <h6 class="form-label">Giá&nbsp;<span style="color: red;" class="pt-2">*</span></h6>
+                                <h6 class="form-label" style="padding-left: 40px;">Giá&nbsp;<span style="color: red;" class="pt-2">*</span></h6>
                             </div>
-                            <div class="col-10">
-                                <input class="form-control" type="text" formControlName="giaThanh">
+                            <div class="col-md-4">
+                                <input class="form-control" required type="text" formControlName="giaThanh">
                             </div>
                         </div>
                         <div class="row pt-4">
@@ -118,7 +103,7 @@
                                 <span>Upload</span>
                             </button>
                             &nbsp;
-                            <button type="button" (click)="createProduct()" [disabled]="ProductForm.invalid" class="btn btn-primary"
+                            <button *ngIf="checkUpload" type="button" (click)="createProduct()" [disabled]="ProductForm.invalid" class="btn btn-primary"
                                 style="color: aliceblue; background-color: #1A4792; border-radius: 7px;">
                                 <fa-icon class="iconColor" icon="save"></fa-icon>
                                 <span>Lưu</span>

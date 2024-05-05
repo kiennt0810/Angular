@@ -15,33 +15,30 @@
                             </div>
                             <div class="col-md-4">
                                 <div>
-                                    <input class="form-control input-border" required type="text"
-                                        formControlName="tenSp" id="tenSp">
+                                    <input class="form-control input-border" required type="text" formControlName="tenSp" id="tenSp">
                                 </div>
                             </div>
                             <div class="col-md-2 pt-2">
                                 <h6 class="form-label" style="padding-left: 40px;">Số lượng&nbsp;<span style="color: red;" class="pt-2">*</span></h6>
                             </div>
                             <div class="col-md-4">
-                                <input formControlName="soLuong" class="form-control" type="text" id="soLuong">
+                                <input formControlName="soLuong" class="form-control" required type="text" id="soLuong">
                             </div>
                         </div>
                         <div class="row pt-4">
                             <div class="col-md-2 pt-2">
                                 <h6>Thương hiệu&nbsp;<span style="color: red;" class="pt-2">*</span></h6>
                             </div>
-                            <div class="col-10">
+                            <div class="col-md-4">
                                 <select class="form-select input-Border" required style="background-color: white;"
                                     name="idBrand" formControlName="idBrand" id="idBrand">
                                     <option *ngFor="let obj of brands" [ngValue]="obj.id">{{ obj.thuongHieu }}</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="row pt-4">
                             <div class="col-md-2 pt-2">
-                                <h6>Màu&nbsp;<span style="color: red;" class="pt-2">*</span></h6>
+                                <h6 class="form-label" style="padding-left: 40px;">Mã màu&nbsp;<span style="color: red;" class="pt-2">*</span></h6>
                             </div>
-                            <div class="col-10">
+                            <div class="col-md-4">
                                 <select class="form-select input-Border colorSelect" required style="background-color: white;"
                                     name="idColor" formControlName="idColor" id="idColor">
                                     <option *ngFor="let obj of colors" [style.color]="obj.maMau" [ngValue]="obj.id">{{ obj.maMau }}</option>
@@ -52,19 +49,17 @@
                             <div class="col-md-2 pt-2">
                                 <h6>Dung lượng&nbsp;<span style="color: red;" class="pt-2">*</span></h6>
                             </div>
-                            <div class="col-10">
+                            <div class="col-md-4">
                                 <select class="form-select input-Border" required style="background-color: white;"
                                     name="idStorage" formControlName="idStorage" id="idStorage">
                                     <option *ngFor="let obj of storages" [ngValue]="obj.id">{{ obj.dungLuong }}</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="row pt-4">
                             <div class="col-2 pt-2">
-                                <h6 class="form-label">Giá&nbsp;<span style="color: red;" class="pt-2">*</span></h6>
+                                <h6 class="form-label" style="padding-left: 40px;">Giá&nbsp;<span style="color: red;" class="pt-2">*</span></h6>
                             </div>
-                            <div class="col-10">
-                                <input class="form-control" type="text" formControlName="giaThanh">
+                            <div class="col-md-4">
+                                <input class="form-control" type="text" required formControlName="giaThanh">
                             </div>
                         </div>
                         <div class="row pt-4">
@@ -91,7 +86,7 @@
                                             <th class="text-center">Thao tác</th>
                                         </tr>
                                     </thead>
-                                    <tbody formArrayName="listHC">
+                                    <tbody formArrayName="listProFile">
                                         <tr *ngFor="let d of listFileControls; let i = index" [formGroupName]="i">
                                             <td class="text-center align-middle" style="font-weight: bold;"></td>
                                             <td><input readonly type="text" class="form-control" name="imgUrl"

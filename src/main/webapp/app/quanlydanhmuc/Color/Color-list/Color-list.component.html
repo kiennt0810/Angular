@@ -70,7 +70,7 @@
             <tr
               *ngFor="let item of colors | slice: (page-1) * itemsPerPage : (page-1) * itemsPerPage + itemsPerPage | myFilter :filter; ">
               <td class="text-center align-middle"></td>
-              <td class="align-middle"><input disabled="disabled" type="color" [(ngModel)]="item.maMau" name="maMau"/> {{item.maMau}}</td>
+              <td class="align-middle" style="display: flex; justify-content: center;"><div style="height: 30px; width: 30px; border-radius: 50%; border: 1px solid #000;" [style.background-color]="item.maMau"></div></td>
               <td class="text-center align-middle">
                 <b style="color: red;" *ngIf="!item.trangThai">
                   Hết hiệu lực

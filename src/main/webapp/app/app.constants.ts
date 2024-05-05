@@ -16,7 +16,6 @@ export const PAGE_PADDING_LEFT = 7;
 export const CSS_UNIT = 96.0 / 72.0;
 export const LANG_KEY = 'lan';
 export const API_URL = 'https://localhost:8090';
-//export const API_URL = 'http://letan.bdntw.dcs.vn:8081';
 export const SESSION_TIMEOUT = 3000;
 export const THOI_GIAN_HIEU_LUC = 180;
 

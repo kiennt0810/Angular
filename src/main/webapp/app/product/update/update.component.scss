@@ -13,4 +13,44 @@
     background:white;
     font-weight: 900;
 }
+.custom-file-button {
+	input[type="file"] {
+    display: none;
+		&::-webkit-file-upload-button {
+			display: none;
+		}
+		&::file-selector-button {
+			display: none;
+		}
+	}
 
+	&:hover {
+		.label-cus {
+			background-color: #70B603;
+			cursor: pointer;
+      color: white;
+		}
+	}
+}
+
+table {
+    counter-reset: rowNumber - 1;
+  }
+  
+  table tr {
+    counter-increment: rowNumber;
+  }
+  
+  table tr td:first-child::before {
+    content: counter(rowNumber);
+    min-width: 1em;
+  }
+  table.table td a.add {
+    color: #27C46B;
+  }
+  table.table td a.edit {
+    color: #FFC107;
+  }
+  table.table td a.delete {
+    color: #E34724;
+  }
